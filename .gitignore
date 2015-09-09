@@ -1,0 +1,12 @@
+/storage/database.sqlite
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/view/*
+/storage/logs/*
+.DS_Store
+.env
+/node_modules
+/vendor
+composer.lock
+composer.phar
+
