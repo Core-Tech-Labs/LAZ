@@ -3,6 +3,7 @@
 /storage/framework/sessions/*
 /storage/framework/view/*
 /storage/logs/*
+/nbproject
 .DS_Store
 .env
 /node_modules
