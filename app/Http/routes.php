@@ -11,36 +11,32 @@
 |
 */
 
+//Base
+Route::get('home','UserController@home');
+
 // For testing anything new for the app
 Route::get('test', 'TestController@rudy');
 
 
 
-//$auth Users = users who are logged in 
-Route::resource('user', 'UserController', 
+//$auth Users = users who are logged in
+Route::resource('user', 'UserController',
                 ['except' => ['create','edit']]);
 
 Route::resource('settings', 'SettingsController',
                 ['only' => ['edit', 'update']]);
 
 
-Route::get('home','UserController@home');
-
-
 // To be Developed and Researched
-Route::get('favs', function(){
-    return 'This is favs';
-});
+Route::get('favs', 'FavController');
 
 
 // To be developed and researched
-Route::get('message','UserController@t');
+Route::resource('message','MessageController');
 
 
 // To be Developed
-Route::get('extras', function(){
-        return 'The is Extras';
-});
+Route::resource('extras', 'ExtraController');
 
 // For Guest Users
 Route::get('/', 'WelcomeController@index');

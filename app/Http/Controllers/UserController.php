@@ -32,8 +32,8 @@ class UserController extends Controller {
          */
 	public function index(User $UserData)
 	{
-                $UserData['age'] = User::getAge();
-                $UserData['zip'] = userData::getUserZip();
+        $UserData['age'] = User::getAge();
+        $UserData['zip'] = userData::getUserZip();
 		return view('user.user', $UserData);
 	}
 
