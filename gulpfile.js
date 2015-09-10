@@ -62,7 +62,6 @@ elixir(function(mix) {
 
     mix.styles('cruz.css', 'public/css/');
 
-
     /**
      * JS Mix
      */
