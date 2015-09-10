@@ -14,7 +14,7 @@ class ExtraController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		return view('user.extra');
 	}
 
 	/**

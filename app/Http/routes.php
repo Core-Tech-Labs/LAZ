@@ -28,7 +28,7 @@ Route::resource('settings', 'SettingsController',
 
 
 // To be Developed and Researched
-Route::get('favs', 'FavController');
+Route::resource('favs', 'FavController');
 
 
 // To be developed and researched

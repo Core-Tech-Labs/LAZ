@@ -14,7 +14,7 @@ class FavController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		return view('user.fav');
 	}
 
 	/**
