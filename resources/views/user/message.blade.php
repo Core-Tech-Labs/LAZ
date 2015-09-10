@@ -3,7 +3,7 @@
     <div class="panel panel-default">
       <div class="row">
         <div class="col-md-4" id="padding">
-          <div class="media" style="background:#eee;">
+          <div class="media" id="message-comestics" style="background:#eee;">
             <div class="media-left">
               <a href="{{ url('#') }}">
                 <img class="media-object img-circle" id="user-dp" src="{{ asset('/imgs/default-dp.jpg') }}" alt="...">
