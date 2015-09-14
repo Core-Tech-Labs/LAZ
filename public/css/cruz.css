@@ -6,10 +6,25 @@ Docuemnt starts by editing the welcome page
 
 */
 /*
-* Lets import bootstrap;
+* Global Hacks;
 */
 
+a{text-decoration:none !important;}
 
+.dropzone{
+    border:2px dashed #0087F7 !important;
+    border-radius: 5px;
+}
+
+.panel-heading{
+    border-bottom:none !important;
+}
+
+button#about{
+    float:right;
+    position: relative;
+    top:-20px;
+}
 /*
 * Welcome page
 */
@@ -45,25 +60,6 @@ body {
 
 .quote {
     font-size: 24px;
-}
-
-#extra-welcome button a{
-    color:#eee;
-    font-size:bold;
-}
-
-#extra-welcome button{
-    background:#474CFF;
-}
-
-#extra-welcome button a:hover{text-decoration: none;}
-
-.extra-welcome, #extra-welcome{
-    margin:10px 0 0;
-}
-
-.extra-welcome a{
-    color:#474CFF;
 }
 
 
@@ -293,5 +289,39 @@ Settings Page
 
 .modal-body-child{
     padding:0 50px;
+}
+
+
+
+
+
+
+
+/**
+    Footer
+*/
+.footer{
+    background:#eee;
+    padding:50px 5px 8px;
+}
+.structure{
+
+}
+.structure ul{
+    padding-bottom:30px;
+    width:250px;
+    float:left;
+}
+.structure ul li{
+    list-style: none;
+}
+.ctllogo{
+    background:url(../imgs/corelabslogo.png) no-repeat center center;
+    width:150px;
+    height:150px;
+}
+.copyright p{
+    float:left;
+    clear:both;
 }
 /*# sourceMappingURL=cruz.css.map */

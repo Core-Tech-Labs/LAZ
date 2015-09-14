@@ -23,13 +23,13 @@ class RouteServiceProvider extends ServiceProvider {
 	public function boot(Router $router)
 	{
 		parent::boot($router);
-                
-                $router->bind('user', function($username){
-                    return \App\User::where('username', $username)->first();
+
+                $router->bind('user', function($value, $route){
+                    return \App\User::where('username', $value)->first();
                 });
-                
-                $router->bind('settings', function($id){
-                    return \App\userData::where('id', $id)->first();
+
+                $router->bind('settings', function($value, $route){
+                    return \App\User::where('username', $value)->first();
                 });
 	}
 

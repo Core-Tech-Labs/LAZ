@@ -71,7 +71,7 @@
                                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="{{ asset('/imgs/default-dp.jpg') }}" class="img-circle" id="user-dp"/> <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
                                                             <li><a href="{{ url('/user') }}">{{ Auth::user()->username }}</a></li>
-                                                            <li><a href="{{ action('SettingsController@edit', $aboutMeData->id ) }}">Settings</a></li>
+                                                            <li><a href="{{ action('SettingsController@edit', $UserData->username ) }}">Settings</a></li>
                                                             <li role="separator" class="divider"></li>
                                                             <li><a href="{{ url('/logout') }}">Logout</a></li>
 							</ul>
@@ -81,4 +81,4 @@
 			</div>
 		</div>
 	</nav>
-    @include('flash-msg.flash')
+@include('flash-msg.flash')

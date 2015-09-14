@@ -7,21 +7,21 @@ use App\Http\Requests\UpdateUserDataRequest;
 
 class UserController extends Controller {
 
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
+    	/**
+    	 * Create a new controller instance.
+    	 *
+    	 * @return void
+    	 */
+    	public function __construct()
+    	{
+    		$this->middleware('auth');
+    	}
 
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
+    	/**
+    	 * Show the application dashboard to the user.
+    	 *
+    	 * @return Response
+    	 */
         public function home(){
             return view('user.home');
         }
@@ -30,12 +30,16 @@ class UserController extends Controller {
          * function to show Current logged in user profile all data from source
          * @return type
          */
-	public function index(User $UserData)
-	{
-        $UserData['age'] = User::getAge();
-        $UserData['zip'] = userData::getUserZip();
-		return view('user.user', $UserData);
-	}
+    	public function index(User $UserData)
+    	{
+
+    		return view('user.user', compact('UserData', 'aboutMeData'));
+    	}
+
+
+        public function store(){
+
+        }
 
         /**
          * Show Other User Profiles
@@ -43,38 +47,57 @@ class UserController extends Controller {
          * @return type
          */
         public function show(User $UserData){
-            dd($username);
-            return $username;
+
+            dd($UserData);
 //           return view('user.user', compact('username'));
         }
 
         /**
-         * Function to update Users Email, Username, Password
-         * (Some work still needs to be done on the Authentication)
+         * Control User editing their Settings Page
+         * Need to pass $UserData object as $aboutMeData For Route && Form Model Binding
          *
-         * @param UpdateUserDataRequest $request
+         * @param type $UserData
+         * @param Request $request
          * @return type
          */
-        public function update(UpdateUserDataRequest $request){
+        public function update(userData $UserData, Request $request){
+             $UserData->update($request->all());
 
-            $user = User::all();
-
-            if(Hash::check('password', $user->password))/*Work to be done*/
-                {
-                $user->update([
-                    'password' => bcrypt('password_new'),
-                    'email' => 'email',
-                    'username' => 'username',
-                ]);
-                $user->save;
-
-                session()->flash('success_message', 'You have updated your profile Successfully!');
-
-                return redirect('user.settings');
-            }
-            return redirect('user.settings')->with('message', 'Please Check your info')->withErrors($request);
+            session()->flash('success_message', 'You have updated your profile Successfully!');
+            return redirect('user');
         }
 
+
+        /**
+         * Function to upload users images
+         * @return [type]
+         */
+        public function upload(User $UserData, Request $request){
+
+            dd($request->file('file'));
+            // $file = $request->file('file');
+            // $rules = [
+            //         'file' => 'image|max:3000',
+            // ];
+
+            // $validation = Validator::make($file, $rules);
+
+            // if($validation->fails()){
+            //     session()->flash('error', 'You had an image error');
+            // }
+
+
+            // $name = time() . $file->getClientOriginalName();
+
+            // $file->move('user/photo', $name);
+
+            // return 'Uploaded';
+
+        }
+
+        public function dp(Request $request){
+            $file = $request->file('file');
+        }
 
 
 }

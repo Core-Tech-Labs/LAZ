@@ -3,17 +3,17 @@
     <div class="panel panel-default">
       <div class="row">
         <div class="col-md-4" id="padding">
-          <div class="media" id="message-comestics" style="background:#eee;">
-            <div class="media-left">
-              <a href="{{ url('#') }}">
-                <img class="media-object img-circle" id="user-dp" src="{{ asset('/imgs/default-dp.jpg') }}" alt="...">
-              </a>
+          <a href="{{ url('#') }}">
+            <div class="media" id="message-comestics" style="background:#eee;">
+              <div class="media-left">
+                  <img class="media-object img-circle" id="user-dp" src="{{ asset('/imgs/default-dp.jpg') }}" alt="...">
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">Users Name</h4>
+                ...
+              </div>
             </div>
-            <div class="media-body">
-              <h4 class="media-heading">Users Name</h4>
-              ...
-            </div>
-          </div>
+          </a>
         </div>
         <div class="col-md-8" id="padding">
           <div class="panel panel-default" id="msg-padding">

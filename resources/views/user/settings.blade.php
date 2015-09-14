@@ -29,7 +29,7 @@
 						</div>
 					@endif
             <div id="position-section">
-                {!! Form::open(['method' => 'PATCH', 'action' => ['UserController@update', $aboutMeData->user_id], 'class'=> 'form-horizontal']) !!}
+                {!! Form::open(['method' => 'PATCH', 'action' => ['SettingsController@update', $UserData->username], 'class'=> 'form-horizontal']) !!}
                 <div id="div-space-me">
                     <h4 id="settings-page-header-child">Email Address</h4>
                         {!! Form::email('email', null, ['class' => 'form-control', 'placeholder'=> 'Email address'])!!}

@@ -1,7 +1,9 @@
 <?php namespace App\Providers;
 
-use App\userData;
+use DB;
 use Illuminate\Support\ServiceProvider;
+
+
 
 class ViewDataServiceProvider extends ServiceProvider {
 
@@ -12,25 +14,53 @@ class ViewDataServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->compserSettingsLink();
+
+		  $this->compserSettingsLink();
+      $this->composeUsername();
+      $this->composeUsernameSettings();
 	}
 
-	/**
+  /**
 	 * Register the application services.
-	 *
-	 * @return void
-	 */
+   *
+   * @return void
+   */
 	public function register()
 	{
-                //
+      //
 	}
-        
-        
-        public function compserSettingsLink(){
-            
-            view()->composer('head', function($view){
-                    $view->with('aboutMeData', userData::find(1)); 
-                    //Seriously need to improve from find(1) No arguements should be n there
-            });
-        }
+
+  /**
+   *  Setting View Partails for head.blade.php
+   *
+   */
+  public function compserSettingsLink(){
+
+      view()->composer('head', function($view){
+              $view->with('UserData', DB::table('users')->select('username')->first());
+      });
+  }
+
+  /**
+   *  Setting View Partails for user.blade.php
+   *
+   */
+  public function composeUsername(){
+
+      view()->composer('user.user', function($view){
+              $view->with('UserData', DB::table('users')->select('username')->first());
+      });
+  }
+
+  /**
+   *  Setting View Partails for settings.blade.php
+   *
+   */
+  public function composeUsernameSettings(){
+
+      view()->composer('user.settings', function($view){
+              $view->with('UserData', DB::table('users')->select('username')->first());
+      });
+  }
+
 }

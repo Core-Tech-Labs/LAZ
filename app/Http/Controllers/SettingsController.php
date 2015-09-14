@@ -1,11 +1,12 @@
 <?php namespace App\Http\Controllers;
 
 use App\userData;
+use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller {
-    
+
         /**
 	 * Create a new controller instance.
 	 *
@@ -24,29 +25,41 @@ class SettingsController extends Controller {
          * Shows Settings page
          * updates userData on User Profile(s) Settings Page
          * Need to pass $UserData object as $aboutMeData For Route && Form Model Binding
-         * 
+         *
          * @param $UserData
-         * @return view && $username 
+         * @return view && $username
          */
          public function edit(userData $UserData){
-             $aboutMeData = $UserData;
-             return view('user.settings', compact('aboutMeData'));
-        } 
-        
-        
+
+             return view('user.settings', compact('UserData'));
+        }
+
         /**
-         * Control User editing their Settings Page
-         * Need to pass $UserData object as $aboutMeData For Route && Form Model Binding
-         * 
-         * @param type $UserData
-         * @param Request $request
-         * @return type
+         * Function to update Users Email, Username, Password
+         * (Some work still needs to be done on the Authentication)
+         *
+         * @param UpdateUserDataRequest $request
+         * @return view
          */
-        public function update(userData $UserData, Request $request){
-            $aboutMeData = $UserData;
-            $aboutMeData->update($request->all());
-            
-            session()->flash('success_message', 'You have updated your profile Successfully!');
-            return redirect('user');
+        public function update(UpdateUserDataRequest $request, User $UserData){
+
+            $user = User::all();
+
+            if(Hash::check('password', $user->password))/*Work to be done*/
+                {
+                $user->update([
+                    'password' => bcrypt('password_new'),
+                    'email' => 'email',
+                    'username' => 'username',
+                ]);
+                $user->save;
+
+                session()->flash('success_message', 'You have updated your profile Successfully!');
+
+                return redirect('user.settings');
+            }
+            return redirect('user.settings')->with('message', 'Please Check your info')->withErrors($request);
+
+
         }
 }

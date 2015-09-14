@@ -22,10 +22,10 @@ class UpdateUserDataRequest extends Request {
 	public function rules()
 	{
 		return [
-			'email' => 'email|max:255',
-                        'password' => 'required',
-                        'password_new'=> 'min:6|confirmed',
-                        'username' => 'max:15|min:4',
+						'email' => 'email|max:255',
+            'password' => 'required',
+            'password_new'=> 'min:6|confirmed',
+            'username' => 'max:15|min:4',
 		];
 	}
 

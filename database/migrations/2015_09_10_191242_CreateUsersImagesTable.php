@@ -12,10 +12,18 @@ class CreateUsersImagesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('usersImages', function(Blueprint $table)
-		{
-			//
-		});
+				Schema::create('usersImages', function(Blueprint $table)
+				{
+						$table->increments('id'); //image_id
+						$table->integer('user_id')->unsigned();
+						$table->string('image_path')->unique();
+						$table->string('image_name')->unique()->nullable;
+						$table->integer('timestamps');
+
+						$table->foreign('user_id')
+									->references('id')
+									->on('users');
+				});
 	}
 
 	/**

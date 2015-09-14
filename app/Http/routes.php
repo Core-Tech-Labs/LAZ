@@ -23,6 +23,11 @@ Route::get('test', 'TestController@rudy');
 Route::resource('user', 'UserController',
                 ['except' => ['create','edit']]);
 
+// Images Routes
+Route::post('images/{user}/upload', ['as'=>'user.images', 'uses'=>'UserController@upload']);
+Route::post('images/{user}/dpUpload', ['as'=>'user.dp', 'uses'=>'UserController@dp']);
+
+
 Route::resource('settings', 'SettingsController',
                 ['only' => ['edit', 'update']]);
 
