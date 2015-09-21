@@ -3,7 +3,7 @@
 
 ## Development work is still in progress
 
-For more info follow [@mr_jessop](http://twitter.com/mr_jessp) on twitter
+For more info follow [@mr_jessop](http://twitter.com/mr_jessop) on twitter
 
 
 ## Official Documentation
