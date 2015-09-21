@@ -17,4 +17,4 @@ More info in due time
 
 ### License
 
-No license has been issued yet
+LAZ is published under the [Eclipse Public License v 1.0](http://opensource.org/licenses/EPL-1.0)
