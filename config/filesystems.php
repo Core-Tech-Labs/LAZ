@@ -45,15 +45,25 @@ return [
 
 		'local' => [
 			'driver' => 'local',
-			'root'   => storage_path().'/app',
+			'root'   => storage_path().'/app/Images',
+		],
+
+		'userPhotos' => [
+			'driver' => 'local',
+			'root' => public_path().'/Images/UserAlbums/',
+		],
+
+		'default_pic' => [
+			'driver' => 'local',
+			'root' => public_path().'/Images/Default_Pictures',
 		],
 
 		's3' => [
 			'driver' => 's3',
-			'key'    => 'your-key',
-			'secret' => 'your-secret',
-			'region' => 'your-region',
-			'bucket' => 'your-bucket',
+			'key'    => env('S3_KEY'),
+			'secret' => env('S3_SECRET'),
+			'region' => env('S3_REGION'),
+			'bucket' => env('S3_BUCKET'),
 		],
 
 		'rackspace' => [
