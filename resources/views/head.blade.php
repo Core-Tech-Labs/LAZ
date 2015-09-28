@@ -8,9 +8,10 @@
 	<title>LAZ | The Open Source Project</title>
 
         <link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('/css/cruz.css') }}" rel="stylesheet">
+	      <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/laz.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/dropzone.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/avatar.css') }}" rel="stylesheet">
 
         <!-- {{-- CSS version example
 		/*
@@ -38,6 +39,9 @@
         <!-- JS librarys-->
         <script text="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/custom.js') }}"></script>
+        <script src="{{ asset('js/react.js') }}"></script>
+        <script src="{{ asset('js/JSXTransformer-react.js') }}"></script>
+
         <!--<script text="text/javascript" src="{{-- asset('/js/other-library.js') --}}"></script>-->
 
 </head>
