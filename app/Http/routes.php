@@ -25,7 +25,7 @@ Route::resource('user', 'UserController',
 
 // Images Routes
 Route::post('images/{user}/upload', ['as'=>'user.images', 'uses'=>'UserController@upload']);
-Route::post('images/{user}/dpUpload', ['as'=>'user.dp', 'uses'=>'UserController@dp']);
+Route::post('images/{user}/dpUpload', 'UserController@dp');
 
 
 Route::resource('settings', 'SettingsController',
