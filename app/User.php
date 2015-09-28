@@ -1,7 +1,9 @@
 <?php namespace App;
 
+use Storage;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\HttpFoundation\File;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
@@ -32,7 +34,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['id', 'password', 'remember_token'];
 
 
-        protected $dates = ['timestamps', '_dob'];
+    protected $dates = ['timestamps', '_dob'];
 
 
         /**
@@ -41,6 +43,19 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
          */
         public function userData(){
             return $this->hasOne('App\userData');
+        }
+
+        /**
+         * Relationship to the userImages Model
+         * @return [type]
+         */
+        public function usersImages(){
+            return $this->hasMany('App\UsersPhotos');
+        }
+
+        public static function getUsername(){
+            $username = DB::table('users')->max('username');
+            return $username;
         }
 
         /**
