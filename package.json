@@ -9,12 +9,15 @@
     "bootstrap-sass": "^3.0.0",
     "bower": "^1.5.2",
     "dropzone": "^4.0.1",
+    "express": "^4.13.3",
     "font-awesome": "^4.4.0",
     "jquery": "^2.1.3",
     "jquery-ui": "^1.10.5",
     "laravel-elixir": "^3.0.0",
     "react": "^0.13.3",
+    "react-avatar-cropper": "0.0.5",
     "react-bootstrap": "^0.23.2",
-    "react-avatar-cropper": "0.0.5"
+    "redis": "^2.0.1",
+    "socket.io": "^1.3.7"
   }
 }

@@ -1,18 +1,19 @@
-<?php namespace App;
+<?php
+namespace App;
 
 use Storage;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpFoundation\File;
 use Illuminate\Auth\Passwords\CanResetPassword;
+// use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-use Carbon\Carbon;
-use DB;
 
-
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
+class User extends Model implements AuthenticatableContract,
+                                        // AuthorizableContract,
+                                            CanResetPasswordContract {
 
 	use Authenticatable, CanResetPassword;
 
@@ -21,10 +22,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var string
 	 */
+    protected $table = 'users';
+
+    /**
+     * Values that are Mass assigned
+     * @var [type]
+     */
 	protected $fillable = ['username', '_dob', 'email', 'password'];
-
-        protected $table = 'users';
-
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -34,6 +38,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['id', 'password', 'remember_token'];
 
 
+    /**
+     * Defining what should be created as Carbon dates
+     * @var [type]
+     */
     protected $dates = ['timestamps', '_dob'];
 
 
@@ -46,13 +54,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
 
         /**
-         * Relationship to the userImages Model
+         * Declaring userImages hasMany relationship
          * @return [type]
          */
         public function usersImages(){
             return $this->hasMany('App\UsersPhotos');
         }
 
+        /**
+         * Acessor for username
+         * @return [type] [description]
+         */
         public static function getUsername(){
             $username = DB::table('users')->max('username');
             return $username;
