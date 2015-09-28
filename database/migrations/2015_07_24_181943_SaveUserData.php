@@ -12,20 +12,20 @@ class SaveUserData extends Migration {
 	 */
 	public function up()
 	{
-                Schema::create('userData', function(Blueprint $table)
-                {
-                    $table->increments('id');
-                    $table->integer('user_id')->unsigned();
-                    $table->integer('zip');
-                    //$table->string('table_name');
-                    $table->timestamps();
+        Schema::create('userData', function(Blueprint $table)
+        {
+            $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->integer('zip');
+            //$table->string('table_name');
+            $table->timestamps();
 
-                    // Foreign keys and Pivot tables
-                    $table->foreign('user_id')
-                          ->references('id')
-                          ->on('users')
-                          ->onDelete('cascade');
-                });
+            // Foreign keys and Pivot tables
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('cascade');
+        });
 	}
 
 	/**
