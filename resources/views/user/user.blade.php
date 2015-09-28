@@ -1,19 +1,22 @@
 @include('head')
 <script type="text/javascript">
 // Test Script
+$(document).ready(function(){
+    $('.avatar-photo').on("mouseenter", function( event ){
+       $('.avatar-edit span').fadeIn(700);
+    });
+});
 </script>
+
     <div class="laz laz-profile">
         <div class="container padding">
             <div class="laz-profile-user">
-                <img src="{{ asset('/imgs/default-dp.jpg') }}" class="img-circle" id="home-dp"/>
-                    <div class="profile-img-upload"><!-- Upload button // Hidden once hovered -->
-                            {!! Form::open(['method'=>'PUT', 'action'=>['UserController@dp', $UserData->username], 'id'=>'move-tip' ]) !!}
-                        <span class="file-input btn btn-primary btn-file">
-                                Upload Image {!! Form::file('profile_img',null, ['class'=>'btn btn-default']) !!}
-                        </span>
-                            {!! Form::close() !!}
-                    </div>
+                <div id="content"></div>
+                <script src="{{ asset('js/bundle.js') }}"></script>
+                <!-- <img src="{{ asset('/imgs/default-dp.jpg') }}" class="img-circle" id="home-dp"/> -->
+
                 <h1 class="laz-profile-name">{{ Auth::user()->username }}</h1>
+
             </div>
         </div>
                     <!-- Extra Content within the user header -->
@@ -23,8 +26,8 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Panel title</h3>
-                    <button id="about" type="button" class="btn btn-default btn-xs">
+                    <h3 class="panel-title">Users Information</h3>
+                    <button id="edit" type="button" class="btn btn-default btn-xs panel-button">
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </button>
                 </div>
@@ -34,6 +37,25 @@
 
                     </div>
             </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">My Images</h3>
+                    <button id="userImage" type="button" class="btn btn-default btn-xs panel-button">
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </button>
+                </div>
+                    <div class="panel-body">
+                        <p>Xtra Content</p>
+                        <!-- You can add anything you want within -->
+                          {{--  @foreach ($UserData->usersImages->chunk(3) as $photo) --}}
+                            @foreach ($UserData->usersImages as $photo)
+                                <img src="{{ url() }}/{{ $photo->image_thumbnail }}" alt="{{ $photo->image_name }}" >
+                            @endforeach
+                    </div>
+            </div>
+
+
         </div>
         <div class="col-md-6">
             <div class="panel panel-default">
@@ -49,7 +71,6 @@
                 <div class="panel-body">
                     <!-- What this content is going to look like
                     {{--
-
 
 
                     --}}
@@ -79,7 +100,7 @@
                 </div>
                 <div class="modal-body">
                     {{--   <!-- Dropzone Holder --> --}}
-                {!! Form::open(['method'=>'PUT', 'files'=>'true', 'action'=> ['UserController@upload', $UserData->username], 'class'=>'dropzone', 'id'=>'my-awesome-dropzone']) !!}
+                {!! Form::open(['method'=>'POST', 'files'=>'true', 'action'=> ['UserController@upload', $UserData->username], 'class'=>'dropzone', 'id'=>'massUpload']) !!}
 
                 {{--{!! Form::close() !!}--}}
                     {{--   <!-- Dropzone Holder --> --}}
@@ -97,10 +118,11 @@
 <script type="text/javascript">
             //Editing about me button
 $(document).ready(function(){
-    $("#about").click(function(){
+    $("#userImage").click(function(){
         $("#myModalone").modal('show');
     });
 });
+
 </script>
 
 
