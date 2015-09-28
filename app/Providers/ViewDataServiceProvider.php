@@ -1,6 +1,7 @@
 <?php namespace App\Providers;
 
 use DB;
+use App\User;
 use Illuminate\Support\ServiceProvider;
 
 
@@ -37,7 +38,7 @@ class ViewDataServiceProvider extends ServiceProvider {
   public function compserSettingsLink(){
 
       view()->composer('head', function($view){
-              $view->with('UserData', DB::table('users')->select('username')->first());
+              $view->with('UserData', \Auth::User());
       });
   }
 
@@ -48,7 +49,7 @@ class ViewDataServiceProvider extends ServiceProvider {
   public function composeUsername(){
 
       view()->composer('user.user', function($view){
-              $view->with('UserData', DB::table('users')->select('username')->first());
+              $view->with('UserData', \Auth::User());
       });
   }
 
@@ -59,7 +60,7 @@ class ViewDataServiceProvider extends ServiceProvider {
   public function composeUsernameSettings(){
 
       view()->composer('user.settings', function($view){
-              $view->with('UserData', DB::table('users')->select('username')->first());
+              $view->with('UserData', \Auth::User());
       });
   }
 
