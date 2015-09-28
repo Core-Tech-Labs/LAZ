@@ -1,0 +1,181 @@
+/*
+Avatar.css to style user default profile module.
+Thanks to Justin Schiff (AmbientRevolution@gmail.com) to creating react-avatar-cropper
+*/
+
+.avatar-photo {
+  float: left;
+  position: relative;
+  background-color: #666;
+  height: 120px;
+  width: 120px;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: 0 0 0 6px #fff, 0 0 0 7px #ccc;
+  z-index: 3;
+  margin-right: 30px;
+}
+
+.avatar-edit span {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 900;
+  text-align: center;
+  position: absolute;
+  z-index: 5;
+  bottom: -22px;
+  right: 0px;
+  color: white;
+  background: #000;
+  opacity: 0.8;
+}
+
+.avatar-photo input[type=file] {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  -moz-opacity:0 ;
+  filter:alpha(opacity: 0);
+  opacity: 0;
+  z-index: 9;
+}
+
+.avatar-edit {
+  text-align: center;
+}
+.avatar-edit i {
+  text-align: center;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  position: absolute;
+  z-index: 5;
+  color:#000;
+  top: 24px;
+  right: 24px;
+  font-size: 12px;
+  opacity: 0.5;
+}
+.avatar-photo:hover {
+  cursor: pointer;
+}
+.avatar-photo:hover .avatar-edit i {
+  opacity: 0.8;
+  font-size: 100px;
+}
+
+/**/
+
+.AvatarCropper-base {
+  text-align: center;
+}
+
+.AvatarCropper-base input[type=range] {
+  display: inline-block;
+}
+
+.AvatarCropper-base input[type=range] {
+  /*removes default webkit styles*/
+  -webkit-appearance: none;
+  /*fix for FF unable to apply focus style bug */
+  padding: 20px 0;
+  border: 1px solid white;
+
+  /*required for proper track sizing in FF*/
+  width: 120px;
+}
+.AvatarCropper-base input[type=range]::-webkit-slider-runnable-track {
+  width: 120px;
+  height: 5px;
+  background: #ddd;
+  border: none;
+  border-radius: 3px;
+}
+.AvatarCropper-base input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #454545;
+  margin-top: -4px;
+}
+.AvatarCropper-base input[type=range]:focus {
+  outline: none;
+}
+.AvatarCropper-base input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+
+.AvatarCropper-base input[type=range]::-moz-range-track {
+  width: 120px;
+  height: 5px;
+  background: #ddd;
+  border: none;
+  border-radius: 3px;
+}
+.AvatarCropper-base input[type=range]::-moz-range-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #454545;
+}
+
+/*hide the outline behind the border*/
+.AvatarCropper-base input[type=range]:-moz-focusring{
+  outline: 1px solid white;
+  outline-offset: -1px;
+}
+
+.AvatarCropper-base input[type=range]::-ms-track {
+  width: 120px;
+  height: 5px;
+
+  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+  background: transparent;
+
+  /*leave room for the larger thumb to overflow with a transparent border */
+  border-color: transparent;
+  border-width: 6px 0;
+
+  /*remove default tick marks*/
+  color: transparent;
+}
+.AvatarCropper-base input[type=range]::-ms-fill-lower {
+  background: #777;
+  border-radius: 10px;
+}
+.AvatarCropper-base input[type=range]::-ms-fill-upper {
+  background: #ddd;
+  border-radius: 10px;
+}
+.AvatarCropper-base input[type=range]::-ms-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #454545;
+}
+.AvatarCropper-base input[type=range]:focus::-ms-fill-lower {
+  background: #888;
+}
+.AvatarCropper-base input[type=range]:focus::-ms-fill-upper {
+  background: #ccc;
+}
+.AvatarCropper-base canvas {
+  cursor: move;
+}
+

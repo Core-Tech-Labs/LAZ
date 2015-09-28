@@ -20,7 +20,7 @@ a{text-decoration:none !important;}
     border-bottom:none !important;
 }
 
-button#about{
+button.panel-button{
     float:right;
     position: relative;
     top:-20px;

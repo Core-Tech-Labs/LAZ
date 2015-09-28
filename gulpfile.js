@@ -34,10 +34,26 @@ elixir(function(mix) {
     mix.copy(dirSrc+ 'jquery/dist/jquery.min.js', publicDir+ 'js/jquery.js');
     mix.copy(dirSrc+ 'bootstrap/dist/js/bootstrap.min.js', publicDir+ 'js/bootstrap.min.js');
     mix.copy(dirSrc+ 'jquery-ui/*.js', copyDir+ 'js/jquery-ui.js');
+    // mix.copy(dirSrc+ 'react-avatar-cropper/lib/index.js', copyDir+ 'js/Avatar/AvatarCropper.js');
+    // mix.copy(dirSrc+ 'react-avatar-cropper/example/src/index.js', copyDir+ 'js/Avatar/App.js');
+    // mix.copy(dirSrc+ 'react-avatar-cropper/lib/utils.js', copyDir+ 'js/Avatar/utils.js');
     /** Check mix.script(
     /*  'jquery-ui.js','public/js/'
     /*  );
     */
+
+   /**
+    * React.js Libraries
+    */
+    mix.copy(dirSrc+ 'react/dist/react.js', publicDir+ 'js/react.js');
+    mix.copy(dirSrc+ 'react/dist/JSXTransformer.js', publicDir+ 'js/JSXTransformer-react.js');
+
+    /**
+     *  Compiling React to Vanilla JS
+     *
+     */
+
+    mix.browserify('Avatar/App.js', 'public/js/bundle.js');
 
 
     /**
@@ -60,7 +76,8 @@ elixir(function(mix) {
 
     mix.less('app.less');
 
-    mix.styles('cruz.css', 'public/css/');
+    mix.styles('laz.css', 'public/css/');
+    mix.styles('avatar.css', 'public/css/');
 
     /**
      * JS Mix
