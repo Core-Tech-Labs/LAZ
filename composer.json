@@ -12,11 +12,11 @@
 		}
 	],
 	"require": {
-		"laravel/framework": "5.0.*",
-		"parse/php-sdk": "1.0.*",
-		"illuminate/html": "^5.0",
+		"php": ">=5.5.9",
+		"laravel/framework": "5.1.*",
+		"illuminate/html": "*",
 		"intervention/image": "*",
-		"aws/aws-sdk-php": "^3.3",
+		"aws/aws-sdk-php": "*",
 		"predis/predis": "~1.0"
 	},
 	"require-dev": {
