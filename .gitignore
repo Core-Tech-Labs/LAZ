@@ -6,6 +6,7 @@
 /nbproject
 .DS_Store
 .env
+.travis.yml
 /node_modules
 /vendor
 composer.lock
