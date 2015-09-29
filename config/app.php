@@ -80,7 +80,7 @@ return [
 
 	'key' => env('APP_KEY'),
 
-	'cipher' => MCRYPT_RIJNDAEL_128,
+	'cipher' => env('CIPHER_KEY'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -164,6 +164,7 @@ return [
 
 	'aliases' => [
 
+<<<<<<< HEAD
 		'App'       =>  Illuminate\Support\Facades\App::class,
 		'Artisan'   =>  Illuminate\Support\Facades\Artisan::class,
 		'Auth'      =>  Illuminate\Support\Facades\Auth::class,
@@ -185,6 +186,29 @@ return [
 		'Mail'      =>  Illuminate\Support\Facades\Mail::class,
 		'Password'  =>  Illuminate\Support\Facades\Password::class,
 		'Queue'     =>  Illuminate\Support\Facades\Queue::class,
+=======
+		'App'       => Illuminate\Support\Facades\App::class,
+		'Artisan'   => Illuminate\Support\Facades\Artisan::class,
+		'Auth'      => Illuminate\Support\Facades\Auth::class,
+		'Blade'     => Illuminate\Support\Facades\Blade::class,
+		'Bus'       => Illuminate\Support\Facades\Bus::class,
+		'Cache'     => Illuminate\Support\Facades\Cache::class,
+		'Config'    => Illuminate\Support\Facades\Config::class,
+		'Cookie'    => Illuminate\Support\Facades\Cookie::class,
+		'Crypt'     => Illuminate\Support\Facades\Crypt::class,
+		'DB'        => Illuminate\Support\Facades\DB::class,
+		'Eloquent'  => Illuminate\Database\Eloquent\Model::class,
+		'Event'     => Illuminate\Support\Facades\Event::class,
+		'File'      => Illuminate\Support\Facades\File::class,
+		'Hash'      => Illuminate\Support\Facades\Hash::class,
+		'Input'     => Illuminate\Support\Facades\Input::class,
+		'Inspiring' => Illuminate\Foundation\Inspiring::class,
+		'Lang'      => Illuminate\Support\Facades\Lang::class,
+		'Log'       => Illuminate\Support\Facades\Log::class,
+		'Mail'      => Illuminate\Support\Facades\Mail::class,
+		'Password'  => Illuminate\Support\Facades\Password::class,
+		'Queue'     => Illuminate\Support\Facades\Queue::class,
+>>>>>>> origin/master
 		'Redirect'  =>  Illuminate\Support\Facades\Redirect::class,
 		'Redis'     =>  Illuminate\Support\Facades\Redis::class,
 		'Request'   =>  Illuminate\Support\Facades\Request::class,

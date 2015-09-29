@@ -17,9 +17,8 @@ class CreateUsersImagesTable extends Migration {
 						$table->increments('id'); //image_id
 						$table->integer('user_id')->unsigned();
 						$table->string('image_path')->unique();
-						$table->string('image_thumbnail')->unique();
 						$table->string('image_name')->unique()->nullable;
-						$table->timestamps('uploaded_at');
+						$table->integer('timestamps');
 
 						$table->foreign('user_id')
 									->references('id')
@@ -34,7 +33,10 @@ class CreateUsersImagesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('usersImages');
+		Schema::table('usersImages', function(Blueprint $table)
+		{
+			//
+		});
 	}
 
 }

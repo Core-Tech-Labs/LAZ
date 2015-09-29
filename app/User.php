@@ -1,4 +1,8 @@
 <?php
+<<<<<<< HEAD
+=======
+namespace App;
+>>>>>>> origin/master
 
 
 namespace App;
@@ -19,7 +23,11 @@ class User extends Model implements AuthenticatableContract,
                                         // AuthorizableContract,
                                             CanResetPasswordContract {
 
+<<<<<<< HEAD
 	use Authenticatable, /*Authorizable ,*/ CanResetPassword;
+=======
+	use Authenticatable, CanResetPassword;
+>>>>>>> origin/master
 
 	/**
 	 * The database table used by the model.

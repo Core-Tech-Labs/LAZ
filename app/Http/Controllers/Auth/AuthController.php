@@ -1,11 +1,16 @@
 <?php namespace App\Http\Controllers\Auth;
 
+<<<<<<< HEAD
 use App\User;
 use Validator;
 use App\userData;
+=======
+use Validator;
+>>>>>>> origin/master
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 
@@ -22,7 +27,7 @@ class AuthController extends Controller {
 	|
 	*/
 
-	use AuthenticatesAndRegistersUsers;
+	use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
 	/**
 	 * Create a new authentication controller instance.
@@ -36,19 +41,27 @@ class AuthController extends Controller {
 		$this->middleware('guest', ['except'  => 'getLogout']);
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 	/**
 	 * Get a validator for an incoming registration request.
 	 *
 	 * @param  array  $data
 	 * @return \Illuminate\Contracts\Validation\Validator
 	 */
+<<<<<<< HEAD
 	public function validator(array $data)
 	{
+=======
+	protected function validator(){
+>>>>>>> origin/master
 		return Validator::make($data, [
 			'username' => 'required|max:15|min:4|unique:users',
 			'email' => 'required|email|max:255|unique:users,email',
 			'password' => 'required|confirmed|min:8',
+<<<<<<< HEAD
       '_dob' => 'required|date',
       'zip'=> 'required|numeric'
 		]);
@@ -56,13 +69,25 @@ class AuthController extends Controller {
 
 
   /**
+=======
+			'_dob' => 'required|date',
+			'zip'=> 'required|numeric'
+		]);
+	}
+
+	/**
+>>>>>>> origin/master
 	 * Create a new user instance after a valid registration.
 	 *
 	 * @param  array  $data
 	 * @return User
 	 */
+<<<<<<< HEAD
 	public function create(array $data)
 	{
+=======
+	protected function create(array $data){
+>>>>>>> origin/master
 		$user = User::create([
 			'username' => $data['username'],
 			'email' => $data['email'],
@@ -81,6 +106,9 @@ class AuthController extends Controller {
 		return $user;
 	}
 
+<<<<<<< HEAD
 	// Look into bring authenticatesUsers methods into this controller.
 
+=======
+>>>>>>> origin/master
 }
