@@ -2,10 +2,21 @@
 <script type="text/javascript">
 // Test Script
 $(document).ready(function(){
-    $('.avatar-photo').on("mouseenter", function( event ){
-       $('.avatar-edit span').fadeIn(700);
-    });
-});
+    //Default
+    // $(':button').hide();
+    //Default once shown HACK
+    // $(':botton').on("mouseenter", function(event){
+    //     $(':button').show();
+    // });
+    // Appear
+//     $('.panel-title').on("mouseenter", function( event ){
+//        $(':button').show();
+//     });
+//        // Disappear
+//     $('.panel-title').on("mouseleave", function(event){
+//         $(':button').hide();
+//     });
+// });
 </script>
 
     <div class="laz laz-profile">
@@ -13,8 +24,6 @@ $(document).ready(function(){
             <div class="laz-profile-user">
                 <div id="content"></div>
                 <script src="{{ asset('js/bundle.js') }}"></script>
-                <!-- <img src="{{ asset('/imgs/default-dp.jpg') }}" class="img-circle" id="home-dp"/> -->
-
                 <h1 class="laz-profile-name">{{ Auth::user()->username }}</h1>
 
             </div>
