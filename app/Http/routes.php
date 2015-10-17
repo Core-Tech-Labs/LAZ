@@ -23,13 +23,17 @@ Route::get('test', 'TestController@rudy');
 Route::resource('user', 'UserController',
                 ['except' => ['create','edit']]);
 
+// News Feed resource
+Route::resource('feed', 'FeedsController');
+
 // Images Routes
 Route::post('images/{user}/upload', ['as'=>'user.images', 'uses'=>'UserController@upload']);
-Route::post('images/{user}/dpUpload', 'UserController@dp');
+Route::post('images/dpUpload', 'UserController@dp');
 
 
 Route::resource('settings', 'SettingsController',
                 ['only' => ['edit', 'update']]);
+
 
 
 // To be Developed and Researched
