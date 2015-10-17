@@ -1,10 +1,4 @@
 <?php
-<<<<<<< HEAD
-=======
-namespace App;
->>>>>>> origin/master
-
-
 namespace App;
 
 use DB;
@@ -23,11 +17,8 @@ class User extends Model implements AuthenticatableContract,
                                         // AuthorizableContract,
                                             CanResetPasswordContract {
 
-<<<<<<< HEAD
+
 	use Authenticatable, /*Authorizable ,*/ CanResetPassword;
-=======
-	use Authenticatable, CanResetPassword;
->>>>>>> origin/master
 
 	/**
 	 * The database table used by the model.
@@ -76,7 +67,7 @@ class User extends Model implements AuthenticatableContract,
          * Declaring Feeds hasMany relationship
          * @return [type] [description]
          */
-        public function feeds(){
+        public function Feeds(){
             return $this->hasMany('App\Feeds');
         }
 

@@ -3,19 +3,12 @@
 class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
 	/**
-<<<<<<< HEAD
-=======
 	 * The Base URL
->>>>>>> origin/master
 	 *
 	 * @var string
 	 */
 	protected $baseUrl = 'http://localhost';
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 	/**
 	 * Creates the application.
 	 *

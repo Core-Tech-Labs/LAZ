@@ -3,24 +3,24 @@
     <div class="structure padding">
       <ul class="list-footer">
         <li><a href="">About Us</a></li>
-        <li><a href="">bb</a></li>
-        <li><a href="">bb</a></li>
-        <li><a href="">ee</a></li>
-        <li><a href="">aa</a></li>
+        <li><a href="">--</a></li>
+        <li><a href="">--</a></li>
+        <li><a href="">--</a></li>
+        <li><a href="">--</a></li>
       </ul>
       <ul class="list-footer">
-        <li><a href="">About Us</a></li>
-        <li><a href="">bb</a></li>
-        <li><a href="">bb</a></li>
-        <li><a href="">ee</a></li>
-        <li><a href="">aa</a></li>
+        <li><a href="">--</a></li>
+        <li><a href="">--</a></li>
+        <li><a href="">--</a></li>
+        <li><a href="">--</a></li>
+        <li><a href="">--</a></li>
       </ul>
       <ul class="list-footer">
-        <li><a href="">About Us</a></li>
-        <li><a href="">bb</a></li>
-        <li><a href="">bb</a></li>
-        <li><a href="">ee</a></li>
-        <li><a href="">aa</a></li>
+        <li><a href="">--</a></li>
+        <li><a href="">--</a></li>
+        <li><a href="">--</a></li>
+        <li><a href="">--</a></li>
+        <li><a href="">--</a></li>
       </ul>
     </div>
     <div class="copyright">
