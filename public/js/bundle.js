@@ -28735,7 +28735,8 @@ var App = _react2["default"].createClass({
     );
   }
 });
-
+//
+//
 var FileUpload = _react2["default"].createClass({
   displayName: "FileUpload",
 
@@ -28751,14 +28752,12 @@ var FileUpload = _react2["default"].createClass({
     }).bind(this);
     reader.readAsDataURL(file);
   },
-
   render: function render() {
-    return _react2["default"].createElement("input", { ref: "in", type: "file", accept: "image/*", action: "images/{user}/dpUpload", onChange: this.handleFile });
+    return _react2["default"].createElement("input", { ref: "in", type: "file", accept: "image/*", action: "images/dpUpload", onChange: this.handleFile });
   }
 });
 
 _react2["default"].render(_react2["default"].createElement(App, null), document.getElementById("content"));
-// React.render(<App />, document.getElementById("cropper"));
 
 },{"./AvatarCropper":239,"react":236,"react-bootstrap":67}],239:[function(require,module,exports){
 "use strict";

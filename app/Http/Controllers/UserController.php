@@ -1,9 +1,12 @@
-<?php namespace App\Http\Controllers;
+<?php
+namespace App\Http\Controllers;
 
 use Image;
-use App\User;
-use App\userData;
+use Redis;
 use Storage;
+use App\User;
+use App\Feeds;
+use App\userData;
 use App\UsersPhotos;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Validation;
@@ -26,7 +29,8 @@ class UserController extends Controller {
     	 *
     	 * @return Response
     	 */
-        public function home(){
+        public function home(User $user){
+
             return view('user.home');
         }
 

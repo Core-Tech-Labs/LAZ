@@ -9,6 +9,11 @@ Docuemnt starts by editing the welcome page
 * Global Hacks;
 */
 
+#FeedInput button {
+    margin:10px 0;
+    float:right;
+}
+
 a{text-decoration:none !important;}
 
 .dropzone{
@@ -143,6 +148,10 @@ body {
     height:50px !important;
     max-width:555px;
 }
+
+#timeline{
+    float:right;
+}
 /*Hack*/
 
 .laz{
@@ -183,40 +192,18 @@ body {
 
 }
 
-/*Image upload Button hack*/
-/*.btn-file {
-  position: relative;
-  overflow: hidden;
-  left:22px;
-}
-.btn-file input[type=file] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 100%;
-  min-height: 100%;
-  font-size: 100px;
-  text-align: right;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  background: red;
-  cursor: inherit;
-  display: block;
-}
-input[readonly] {
-  background-color: white !important;
-  cursor: text !important;
-}
-*/
-
-/*Image upload Button hack*/
-
 /*
     User Profiles
 
 */
+/*News Feed*/
 
-/*Info*/
+.newsFeedContent{
+    padding:15px 5px;
+    border-top:1px solid #efefef;
+    margin:20px 0;
+
+}
 
 
 /*

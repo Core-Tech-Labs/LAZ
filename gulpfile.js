@@ -54,6 +54,7 @@ elixir(function(mix) {
      */
 
     mix.browserify('Avatar/App.js', 'public/js/bundle.js');
+    mix.browserify('FeedPost/PostFeed.js', 'public/js/feedbundle.js');
 
 
     /**

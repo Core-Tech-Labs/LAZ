@@ -57,7 +57,8 @@ var App = React.createClass({
     );
   }
 });
-
+//
+//
 var FileUpload = React.createClass({
 
   handleFile: function(e) {
@@ -72,13 +73,11 @@ var FileUpload = React.createClass({
     }.bind(this);
     reader.readAsDataURL(file);
   },
-
   render: function() {
     return (
-      <input ref="in" type="file" accept="image/*" action="images/{user}/dpUpload" onChange={this.handleFile} />
+      <input ref="in" type="file" accept="image/*" action="images/dpUpload" onChange={this.handleFile} />
     );
   }
 });
 
 React.render(<App />, document.getElementById("content"));
-// React.render(<App />, document.getElementById("cropper"));

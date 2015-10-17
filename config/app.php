@@ -80,7 +80,7 @@ return [
 
 	'key' => env('APP_KEY'),
 
-	'cipher' => env('CIPHER_KEY'),
+	'cipher' => MCRYPT_RIJNDAEL_128,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -164,7 +164,7 @@ return [
 
 	'aliases' => [
 
-<<<<<<< HEAD
+
 		'App'       =>  Illuminate\Support\Facades\App::class,
 		'Artisan'   =>  Illuminate\Support\Facades\Artisan::class,
 		'Auth'      =>  Illuminate\Support\Facades\Auth::class,
@@ -186,7 +186,6 @@ return [
 		'Mail'      =>  Illuminate\Support\Facades\Mail::class,
 		'Password'  =>  Illuminate\Support\Facades\Password::class,
 		'Queue'     =>  Illuminate\Support\Facades\Queue::class,
-=======
 		'App'       => Illuminate\Support\Facades\App::class,
 		'Artisan'   => Illuminate\Support\Facades\Artisan::class,
 		'Auth'      => Illuminate\Support\Facades\Auth::class,
@@ -208,7 +207,6 @@ return [
 		'Mail'      => Illuminate\Support\Facades\Mail::class,
 		'Password'  => Illuminate\Support\Facades\Password::class,
 		'Queue'     => Illuminate\Support\Facades\Queue::class,
->>>>>>> origin/master
 		'Redirect'  =>  Illuminate\Support\Facades\Redirect::class,
 		'Redis'     =>  Illuminate\Support\Facades\Redis::class,
 		'Request'   =>  Illuminate\Support\Facades\Request::class,

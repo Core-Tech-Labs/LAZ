@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
+use Redis;
+use App\User;
 use App\Feeds;
-use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class FeedsController extends Controller
@@ -16,7 +19,7 @@ class FeedsController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -35,12 +38,11 @@ class FeedsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(User $user, Request $request)
     {
-        // $feeds = Feeds::setFeeds();
-
-
-        dd($feeds)
+        $newsFeed = $request->all();
+        Redis::sadd($user->getUsername(), json_encode($newsFeed));
+        Redis::publish('update-feed', json_encode($newsFeed));
     }
 
     /**
@@ -51,7 +53,7 @@ class FeedsController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

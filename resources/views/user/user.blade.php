@@ -1,33 +1,13 @@
 @include('head')
-<script type="text/javascript">
-// Test Script
-$(document).ready(function(){
-    //Default
-    // $(':button').hide();
-    //Default once shown HACK
-    // $(':botton').on("mouseenter", function(event){
-    //     $(':button').show();
-    // });
-    // Appear
-//     $('.panel-title').on("mouseenter", function( event ){
-//        $(':button').show();
-//     });
-//        // Disappear
-//     $('.panel-title').on("mouseleave", function(event){
-//         $(':button').hide();
-//     });
-// });
-</script>
-
     <div class="laz laz-profile">
         <div class="container padding">
             <div class="laz-profile-user">
-                <div id="content"></div>
-                <script src="{{ asset('js/bundle.js') }}"></script>
-                <h1 class="laz-profile-name">{{ Auth::user()->username }}</h1>
+                <div id="content" data-placement="bottom" data-toggle="tooltip" title="Change Your Picture"></div>
+                <h1 class="laz-profile-name" id="user-name" username="{{ Auth::user()->username}}">{{ Auth::user()->username }}</h1>
 
             </div>
         </div>
+        <script src="{{ asset('js/bundle.js') }}"></script>
                     <!-- Extra Content within the user header -->
     </div><!-- Start of Timeline -->
 <div class="container-fluid padding-top">
@@ -50,7 +30,7 @@ $(document).ready(function(){
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">My Images</h3>
-                    <button id="userImage" type="button" class="btn btn-default btn-xs panel-button">
+                    <button id="userImage" type="button" data-placement="right" data-toggle="tooltip" title="Upload Your Images" class="btn btn-default btn-xs panel-button">
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </button>
                 </div>
@@ -59,34 +39,18 @@ $(document).ready(function(){
                         <!-- You can add anything you want within -->
                           {{--  @foreach ($UserData->usersImages->chunk(3) as $photo) --}}
                             @foreach ($UserData->usersImages as $photo)
-                                <img src="{{ url() }}/{{ $photo->image_thumbnail }}" alt="{{ $photo->image_name }}" >
+                                <img src="{{ url() }}/{{ $photo->image_thumbnail }}" alt="{{ $photo->image_name }}">
                             @endforeach
                     </div>
             </div>
-
-
         </div>
-        <div class="col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    {!! Form::open(['method'=>'POST', 'action'=>'UserController@store', 'class'=>'form-horizontal' ]) !!}
-                        {!! Form::textarea('update', null, ['class'=>'form-control update-form', 'placeholder'=>'Tell us what you been up to...']) !!}
-                    {!! Form::close() !!}
-                    <br/>
-                </div>
-            <br/>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <!-- What this content is going to look like
-                    {{--
 
+            {{-- React Hook --}}
+            <div id="FeedInput"></div>
+            {!! Form::token() !!}
+            <script src="{{ asset('js/feedbundle.js') }}"></script>
+            {{-- React Hook --}}
 
-                    --}}
-                     -->
-                </div>
-            </div>
-        </div>
         <div class="col-md-2">
             <div class="panel panel-default">
                 <div class="panel-body">
