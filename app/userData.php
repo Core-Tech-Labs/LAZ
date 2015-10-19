@@ -1,7 +1,8 @@
-<?php namespace App;
+<?php
+namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use DB;
+use Illuminate\Database\Eloquent\Model;
 
 class userData extends Model {
 
@@ -26,8 +27,7 @@ class userData extends Model {
      * @return object
      */
     protected function getUserZip() {
-        // $users = DB::tables('users')->max('zip');
-        $zip = '10001'; // Need to fix
+        $zip = DB::tables('userData')->max('zip');
         return $zip;
     }
 

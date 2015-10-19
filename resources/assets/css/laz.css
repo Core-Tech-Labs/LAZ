@@ -116,6 +116,18 @@ body {
     top:80px;
 }
 
+/**
+ *  Dashboard/Homepage
+ */
+
+
+
+.dh{
+    padding-bottom:20px;
+}
+
+
+
 /*
     Messaging Pages
 */
@@ -260,6 +272,15 @@ Settings Page
 * Special Character
 *
 */
+
+/**
+ *  Favs Page
+ */
+
+#laz-paginate{
+    width:100%;
+    padding:0 40%;
+}
 
 /* User Modeal Views
 */

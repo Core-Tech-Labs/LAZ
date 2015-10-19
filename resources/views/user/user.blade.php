@@ -3,7 +3,7 @@
         <div class="container padding">
             <div class="laz-profile-user">
                 <div id="content" data-placement="bottom" data-toggle="tooltip" title="Change Your Picture"></div>
-                <h1 class="laz-profile-name" id="user-name" username="{{ Auth::user()->username}}">{{ Auth::user()->username }}</h1>
+                <h1 class="laz-profile-name" id="user-name" username="{{ $UserData->username }}">{{ $UserData->username }}</h1>
 
             </div>
         </div>
@@ -16,9 +16,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Users Information</h3>
-                    <button id="edit" type="button" class="btn btn-default btn-xs panel-button">
-                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                    </button>
+                    @if ($UserData->username === Auth::user()->username  )
+                        <button id="edit" type="button" class="btn btn-default btn-xs panel-button">
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        </button>
+                    @endif
+
+
                 </div>
                     <div class="panel-body">
                         <p>Xtra Content</p>
@@ -30,9 +34,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">My Images</h3>
-                    <button id="userImage" type="button" data-placement="right" data-toggle="tooltip" title="Upload Your Images" class="btn btn-default btn-xs panel-button">
-                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                    </button>
+                    @if ($UserData->username === Auth::user()->username  )
+                        <button id="userImage" type="button" data-placement="right" data-toggle="tooltip" title="Upload Your Images" class="btn btn-default btn-xs panel-button">
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        </button>
+                    @endif
                 </div>
                     <div class="panel-body">
                         <p>Xtra Content</p>
@@ -63,7 +69,7 @@
 </div>
 
 <!-- For About Me-->
-
+@if ($UserData->username === Auth::user()->username  )
 <div id="myModalone" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -86,6 +92,7 @@
             </div>
         </div>
     </div>
+    @endif
 <!-- For About Me-->
 
 <script type="text/javascript">

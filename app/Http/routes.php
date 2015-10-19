@@ -12,7 +12,7 @@
 */
 
 //Base
-Route::get('home','UserController@home');
+Route::get('home',['as'=>'home.dashboard','uses'=>'UserController@home']);
 
 // For testing anything new for the app
 Route::get('test', 'TestController@rudy');
@@ -21,7 +21,10 @@ Route::get('test', 'TestController@rudy');
 
 //$auth Users = users who are logged in
 Route::resource('user', 'UserController',
-                ['except' => ['create','edit']]);
+                ['except' => ['create', 'edit', 'index', 'store', 'show']]);
+Route::get('_{user}', ['as'=> 'user.profile', 'uses' => 'UserController@index']);
+
+
 
 // News Feed resource
 Route::resource('feed', 'FeedsController');
@@ -55,6 +58,5 @@ Route::controllers([
 ]);
 
 
-//Route::resource('Photo', 'UserController');
 
 

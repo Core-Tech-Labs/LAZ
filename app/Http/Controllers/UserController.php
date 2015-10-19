@@ -9,19 +9,23 @@ use App\Feeds;
 use App\userData;
 use App\UsersPhotos;
 use Illuminate\Http\Request;
+use App\Http\LAZ\Users\UsersOrigin;
 use Illuminate\Contracts\Validation;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller {
+
+    protected $usersOrigin;
 
     	/**
     	 * Create a new controller instance.
     	 *
     	 * @return void
     	 */
-    	public function __construct()
+    	public function __construct(UsersOrigin $usersOrigin)
     	{
     		$this->middleware('auth');
+            $this->usersOrigin = $usersOrigin;
     	}
 
     	/**
@@ -31,7 +35,9 @@ class UserController extends Controller {
     	 */
         public function home(User $user){
 
-            return view('user.home');
+            $users = $this->usersOrigin->getDashboardPaginated();
+
+            return view('user.home', compact('users'));
         }
 
         /**
@@ -40,19 +46,9 @@ class UserController extends Controller {
          */
     	public function index(User $UserData)
     	{
-    		return view('user.user', $UserData);
+            $user = $this->usersOrigin->findUsernameBy($UserData);
+    		return view('user.user', compact('UserData'));
     	}
-
-        /**
-         * Show Other User Profiles
-         * @param type $username
-         * @return type
-         */
-        public function show(User $UserData){
-
-            dd($UserData->usersImages);
-//           return view('user.user', compact('username'));
-        }
 
         /**
          * Control User editing their Settings Page

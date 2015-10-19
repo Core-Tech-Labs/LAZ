@@ -72,12 +72,12 @@
                                         <li><a href="{{ url('/favs') }}">My Favorites</a></li>
                                         <li><a href="{{ url('/extras') }}">Extras</a></li>
 						<li class="dropdown">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="{{ asset('/imgs/default-dp.jpg') }}" class="img-circle" id="user-dp"/> <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="{{ asset('/imgs/default-dp.jpg') }}" class="img-circle" id="user-dp"/> <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-                                                            <li><a href="{{ url('/user') }}">{{ Auth::user()->username }}</a></li>
-                                                            <li><a href="{{ action('SettingsController@edit', $UserData->username ) }}">Settings</a></li>
-                                                            <li role="separator" class="divider"></li>
-                                                            <li><a href="{{ url('/logout') }}">Logout</a></li>
+                <li><a href="{{ action('UserController@index', $UserData->username ) }}">{{ Auth::user()->username }}</a></li>
+                <li><a href="{{ action('SettingsController@edit', $UserData->username ) }}">Settings</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="{{ url('/logout') }}">Logout</a></li>
 							</ul>
 						</li>
 					@endif

@@ -1,20 +1,36 @@
-<?php namespace App\Http\Controllers;
+<?php
+namespace App\Http\Controllers;
 
+use App\User;
 use App\Http\Requests;
+use App\Http\LAZ\Users\UsersOrigin;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
 class FavController extends Controller {
 
+	protected $usersOrigin;
+
+	/**
+	 * [__construct description]
+	 */
+	public function __construct(UsersOrigin $usersOrigin){
+
+		$this->middleware('auth');
+		$this->usersOrigin = $usersOrigin;
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(User $user)
 	{
-		return view('user.fav');
+		$users = $this->usersOrigin->getFavPaginated();
+
+		return view('user.fav', compact('users'));
 	}
 
 	/**
