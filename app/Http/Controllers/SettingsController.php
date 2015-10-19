@@ -1,7 +1,8 @@
-<?php namespace App\Http\Controllers;
+<?php
+namespace App\Http\Controllers;
 
-use App\userData;
 use App\User;
+use App\userData;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateUserDataRequest;
 

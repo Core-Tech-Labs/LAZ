@@ -51,7 +51,7 @@
                 </div>
                 <div id="div-space-me">
                      <h4 id="settings-page-header-child">Confirm Changes</h4>
-                     {!! Form::password('password', ['class' => 'form-control', 'placeholder'=> 'Confirm Password']) !!}
+                     {!! Form::password('password', ['class' => 'form-control', 'placeholder'=> 'Current Password']) !!}
                 </div>
 
                 {!! Form::submit('Save', ['class' => 'btn btn-success']) !!}
