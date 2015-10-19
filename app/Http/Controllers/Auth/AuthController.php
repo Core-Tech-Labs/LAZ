@@ -38,6 +38,15 @@ class AuthController extends Controller {
 		$this->middleware('guest', ['except'  => 'getLogout']);
 	}
 
+	/**
+     * Get the path to the login route.
+     *
+     * @return string
+     */
+    public function loginPath()
+    {
+        return property_exists($this, 'loginPath') ? $this->loginPath : '/login';
+    }
 
 	/**
 	 * Get a validator for an incoming registration request.
