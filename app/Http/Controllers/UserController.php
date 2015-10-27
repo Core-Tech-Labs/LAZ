@@ -5,6 +5,7 @@ use Image;
 use Redis;
 use Storage;
 use App\User;
+use App\Online;
 use App\Feeds;
 use App\userData;
 use App\UsersPhotos;
@@ -33,21 +34,25 @@ class UserController extends Controller {
     	 *
     	 * @return Response
     	 */
-        public function home(User $user){
+        public function home(User $user, Online $online){
+
+            $online->UpdateIdleUser();
+            $activeuser = $online->OnlineUsers();
 
             $users = $this->usersOrigin->getDashboardPaginated();
 
-            return view('user.home', compact('users'));
+            return view('user.home', compact('users', 'activeuser'));
         }
 
         /**
          * function to show Current logged in user profile all data from source
          * @return type
          */
-    	public function index(User $UserData)
+    	public function index(User $UserData, Online $online)
     	{
-            $user = $this->usersOrigin->findUsernameBy($UserData);
-    		return view('user.user', compact('UserData'));
+            $activeuser = $online->loggedInUser();
+            // $user = $this->usersOrigin->findUsernameBy($UserData);
+    		return view('user.user', compact('UserData', 'activeuser'));
     	}
 
         /**

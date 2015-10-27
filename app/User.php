@@ -6,11 +6,12 @@ use Storage;
 use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use App\Http\LAZ\Users\ActionableTrait;
 use Symfony\Component\HttpFoundation\File;
 use Illuminate\Auth\Passwords\CanResetPassword;
-// use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+// use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
 
 class User extends Model implements AuthenticatableContract,
@@ -18,7 +19,7 @@ class User extends Model implements AuthenticatableContract,
                                             CanResetPasswordContract {
 
 
-	use Authenticatable, /*Authorizable ,*/ CanResetPassword;
+	use Authenticatable, /*Authorizable,*/ CanResetPassword, ActionableTrait;
 
 	/**
 	 * The database table used by the model.
@@ -72,12 +73,10 @@ class User extends Model implements AuthenticatableContract,
         }
 
         /**
-         * Acessor for username
-         * @return [type] [description]
+         * [Online description]
          */
-        public static function getUsername(){
-            $username = DB::table('users')->max('username');
-            return $username;
+        public function Online(){
+            return $this->hasOne('App\Online');
         }
 
         /**

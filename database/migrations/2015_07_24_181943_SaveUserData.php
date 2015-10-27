@@ -17,10 +17,9 @@ class SaveUserData extends Migration {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('zip');
-            //$table->string('table_name');
             $table->timestamps();
 
-            // Foreign keys and Pivot tables
+            // Foreign keys
             $table->foreign('user_id')
                   ->references('id')
                   ->on('users')
