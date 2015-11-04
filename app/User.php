@@ -6,7 +6,7 @@ use Storage;
 use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
-use App\Http\LAZ\Users\ActionableTrait;
+// use App\Http\LAZ\Users\ActionableTrait;
 use Symfony\Component\HttpFoundation\File;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -19,7 +19,7 @@ class User extends Model implements AuthenticatableContract,
                                             CanResetPasswordContract {
 
 
-	use Authenticatable, /*Authorizable,*/ CanResetPassword, ActionableTrait;
+	use Authenticatable, CanResetPassword; /*Authorizable,*/ /*ActionableTrait*/
 
 	/**
 	 * The database table used by the model.
