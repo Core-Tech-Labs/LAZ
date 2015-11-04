@@ -69,7 +69,7 @@ class UsersPhotos extends Model {
       ]);
 
       $file = $request->file('file');
-      $Imagename = .'DP'.time().$file->$user->username;
+      $Imagename = 'DP'.time().$file->$user->username;
       $ProfilePicturePath = $filesystem->disk('s3')->put($user->username.'/'.$Imagename, '');
 
       //Create New Image Upload Instance to database
