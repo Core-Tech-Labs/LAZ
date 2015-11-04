@@ -138,6 +138,7 @@ return [
      Illuminate\Html\HtmlServiceProvider::class,
      Illuminate\Broadcasting\BroadcastServiceProvider::class,
      Intervention\Image\ImageServiceProvider::class,
+     Jenssegers\Rollbar\RollbarServiceProvider::class,
 
 		/*
 		 * Application Service Providers...

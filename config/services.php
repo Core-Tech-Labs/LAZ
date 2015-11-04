@@ -35,4 +35,10 @@ return [
 		'secret' => '',
 	],
 
+	'rollbar' => [
+		'access_token' => env('ROLLBAR_ACCESS'),
+		'environment' => 'development',
+		'level' => 'debug'
+	],
+
 ];

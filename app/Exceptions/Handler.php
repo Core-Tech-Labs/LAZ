@@ -1,6 +1,8 @@
-<?php namespace App\Exceptions;
+<?php
+namespace App\Exceptions;
 
 use Exception;
+use Rollbar\Rollbar;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler {
@@ -15,6 +17,24 @@ class Handler extends ExceptionHandler {
 	];
 
 	/**
+	 * Rollbar Error Handler
+	 *
+	 * @return [type] [description]
+	 */
+	public function rberrors(){
+		$rollbar_config = Config::get('services.rollbar');
+
+		if ($rollbar_config) {
+			Rollbar::init($rollbar_config)
+				App::error(function($request, $response)
+				{
+					Rollbar::flush();
+				});
+		}
+	}
+
+
+	/**
 	 * Report or log an exception.
 	 *
 	 * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
@@ -24,6 +44,8 @@ class Handler extends ExceptionHandler {
 	 */
 	public function report(Exception $e)
 	{
+		$this->rberror();
+		Rollbar::report_message('Could Not Test', 'warning');
 		return parent::report($e);
 	}
 
@@ -36,7 +58,10 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
+		$this->rberror();
 		return parent::render($request, $e);
 	}
+
+
 
 }
