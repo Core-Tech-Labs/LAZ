@@ -9,6 +9,10 @@ Docuemnt starts by editing the welcome page
 * Global Hacks;
 */
 
+h1 div{
+    font-size:14px;
+}
+
 #FeedInput button {
     margin:10px 0;
     float:right;
@@ -193,6 +197,44 @@ body {
 .laz-profile
 .laz-profile-location{
     color:#fff;
+}
+
+.laz-profile
+.laz-profile-userOnline{
+    background:#74FF64;
+    width: 50px;
+    float: right;
+    border-radius: 15px;
+    color: #fff;
+    position:relative;
+    top:10px;
+    margin:0 25px;
+    padding:5px;
+}
+
+.laz-profile
+.laz-profile-userOffline{
+    background:#A2A3A0;
+    width: 50px;
+    float: right;
+    border-radius: 15px;
+    color: #fff;
+    position:relative;
+    top:10px;
+    margin:0 25px;
+    padding:5px;
+}
+
+
+.user-action-buttons{
+    float:right;
+    width:380px;
+    margin:0 auto;
+}
+
+.user-action-buttons button{
+    margin:0 5px;
+    font-size:18px;
 }
 
 #content img{

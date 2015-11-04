@@ -1,11 +1,10 @@
-@section('head')
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>LAZ | The Open Source Project</title>
+	<title>LAZ | @yield('title')</title>
 
         <link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 	      <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
@@ -32,17 +31,12 @@
         <script text="text/javascript" src="{{ asset('/js/jquery.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/jquery-ui.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
-	<!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>-->
-        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>-->
 
         <!-- JS librarys-->
         <script text="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/custom.js') }}"></script>
         <script src="{{ asset('js/react.js') }}"></script>
         <script src="{{ asset('js/JSXTransformer-react.js') }}"></script>
-
-        <!--<script text="text/javascript" src="{{-- asset('/js/other-library.js') --}}"></script>-->
 
 </head>
 <body>
@@ -68,9 +62,9 @@
 						<li><a href="{{ url('/login') }}">Login</a></li>
 						<li><a href="{{ url('/register') }}">Register</a></li>
 					@else
-                                        <li><a href="{{ url('/message') }}"> Messages</a></li>
-                                        <li><a href="{{ url('/favs') }}">My Favorites</a></li>
-                                        <li><a href="{{ url('/extras') }}">Extras</a></li>
+              <li><a href="{{ url('/message') }}"> Messages</a></li>
+              <li><a href="{{ url('/favs') }}">My Favorites</a></li>
+              <li><a href="{{ url('/extras') }}">Extras</a></li>
 						<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="{{ asset('/imgs/default-dp.jpg') }}" class="img-circle" id="user-dp"/> <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">

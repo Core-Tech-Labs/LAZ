@@ -37,10 +37,9 @@ Route::post('images/dpUpload', 'UserController@dp');
 Route::resource('settings', 'SettingsController',
                 ['only' => ['edit', 'update']]);
 
-
-
-// To be Developed and Researched
-Route::resource('favs', 'FavController');
+// Favorite users controller
+Route::resource('favs', 'FavController',
+                ['except'=>['update','edit','show','create']]);
 
 
 // To be developed and researched

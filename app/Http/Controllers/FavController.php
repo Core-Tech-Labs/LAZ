@@ -1,14 +1,18 @@
 <?php
 namespace App\Http\Controllers;
 
+use Auth;
 use App\User;
 use App\Http\Requests;
+use Illuminate\Http\Request;
+use App\Commands\FavAUserCommand;
 use App\Http\LAZ\Users\UsersOrigin;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Bus\DispatchesCommands;
 
-use Illuminate\Http\Request;
 
 class FavController extends Controller {
+
 
 	protected $usersOrigin;
 
@@ -34,60 +38,24 @@ class FavController extends Controller {
 	}
 
 	/**
-	 * Show the form for creating a new resource.
+	 * Fav A User
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function store(Request $request)
 	{
-		//
+		$input = array_add($request, 'userID', Auth::id() );
+		$this->dispatchFromArray(FavAUserCommand::class, [
+					'userID' => $request->get(Auth::id()),
+					'userIDToFav' => $request->get('userIDToFav'),
+		]);
+
+		session()->flash('success_message','You are now following' . $request->get('userIDToFav'));
+		return \Redirect::back();
 	}
 
 	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
+	 * UnFav a user
 	 *
 	 * @param  int  $id
 	 * @return Response

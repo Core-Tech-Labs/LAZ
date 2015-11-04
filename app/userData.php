@@ -8,7 +8,7 @@ class userData extends Model {
 
     protected $table = 'userData';
 
-    protected $fillable = ['zip'];
+    protected $fillable = ['zip', 'profile_picture', 'picture_name', 'user_dp_rename'];
 
     protected $dates = ['timestamps'];
 
@@ -22,14 +22,6 @@ class userData extends Model {
         return $this->belongsTo('App\User');
     }
 
-    /**
-     * Getting users zip code
-     * @return object
-     */
-    protected function getUserZip() {
-        $zip = DB::tables('userData')->max('zip');
-        return $zip;
-    }
 
     // Set and Define your Accessors and Mutators
 

@@ -1,4 +1,6 @@
 @include('head')
+@section('title', $UserData->username . ' Settings')
+
 <!-- Flash Messages -->
 
 <!-- Flash Messages -->

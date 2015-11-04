@@ -3,16 +3,16 @@ namespace App\Http\Controllers;
 
 use Image;
 use Redis;
-use Storage;
+use Request;
 use App\User;
-use App\Online;
 use App\Feeds;
+use App\Online;
 use App\userData;
 use App\UsersPhotos;
-use Illuminate\Http\Request;
 use App\Http\LAZ\Users\UsersOrigin;
 use Illuminate\Contracts\Validation;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Filesystem\Factory as Filesystem;
 
 class UserController extends Controller {
 
@@ -75,42 +75,21 @@ class UserController extends Controller {
          * Function to upload users images
          * @return [type]
          */
-        public function upload(User $UserData, UsersPhotos $photo, Request $request){
-            // Photo(s) Validation
-            $this->Validate($request,[
-                'file' => 'required|max:3000|mimes:jpg,jpeg,png',
-            ]);
+        public function upload(UsersPhotos $photo){
 
-            $file = $request->file('file'); // Collects the file from user upload
-
-            // For regular Images
-            $Imagename = time().$file->getClientOriginalName(); // Gives the file its name
-            $userfilepath = $UserData->getUsername(); // Get current username to define directory
-            $holder = Storage::disk('userPhotos')->put($userfilepath.'/'.$Imagename, '');// Prep Image for disk on folder
-
-
-            //Create thubmnail
-            $thmname = time().$file->getClientOriginalName(); // Thumbnail naming
-            $thmfilepath = Storage::disk('userPhotos')->put($userfilepath.'/tn_/'.$thmname, '');
-
-
-            $image = Image::make($file)->fit(115)->save($thmname); // For Thumbnail image save
-
-            $file->move($holder, $Imagename); // For original Image save
-
-            //Create New Image Upload Instance to database
-            $UserData->usersImages()->create([
-                    'image_path' => $holder.'/'.$Imagename,
-                    'image_thumbnail' => $thmfilepath.'/'.$thmname,
-                    'image_name' => $file->getClientOriginalName(),
-            ]);
-
-            // Ending Upload
+            $photo->UsersUploadedImages();
             session()->flash('success_message', 'You have Uploaded your images Successfully');
+            return redirect('user');
         }
 
-        public function dp(Request $request){
-            $file = $request->file('file');
+        /**
+         * Handling Users Profile Pictures Uploads
+         * @param  UsersPhotos $photo [description]
+         * @return [type]             [description]
+         */
+        public function dp(UsersPhotos $photo){
+
+            $photo->UserProfilePicture();
             session()->flash('success_message', 'Profile Picture Updated');
         }
 
