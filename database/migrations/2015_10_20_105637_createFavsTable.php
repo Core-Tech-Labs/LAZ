@@ -28,7 +28,7 @@ class CreateFavsTable extends Migration
     public function down()
     {
         Schema::table('favs', function(Blueprint $table){
-            Schema::drop('users');
+            Schema::drop('favs');
         });
     }
 }

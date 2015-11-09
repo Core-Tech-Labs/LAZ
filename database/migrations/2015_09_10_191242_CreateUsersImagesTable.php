@@ -35,7 +35,8 @@ class CreateUsersImagesTable extends Migration {
 	{
 		Schema::table('usersImages', function(Blueprint $table)
 		{
-			//
+			Schema::drop('usersImages');
+
 		});
 	}
 

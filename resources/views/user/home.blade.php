@@ -2,6 +2,7 @@
 
 @section('title', 'Home Page')
 
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-8"> <!-- Left Side -->
@@ -20,7 +21,7 @@
           @forelse ($activeuser as $active)
             <div class="col-md-4 dh">
             <a href="{{ action('UserController@index', $active->user->username ) }}" class="thumbnail" style="margin-bottom:0px !important">
-              <img src="{{ asset('/imgs/default-dp.jpg') }}" alt="{{$active->user->username}} Profile Image" title="{{$active->user->username}}" />
+              <img src="{{ $user->userData->profile_picture }}" alt="{{$active->user->username}} Profile Image" title="{{$active->user->username}}" />
             </a>
               <a href="{{ action('UserController@index', $active->user->username) }}">{{ $active->user->username }}</a>
             </div>
