@@ -44,16 +44,13 @@ class SettingsController extends Controller {
          */
         public function update(UpdateUserDataRequest $request, User $UserData){
 
-            $user = User::all();
-
-            if(Hash::check('password', $user->password))/*Work to be done*/
+            if(\Hash::check($request->input('password_old'), $UserData->password))
                 {
-                $user->update([
-                    'password' => bcrypt('password_new'),
-                    'email' => 'email',
-                    'username' => 'username',
+                $UserData->update([
+                    'password' => bcrypt( $request->input('password') ),
+                    'email' => $request->input('email'),
+                    'username' => $request->input('username'),
                 ]);
-                $user->save;
 
                 session()->flash('success_message', 'You have updated your profile Successfully!');
 

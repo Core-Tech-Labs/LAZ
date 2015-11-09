@@ -22,9 +22,9 @@ class UpdateUserDataRequest extends Request {
 	public function rules()
 	{
 		return [
-						'email' => 'email|max:255',
-            'password' => 'required',
-            'password_new'=> 'min:6|confirmed',
+						'email' => 'required|email|max:255',
+            'password_old' => 'required',
+            'password'=> 'min:6|confirmed', /*New password user(s) want to update*/
             'username' => 'max:15|min:4',
 		];
 	}
