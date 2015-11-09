@@ -5,6 +5,7 @@ use DB;
 use App\User;
 use App\Online;
 use App\userData;
+use App\UsersPhotos;
 use App\Http\LAZ\Users\UsersOrigin;
 use App\Http\Controllers\Controller;
 
@@ -30,11 +31,13 @@ class TestController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function rudy(Online $online, User $user)
+	public function rudy(Online $online, User $user, UsersPhotos $userPhotos)
 	{
     // $users = $this->usersOrigin->getDashboardPaginated();
 		// dd($user->Online()->loggedInUser() );
 		// dd($users);
+		//
+		dd($user->userData());
 
 	}
 
