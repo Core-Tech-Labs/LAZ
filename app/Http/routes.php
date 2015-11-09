@@ -31,7 +31,7 @@ Route::resource('feed', 'FeedsController');
 
 // Images Routes
 Route::post('images/{user}/upload', ['as'=>'user.images', 'uses'=>'UserController@upload']);
-Route::post('images/dpUpload', 'UserController@dp');
+Route::post('images/dpUpload/{user}', 'UserController@dp');
 
 
 Route::resource('settings', 'SettingsController',
