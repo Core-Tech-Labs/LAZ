@@ -15,9 +15,9 @@
             </div>
         </div>
         <script src="{{ asset('js/bundle.js') }}"></script>
-        <div class="user-action-buttons">
-            @include('user.pieces.actionButton')
-        </div>
+            <div class="user-action-buttons">
+                @include('user.pieces.actionButton')
+            </div>
     </div><!-- Start of Timeline -->
 <div class="container-fluid padding-top">
     <div class="row">
@@ -50,12 +50,17 @@
                     @endif
                 </div>
                     <div class="panel-body">
-                        <p>Xtra Content</p>
                         <!-- You can add anything you want within -->
                           {{--  @foreach ($UserData->usersImages->chunk(3) as $photo) --}}
+                          @if ($UserData->usersPhotos == false )
+                            <p>You haven't Uploaded any Images</p>
+                          @else
                             @foreach ($UserData->usersPhotos as $photo)
-                                <img src="{{ url() }}/{{ $photo->image_thumbnail }}" alt="{{ $photo->image_name }}">
+                                <div class="col-md-4">
+                                    <img id="preview-image" src="{{ url() }}{{ $photo->image_path }}" alt="{{ $photo->image_name }}">
+                                </div>
                             @endforeach
+                        @endif
                     </div>
             </div>
         </div>
@@ -63,7 +68,7 @@
             {{-- React Hook --}}
             <div id="FeedInput"></div>
             {!! Form::token() !!}
-            <script src="{{ asset('js/feedbundle.js') }}"></script>
+            <!-- script src="{{ asset('js/feedbundle.js') }}"></script>
             {{-- React Hook --}}
 
         <div class="col-md-2">
