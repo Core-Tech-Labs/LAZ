@@ -1,14 +1,12 @@
 <?php
 namespace App\Http\Controllers;
 
-use Image;
-use Redis;
+use Request;
 use App\User;
 use App\Feeds;
 use App\Online;
 use App\userData;
 use App\UsersPhotos;
-use Illuminate\Http\Request;
 use App\Http\LAZ\Users\UsersOrigin;
 use Illuminate\Contracts\Validation;
 use App\Http\Controllers\Controller;
@@ -98,6 +96,21 @@ class UserController extends Controller {
 
             $photo->UserProfilePicture( $request->file('dp'), \Auth::user() );
 
+        public function upload(UsersPhotos $photo){
+
+            $photo->UsersUploadedImages();
+            session()->flash('success_message', 'You have Uploaded your images Successfully');
+            return redirect('user');
+        }
+
+        /**
+         * Handling Users Profile Pictures Uploads
+         * @param  UsersPhotos $photo [description]
+         * @return [type]             [description]
+         */
+        public function dp(UsersPhotos $photo){
+
+            $photo->UserProfilePicture();
             session()->flash('success_message', 'Profile Picture Updated');
         }
 
