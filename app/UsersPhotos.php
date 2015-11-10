@@ -4,7 +4,6 @@ namespace App;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
-use Symfony\Component\HttpFoundation\File;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Contracts\Filesystem\Factory as Filesystem;
@@ -36,11 +35,12 @@ class UsersPhotos extends Model {
 
   /**
    * Business logic for saving images
+   * To Stay
    * @param Request    $request    [description]
    * @param User       $user       [description]
    * @param Filesystem $filesystem [description]
    */
-  public function UsersUploadedImages(UploadedFile $file, User $user){
+  public function UsersUploadedImages(UploadedFile $file, User $user){ /*To Stay*/
       // $disk = \Storage::disk('userPhotos');
 
       $Image = $file->getClientOriginalName();
@@ -60,10 +60,11 @@ class UsersPhotos extends Model {
 
   /**
    * Business logic for saving users Profile Picture
+   * To Stay
    * @param  Request $request [description]
    * @return [type]           [description]
    */
-  public function UserProfilePicture(UploadedFile $file, User $user){
+  public function UserProfilePicture(UploadedFile $file, User $user){ /*To Stay*/
 
       $Imagename = 'DP'.time().$file->$user->username;
       $file->move(\Auth::User()->username.'/profile_images/', $Imagename);
@@ -76,5 +77,6 @@ class UsersPhotos extends Model {
 
       ]);
 
+  }
 
 }

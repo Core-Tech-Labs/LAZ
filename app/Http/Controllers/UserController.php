@@ -73,7 +73,7 @@ class UserController extends Controller {
          * Function to upload users images
          * @return [type]
          */
-        public function upload(Request $request, UsersPhotos $photo){
+        public function upload(Request $request, UsersPhotos $photo){ /*To Stay*/
             $this->Validate($request,[
                 'file' => 'required|max:3000|mimes:jpg,jpeg,png',
             ]);
@@ -89,13 +89,12 @@ class UserController extends Controller {
          * @param  UsersPhotos $photo [description]
          * @return [type]             [description]
          */
-        public function dp(Request $request, UsersPhotos $photo){
+        public function dp(Request $request, UsersPhotos $photo){ /*To Stay*/
              $this->Validate($request,[
                 'file' => 'required|max:3000|mimes:jpg,jpeg,png',
             ]);
 
             $photo->UserProfilePicture( $request->file('dp'), \Auth::user() );
-
         }
 
 
