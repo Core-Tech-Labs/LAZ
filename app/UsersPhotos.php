@@ -4,11 +4,10 @@ namespace App;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\HttpFoundation\File;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\File;
 use Illuminate\Contracts\Filesystem\Factory as Filesystem;
-
 
 
 class UsersPhotos extends Model {
@@ -76,48 +75,6 @@ class UsersPhotos extends Model {
               'picture_name' => $Imagename
 
       ]);
-
-  public function UsersUploadedImages(Request $request, User $user, Filesystem $filesystem){
-    // Photo(s) Validation
-      $this->Validate($request,[
-          'file' => 'required|max:3000|mimes:jpg,jpeg,png',
-      ]);
-
-      $file = $request->file('file');
-      $Imagename = time().$file->getClientOriginalName();
-
-      $ProfilePicturePath = $filesystem->disk('s3')->put($user->username.'/'.$Imagename, '');
-      //Create New Image Upload Instance to database
-      $user->usersPhotos()->create([
-              'image_path' => $ProfilePicturePath,
-              'image_name' => $Imagename,
-      ]);
-
-  }
-
-
-  /**
-   * Business logic for saving users Profile Picture
-   * @param  Request $request [description]
-   * @return [type]           [description]
-   */
-  public function UserProfilePicture(Request $request, User $user, Filesystem $filesystem){
-      $this->Validate($request,[
-          'file' => 'required|max:3000|mimes:jpg,jpeg,png',
-      ]);
-
-      $file = $request->file('file');
-      $Imagename = 'DP'.time().$file->$user->username;
-      $ProfilePicturePath = $filesystem->disk('s3')->put($user->username.'/'.$Imagename, '');
-
-      //Create New Image Upload Instance to database
-      $user->userData()->create([
-              'profile_picture' => $ProfilePicturePath,
-              'picture_name' => $Imagename
-
-      ]);
-
-  }
 
 
 }

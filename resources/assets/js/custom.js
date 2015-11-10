@@ -14,6 +14,7 @@ Dropzone.options.massUpload = {
     maxFilesize: 3,
     acceptedFiles: '.jpg, .jpeg, .png',
     clickable: true,
+    dictResponseError: 'Upload Failed',
 
 };
 

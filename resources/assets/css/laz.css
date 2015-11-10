@@ -256,7 +256,12 @@ body {
     padding:15px 5px;
     border-top:1px solid #efefef;
     margin:20px 0;
+}
 
+/*Images*/
+
+img#preview-image{
+    width:100%;
 }
 
 

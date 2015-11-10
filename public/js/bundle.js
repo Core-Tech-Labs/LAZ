@@ -28680,10 +28680,11 @@ var App = _react2["default"].createClass({
   displayName: "App",
 
   getInitialState: function getInitialState() {
+    var defaultProfile = document.getElementById('user-dp').getAttribute('profileimage');
     return {
       cropperOpen: false,
       img: null,
-      croppedImg: "https://s3.amazonaws.com/test-laz/default-dp.jpg"
+      croppedImg: defaultProfile
     };
   },
   handleFileChange: function handleFileChange(dataURI) {
@@ -28711,7 +28712,7 @@ var App = _react2["default"].createClass({
       null,
       _react2["default"].createElement(
         "div",
-        { className: "avatar-photo img-circle" },
+        { className: "avatar-photo" },
         _react2["default"].createElement(FileUpload, { handleFileChange: this.handleFileChange }),
         _react2["default"].createElement(
           "div",
@@ -28740,6 +28741,17 @@ var App = _react2["default"].createClass({
 var FileUpload = _react2["default"].createClass({
   displayName: "FileUpload",
 
+  handleSubmit: function handleSubmit(e) {
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "images/dpUpload",
+      data: "this.state.handleFileChange",
+      success: function success(img) {
+        console.log('You Image was uploaded successfully');
+      }
+    });
+  },
   handleFile: function handleFile(e) {
     var reader = new FileReader();
     var file = e.target.files[0];
@@ -28752,8 +28764,13 @@ var FileUpload = _react2["default"].createClass({
     }).bind(this);
     reader.readAsDataURL(file);
   },
+
   render: function render() {
-    return _react2["default"].createElement("input", { ref: "in", type: "file", accept: "image/*", action: "images/dpUpload", onChange: this.handleFile });
+    return _react2["default"].createElement(
+      "form",
+      { onSubmit: this.handleSubmit },
+      _react2["default"].createElement("input", { ref: "in", type: "file", accept: "image/*", onChange: this.handleFile })
+    );
   }
 });
 
