@@ -30,13 +30,24 @@ class UsersOrigin{
     }
 
     /**
+     * Find user via ID
+     *
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function findById($id){
+
+        return User::findOrFail($id);
+    }
+
+    /**
      * Favorite a user
-     * @param  [type] $userIdToFav [description]
+     * @param  [type] $userIDToFav [description]
      * @param  User   $user        [description]
      * @return [type]              [description]
      */
-    public function favoriteUser($userIdToFav, User $user){
-      return $user->favUser()->attach($userIdToFav);
+    public function favoriteUser($userIDToFav, User $user){
+      return $user->favUsers()->attach($userIDToFav);
     }
 
     /**
@@ -45,7 +56,7 @@ class UsersOrigin{
      * @param  User   $user          [description]
      * @return [type]                [description]
      */
-    public function unfavoriteUser($userIdToUnFav, User $user){
-      return $user->favUser()->detach($userIdToUnFav);
+    public function unfavoriteUser($userIDToUnFav, User $user){
+      return $user->favUsers()->detach($userIDToUnFav);
     }
 }

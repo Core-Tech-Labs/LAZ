@@ -31,16 +31,15 @@ Route::resource('feed', 'FeedsController');
 
 // Images Routes
 Route::post('images/{user}/upload', ['as'=>'user.images', 'uses'=>'UserController@upload']);
-Route::post('images/dpUpload', 'UserController@dp');
+Route::post('images/dpUpload/{user}', 'UserController@dp');
 
 
 Route::resource('settings', 'SettingsController',
                 ['only' => ['edit', 'update']]);
 
-
-
-// To be Developed and Researched
-Route::resource('favs', 'FavController');
+// Favorite users controller
+Route::resource('favs', 'FavController',
+                ['except'=>['update','edit','show','create']]);
 
 
 // To be developed and researched

@@ -85,7 +85,9 @@ class AuthController extends Controller {
 		*/
 		$user->userData()->updateOrCreate([
 			// Data for Relationship table
-			'zip'=> $data['zip']
+			'zip'=> $data['zip'],
+			'profile_picture' => 'https://s3.amazonaws.com/test-laz/default-dp.jpg',
+			'picture_name' => 'Default Picture'
 		]);
 
 		return $user;

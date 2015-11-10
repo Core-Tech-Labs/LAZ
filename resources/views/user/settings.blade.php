@@ -1,4 +1,6 @@
 @include('head')
+@section('title', $UserData->username . ' Settings')
+
 <!-- Flash Messages -->
 
 <!-- Flash Messages -->
@@ -12,7 +14,7 @@
 
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#sectionA">General Settings</a></li>
-        <li><a data-toggle="tab" href="#sectionC">Template</a></li>
+        <li><a data-toggle="tab" href="#sectionC">General</a></li>
     </ul>
 
     <div class="tab-content">
@@ -43,7 +45,7 @@
                 <div id="div-space-me">
                      <h4 id="settings-page-header-child">Change Password</h4>
                         <div class="input-group">
-                            {!! Form::password('password_new', ['class' => 'form-control', 'placeholder'=> 'New Password', 'autocomplete'=>'off'])!!}
+                            {!! Form::password('password', ['class' => 'form-control', 'placeholder'=> 'New Password', 'autocomplete'=>'off'])!!}
                         </div>
                      <div class="input-group" id="input-negetive">
                             {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder'=> 'Confirm Password', 'autocomplete'=>'off'])!!}
@@ -51,7 +53,7 @@
                 </div>
                 <div id="div-space-me">
                      <h4 id="settings-page-header-child">Confirm Changes</h4>
-                     {!! Form::password('password', ['class' => 'form-control', 'placeholder'=> 'Current Password']) !!}
+                     {!! Form::password('password_old', ['class' => 'form-control', 'placeholder'=> 'Current Password']) !!}
                 </div>
 
                 {!! Form::submit('Save', ['class' => 'btn btn-success']) !!}
@@ -59,7 +61,20 @@
             </div>
         </div>
         <div id="sectionC" class="tab-pane fade">
-            <p>Your Extra DATA</p>
+            <div id="position-section">
+                <div id="div-space-me">
+                    <h4 id="settings-page-header-child">Upload Profile Photo</h4>
+                    {!! Form::open(['method'=> 'POST', 'action' => ['UserController@dp', $UserData->username], 'class'=>'form-horizontal' ]) !!}
+                        {!! Form::file('dp') !!}
+                </div>
+                {!! Form::submit('Upload Image', ['class' => 'btn btn-success'])!!}
+                {!! Form::close() !!}
+
+                <div id="div-space-me">
+                    {{-- NEW CONTENT FOR USERS TO UPLOAD OR UPDATE THEIR PROFILE --}}
+                </div>
+
+            </div>
         </div>
 
     </div>

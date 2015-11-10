@@ -1,14 +1,23 @@
 @include('head')
+@section('title', $UserData->username . ' Profile')
     <div class="laz laz-profile">
         <div class="container padding">
             <div class="laz-profile-user">
                 <div id="content" data-placement="bottom" data-toggle="tooltip" title="Change Your Picture"></div>
-                <h1 class="laz-profile-name" id="user-name" username="{{ $UserData->username }}">{{ $UserData->username }}</h1>
+                <h1 class="laz-profile-name" id="user-name" username="{{ $UserData->username }}">{{ $UserData->username }}
+                    @if ( $activeuser === $UserData->id  )
+                        <div class="laz-profile-userOnline">Online</div>
 
+                    @else
+                        <div class="laz-profile-userOffline">Offline</div>
+                    @endif
+                </h1>
             </div>
         </div>
         <script src="{{ asset('js/bundle.js') }}"></script>
-                    <!-- Extra Content within the user header -->
+            <div class="user-action-buttons">
+                @include('user.pieces.actionButton')
+            </div>
     </div><!-- Start of Timeline -->
 <div class="container-fluid padding-top">
     <div class="row">
@@ -41,12 +50,17 @@
                     @endif
                 </div>
                     <div class="panel-body">
-                        <p>Xtra Content</p>
                         <!-- You can add anything you want within -->
                           {{--  @foreach ($UserData->usersImages->chunk(3) as $photo) --}}
-                            @foreach ($UserData->usersImages as $photo)
-                                <img src="{{ url() }}/{{ $photo->image_thumbnail }}" alt="{{ $photo->image_name }}">
+                          @if ($UserData->usersPhotos == false )
+                            <p>You haven't Uploaded any Images</p>
+                          @else
+                            @foreach ($UserData->usersPhotos as $photo)
+                                <div class="col-md-4">
+                                    <img id="preview-image" src="{{ url() }}{{ $photo->image_path }}" alt="{{ $photo->image_name }}">
+                                </div>
                             @endforeach
+                        @endif
                     </div>
             </div>
         </div>
@@ -54,7 +68,7 @@
             {{-- React Hook --}}
             <div id="FeedInput"></div>
             {!! Form::token() !!}
-            <script src="{{ asset('js/feedbundle.js') }}"></script>
+            <!-- script src="{{ asset('js/feedbundle.js') }}"></script>
             {{-- React Hook --}}
 
         <div class="col-md-2">
@@ -68,32 +82,7 @@
     </div>
 </div>
 
-<!-- For About Me-->
-@if ($UserData->username === Auth::user()->username  )
-<div id="myModalone" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Upload your images</h4>
-                </div>
-                <div class="modal-body">
-                    {{--   <!-- Dropzone Holder --> --}}
-                {!! Form::open(['method'=>'POST', 'files'=>'true', 'action'=> ['UserController@upload', $UserData->username], 'class'=>'dropzone', 'id'=>'massUpload']) !!}
-
-                {{--{!! Form::close() !!}--}}
-                    {{--   <!-- Dropzone Holder --> --}}
-                </div>
-                <div class="modal-footer">
-                    {!! Form::button('Close', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) !!}
-                    {!! Form::submit('Save Changes', ['class' => 'btn btn-success']) !!}
-                </div>
-                    {!! Form::close() !!}
-            </div>
-        </div>
-    </div>
-    @endif
-<!-- For About Me-->
+@include('user.pieces.modal.userModal')
 
 <script type="text/javascript">
             //Editing about me button

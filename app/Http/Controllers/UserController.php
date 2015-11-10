@@ -1,8 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-use Image;
-use Redis;
 use Request;
 use App\User;
 use App\Feeds;
@@ -41,7 +39,7 @@ class UserController extends Controller {
 
             $users = $this->usersOrigin->getDashboardPaginated();
 
-            return view('user.home', compact('users', 'activeuser'));
+            return view('user.home', compact('users', 'activeuser') );
         }
 
         /**
@@ -52,7 +50,7 @@ class UserController extends Controller {
     	{
             $activeuser = $online->loggedInUser();
             // $user = $this->usersOrigin->findUsernameBy($UserData);
-    		return view('user.user', compact('UserData', 'activeuser'));
+    		return view('user.user', compact('UserData', 'activeuser') );
     	}
 
         /**
@@ -75,6 +73,29 @@ class UserController extends Controller {
          * Function to upload users images
          * @return [type]
          */
+        public function upload(Request $request, UsersPhotos $photo){
+            $this->Validate($request,[
+                'file' => 'required|max:3000|mimes:jpg,jpeg,png',
+            ]);
+
+            $photo->UsersUploadedImages($request->file('file'), \Auth::user() );
+
+            session()->flash('success_message', 'You have Uploaded your images Successfully');
+            return redirect('user');
+        }
+
+        /**
+         * Handling Users Profile Pictures Uploads
+         * @param  UsersPhotos $photo [description]
+         * @return [type]             [description]
+         */
+        public function dp(Request $request, UsersPhotos $photo){
+             $this->Validate($request,[
+                'file' => 'required|max:3000|mimes:jpg,jpeg,png',
+            ]);
+
+            $photo->UserProfilePicture( $request->file('dp'), \Auth::user() );
+
         public function upload(UsersPhotos $photo){
 
             $photo->UsersUploadedImages();

@@ -61,7 +61,7 @@ class User extends Model implements AuthenticatableContract,
          * Declaring userImages hasMany relationship
          * @return [type]
          */
-        public function usersImages(){
+        public function usersPhotos(){
             return $this->hasMany('App\UsersPhotos');
         }
         /**

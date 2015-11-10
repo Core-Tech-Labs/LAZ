@@ -17,6 +17,9 @@ class SaveUserData extends Migration {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('zip');
+            $table->string('profile_picture');
+            $table->string('picture_name');
+            $table->string('user_dp_rename');
             $table->timestamps();
 
             // Foreign keys

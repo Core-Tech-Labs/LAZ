@@ -1,36 +1,44 @@
-<?php namespace App\Http\Controllers;
+<?php
+namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\userData;
-use App\Http\Controllers\Controller;
 use DB;
+use App\User;
+use App\Online;
+use App\userData;
+use App\UsersPhotos;
+use App\Http\LAZ\Users\UsersOrigin;
+use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
 
 class TestController extends Controller {
-    
+
+	protected $usersOrigin;
+
         /**
 	 * Create a new controller instance.
 	 *
 	 * @return void
 	 */
-	public function __construct()
+	public function __construct(UsersOrigin $usersOrigin)
 	{
+		$this->usersOrigin = $usersOrigin;
 		$this->middleware('auth');
 	}
-        
+
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function rudy()
+	public function rudy(Online $online, User $user, UsersPhotos $userPhotos)
 	{
-//            $aboutme = DB::table('userData')->max('aboutMe');
-            $aboutme = userData::all();
-            
-            return $aboutme;
+    // $users = $this->usersOrigin->getDashboardPaginated();
+		// dd($user->Online()->loggedInUser() );
+		// dd($users);
+		//
+		dd($user->userData());
+
 	}
 
 //	/**

@@ -17,7 +17,6 @@ class ViewDataServiceProvider extends ServiceProvider {
 	{
 
 		  $this->compserSettingsLink();
-      // $this->composeUsername();
       $this->composeUsernameSettings();
 	}
 
@@ -41,17 +40,6 @@ class ViewDataServiceProvider extends ServiceProvider {
               $view->with('UserData', \Auth::User() );
       });
   }
-
-  /**
-   *  Setting View Partails for user.blade.php
-   *
-   */
-  // public function composeUsername(){
-
-  //     view()->composer('user.user', function($view){
-  //             $view->with('UserData', \App\User::getUsername($value) );
-  //     });
-  // }
 
   /**
    *  Setting View Partails for settings.blade.php
