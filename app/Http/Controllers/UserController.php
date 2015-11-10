@@ -1,16 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-<<<<<<< Updated upstream
 use Request;
-=======
-use Image;
-use Redis;
-<<<<<<< HEAD
-=======
-use Request;
->>>>>>> master
->>>>>>> Stashed changes
 use App\User;
 use App\Feeds;
 use App\Online;
@@ -82,8 +73,7 @@ class UserController extends Controller {
          * Function to upload users images
          * @return [type]
          */
-<<<<<<< HEAD
-        public function upload(Request $request, UsersPhotos $photo){
+        public function upload(Request $request, UsersPhotos $photo){ /*To Stay*/
             $this->Validate($request,[
                 'file' => 'required|max:3000|mimes:jpg,jpeg,png',
             ]);
@@ -99,34 +89,12 @@ class UserController extends Controller {
          * @param  UsersPhotos $photo [description]
          * @return [type]             [description]
          */
-        public function dp(Request $request, UsersPhotos $photo){
+        public function dp(Request $request, UsersPhotos $photo){ /*To Stay*/
              $this->Validate($request,[
                 'file' => 'required|max:3000|mimes:jpg,jpeg,png',
             ]);
 
             $photo->UserProfilePicture( $request->file('dp'), \Auth::user() );
-
-<<<<<<< Updated upstream
-=======
-=======
-        public function upload(UsersPhotos $photo){
-
-            $photo->UsersUploadedImages();
-            session()->flash('success_message', 'You have Uploaded your images Successfully');
-            return redirect('user');
-        }
-
-        /**
-         * Handling Users Profile Pictures Uploads
-         * @param  UsersPhotos $photo [description]
-         * @return [type]             [description]
-         */
-        public function dp(UsersPhotos $photo){
-
-            $photo->UserProfilePicture();
->>>>>>> master
-            session()->flash('success_message', 'Profile Picture Updated');
->>>>>>> Stashed changes
         }
 
 

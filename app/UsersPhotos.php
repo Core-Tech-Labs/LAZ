@@ -4,21 +4,9 @@ namespace App;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
-<<<<<<< Updated upstream
-use Symfony\Component\HttpFoundation\File;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Contracts\Filesystem\Factory as Filesystem;
-=======
-<<<<<<< HEAD
-use League\Flysystem\AwsS3v3\AwsS3Adapter;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-=======
-use Symfony\Component\HttpFoundation\File;
-use Illuminate\Contracts\Filesystem\Factory as Filesystem;
-
->>>>>>> master
->>>>>>> Stashed changes
 
 
 class UsersPhotos extends Model {
@@ -47,12 +35,12 @@ class UsersPhotos extends Model {
 
   /**
    * Business logic for saving images
+   * To Stay
    * @param Request    $request    [description]
    * @param User       $user       [description]
    * @param Filesystem $filesystem [description]
    */
-<<<<<<< HEAD
-  public function UsersUploadedImages(UploadedFile $file, User $user){
+  public function UsersUploadedImages(UploadedFile $file, User $user){ /*To Stay*/
       // $disk = \Storage::disk('userPhotos');
 
       $Image = $file->getClientOriginalName();
@@ -72,10 +60,11 @@ class UsersPhotos extends Model {
 
   /**
    * Business logic for saving users Profile Picture
+   * To Stay
    * @param  Request $request [description]
    * @return [type]           [description]
    */
-  public function UserProfilePicture(UploadedFile $file, User $user){
+  public function UserProfilePicture(UploadedFile $file, User $user){ /*To Stay*/
 
       $Imagename = 'DP'.time().$file->$user->username;
       $file->move(\Auth::User()->username.'/profile_images/', $Imagename);
@@ -87,52 +76,7 @@ class UsersPhotos extends Model {
               'picture_name' => $Imagename
 
       ]);
-<<<<<<< Updated upstream
-=======
 
-=======
-  public function UsersUploadedImages(Request $request, User $user, Filesystem $filesystem){
-    // Photo(s) Validation
-      $this->Validate($request,[
-          'file' => 'required|max:3000|mimes:jpg,jpeg,png',
-      ]);
-
-      $file = $request->file('file');
-      $Imagename = time().$file->getClientOriginalName();
-
-      $ProfilePicturePath = $filesystem->disk('s3')->put($user->username.'/'.$Imagename, '');
-      //Create New Image Upload Instance to database
-      $user->usersPhotos()->create([
-              'image_path' => $ProfilePicturePath,
-              'image_name' => $Imagename,
-      ]);
-
-  }
-
-
-  /**
-   * Business logic for saving users Profile Picture
-   * @param  Request $request [description]
-   * @return [type]           [description]
-   */
-  public function UserProfilePicture(Request $request, User $user, Filesystem $filesystem){
-      $this->Validate($request,[
-          'file' => 'required|max:3000|mimes:jpg,jpeg,png',
-      ]);
-
-      $file = $request->file('file');
-      $Imagename = 'DP'.time().$file->$user->username;
-      $ProfilePicturePath = $filesystem->disk('s3')->put($user->username.'/'.$Imagename, '');
-
-      //Create New Image Upload Instance to database
-      $user->userData()->create([
-              'profile_picture' => $ProfilePicturePath,
-              'picture_name' => $Imagename
-
-      ]);
-
->>>>>>> master
->>>>>>> Stashed changes
   }
 
 }
