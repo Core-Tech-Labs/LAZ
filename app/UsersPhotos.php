@@ -4,11 +4,20 @@ namespace App;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
+<<<<<<< HEAD
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+<<<<<<< Updated upstream
 use Symfony\Component\HttpFoundation\File;
 use Illuminate\Contracts\Filesystem\Factory as Filesystem;
 
+=======
+=======
+use Symfony\Component\HttpFoundation\File;
+use Illuminate\Contracts\Filesystem\Factory as Filesystem;
+
+>>>>>>> master
+>>>>>>> Stashed changes
 
 
 class UsersPhotos extends Model {
@@ -41,6 +50,7 @@ class UsersPhotos extends Model {
    * @param User       $user       [description]
    * @param Filesystem $filesystem [description]
    */
+<<<<<<< HEAD
   public function UsersUploadedImages(UploadedFile $file, User $user){
       // $disk = \Storage::disk('userPhotos');
 
@@ -77,6 +87,10 @@ class UsersPhotos extends Model {
 
       ]);
 
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> Stashed changes
   public function UsersUploadedImages(Request $request, User $user, Filesystem $filesystem){
     // Photo(s) Validation
       $this->Validate($request,[
@@ -117,6 +131,10 @@ class UsersPhotos extends Model {
 
       ]);
 
+<<<<<<< Updated upstream
+=======
+>>>>>>> master
+>>>>>>> Stashed changes
   }
 
 

@@ -7,10 +7,11 @@ import {
 
 var App = React.createClass({
   getInitialState: function() {
+    var defaultProfile = document.getElementById('user-dp').getAttribute('profileimage');
     return {
       cropperOpen: false,
       img: null,
-      croppedImg: "https://s3.amazonaws.com/test-laz/default-dp.jpg"
+      croppedImg: defaultProfile,
     };
   },
   handleFileChange: function(dataURI) {
@@ -35,7 +36,7 @@ var App = React.createClass({
   render () {
     return (
       <div>
-        <div className="avatar-photo img-circle">
+        <div className="avatar-photo">
           <FileUpload handleFileChange={this.handleFileChange} />
           <div className="avatar-edit">
             <span>Click to Pick Avatar
@@ -60,7 +61,18 @@ var App = React.createClass({
 //
 //
 var FileUpload = React.createClass({
+  handleSubmit: function(e){
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "images/dpUpload",
+      data: "this.state.handleFileChange",
+      success: function(img){
+        console.log('You Image was uploaded successfully');
+      }
+    });
 
+  },
   handleFile: function(e) {
     var reader = new FileReader();
     var file = e.target.files[0];
@@ -73,9 +85,12 @@ var FileUpload = React.createClass({
     }.bind(this);
     reader.readAsDataURL(file);
   },
+
   render: function() {
     return (
-      <input ref="in" type="file" accept="image/*" action="images/dpUpload" onChange={this.handleFile} />
+      <form onSubmit={this.handleSubmit}>
+        <input ref="in" type="file" accept="image/*" onChange={this.handleFile} />
+      </form>
     );
   }
 });

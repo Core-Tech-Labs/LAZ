@@ -1,7 +1,16 @@
 <?php
 namespace App\Http\Controllers;
 
+<<<<<<< Updated upstream
 use Request;
+=======
+use Image;
+use Redis;
+<<<<<<< HEAD
+=======
+use Request;
+>>>>>>> master
+>>>>>>> Stashed changes
 use App\User;
 use App\Feeds;
 use App\Online;
@@ -73,6 +82,7 @@ class UserController extends Controller {
          * Function to upload users images
          * @return [type]
          */
+<<<<<<< HEAD
         public function upload(Request $request, UsersPhotos $photo){
             $this->Validate($request,[
                 'file' => 'required|max:3000|mimes:jpg,jpeg,png',
@@ -96,6 +106,10 @@ class UserController extends Controller {
 
             $photo->UserProfilePicture( $request->file('dp'), \Auth::user() );
 
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> Stashed changes
         public function upload(UsersPhotos $photo){
 
             $photo->UsersUploadedImages();
@@ -111,6 +125,10 @@ class UserController extends Controller {
         public function dp(UsersPhotos $photo){
 
             $photo->UserProfilePicture();
+<<<<<<< Updated upstream
+=======
+>>>>>>> master
+>>>>>>> Stashed changes
             session()->flash('success_message', 'Profile Picture Updated');
         }
 
