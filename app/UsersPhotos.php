@@ -75,6 +75,6 @@ class UsersPhotos extends Model {
               'picture_name' => $Imagename
 
       ]);
-
+  }
 
 }
