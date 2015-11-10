@@ -11,17 +11,6 @@
 /vendor
 composer.lock
 composer.phar
-<<<<<<< HEAD
 Vagrantfile
 .vagrant
-<<<<<<< Updated upstream
-.vagrant
-Vagrantfile
-=======
-=======
-.vagrant
-Vagrantfile
->>>>>>> master
->>>>>>> Stashed changes
-
 
