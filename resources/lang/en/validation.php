@@ -87,7 +87,7 @@ return [
 
 	'custom' => [
 		'_dob' => [
-			'before' => 'You Must be 18 years or older to use Cruz.',
+			'before' => 'You Must be 18 years or older to use LAZ.',
                         'required' => 'We need to know how old you are.',
                         'date' => 'Date of Birth Must be formatted MM/DD/YYYY',
 		],
@@ -126,5 +126,5 @@ return [
             'email' => 'E-mail Address',
             'password' => 'Password',
         ],
-    
+
 ];
