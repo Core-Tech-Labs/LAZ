@@ -8896,12 +8896,14 @@ module.exports = exports['default'];
   Licensed under the MIT License (MIT), see
   http://jedwatson.github.io/classnames
 */
+/* global define */
 
 (function () {
 	'use strict';
 
-	function classNames () {
+	var hasOwn = {}.hasOwnProperty;
 
+	function classNames () {
 		var classes = '';
 
 		for (var i = 0; i < arguments.length; i++) {
@@ -8910,15 +8912,13 @@ module.exports = exports['default'];
 
 			var argType = typeof arg;
 
-			if ('string' === argType || 'number' === argType) {
+			if (argType === 'string' || argType === 'number') {
 				classes += ' ' + arg;
-
 			} else if (Array.isArray(arg)) {
 				classes += ' ' + classNames.apply(null, arg);
-
-			} else if ('object' === argType) {
+			} else if (argType === 'object') {
 				for (var key in arg) {
-					if (arg.hasOwnProperty(key) && arg[key]) {
+					if (hasOwn.call(arg, key) && arg[key]) {
 						classes += ' ' + key;
 					}
 				}
@@ -8930,15 +8930,14 @@ module.exports = exports['default'];
 
 	if (typeof module !== 'undefined' && module.exports) {
 		module.exports = classNames;
-	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd){
-		// AMD. Register as an anonymous module.
-		define(function () {
+	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
+		// register as 'classnames', consistent with npm package name
+		define('classnames', [], function () {
 			return classNames;
 		});
 	} else {
 		window.classNames = classNames;
 	}
-
 }());
 
 },{}],82:[function(require,module,exports){
@@ -28741,17 +28740,6 @@ var App = _react2["default"].createClass({
 var FileUpload = _react2["default"].createClass({
   displayName: "FileUpload",
 
-  handleSubmit: function handleSubmit(e) {
-    e.preventDefault();
-    $.ajax({
-      type: "POST",
-      url: "images/dpUpload",
-      data: "this.state.handleFileChange",
-      success: function success(img) {
-        console.log('You Image was uploaded successfully');
-      }
-    });
-  },
   handleFile: function handleFile(e) {
     var reader = new FileReader();
     var file = e.target.files[0];
@@ -28785,7 +28773,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -29054,6 +29042,12 @@ var Cropper = (function (_React$Component) {
     value: function handleCrop() {
       var data = this.toDataURL();
       this.props.onCrop(data);
+      //  My addition for uploading
+      $.ajax({
+        type: "POST",
+        url: "images/dpUpload",
+        data: data
+      });
     }
   }, {
     key: "handleZoomUpdate",
@@ -29196,3 +29190,5 @@ function isDataURL(s) {
 isDataURL.regex = /^\s*data:([a-z]+\/[a-z]+(;[a-z\-]+\=[a-z\-]+)?)?(;base64)?,[a-z0-9\!\$\&\'\,\(\)\*\+\,\;\=\-\.\_\~\:\@\/\?\%\s]*\s*$/i;
 
 },{}]},{},[238]);
+
+//# sourceMappingURL=bundle.js.map

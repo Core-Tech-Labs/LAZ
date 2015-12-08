@@ -61,18 +61,6 @@ var App = React.createClass({
 //
 //
 var FileUpload = React.createClass({
-  handleSubmit: function(e){
-    e.preventDefault();
-    $.ajax({
-      type: "POST",
-      url: "images/dpUpload",
-      data: "this.state.handleFileChange",
-      success: function(img){
-        console.log('You Image was uploaded successfully');
-      }
-    });
-
-  },
   handleFile: function(e) {
     var reader = new FileReader();
     var file = e.target.files[0];

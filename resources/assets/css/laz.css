@@ -47,8 +47,8 @@ body {
     height: 100%;
     color: #B0BEC5;
     display: table;
-    font-weight: 100;
-    font-family: 'Lato';
+    font-weight: 300;
+    font-family: 'Raleway';
 }
 
 .container {
@@ -171,7 +171,6 @@ body {
 /*Hack*/
 
 .laz{
-    background:#000;
     position:relative;
 }
 
@@ -256,6 +255,16 @@ body {
     padding:15px 5px;
     border-top:1px solid #efefef;
     margin:20px 0;
+}
+
+#laz-usr-base{
+    width:280px;
+    margin:0 auto;
+}
+
+em#right-base{
+    position:relative;
+    float:right;
 }
 
 /*Images*/
@@ -350,7 +359,6 @@ Settings Page
     Footer
 */
 .footer{
-    background:#eee;
     padding:50px 5px 8px;
 }
 .structure{
@@ -369,6 +377,11 @@ Settings Page
     width:150px;
     height:150px;
 }
+.copyright{
+    padding:10px 20px;
+    margin: 0px 200px;
+}
+
 .copyright p{
     float:left;
     clear:both;

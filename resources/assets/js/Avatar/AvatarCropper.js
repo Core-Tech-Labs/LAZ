@@ -226,6 +226,12 @@ class Cropper extends React.Component {
   handleCrop () {
     var data = this.toDataURL();
     this.props.onCrop(data);
+    //  My addition for uploading
+    $.ajax({
+      type: "POST",
+      url: "images/dpUpload",
+      data: data,
+    });
   }
 
   handleZoomUpdate () {

@@ -11,6 +11,7 @@
         <link href="{{ asset('/css/laz.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/dropzone.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/avatar.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/color.css') }}" rel="stylesheet">
 
         <!-- {{-- CSS version example
 		/*
@@ -56,7 +57,6 @@
 				<ul class="nav navbar-nav">
 <!--					<li><a href="">Home</a></li>-->
 				</ul>
-
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 						<li><a href="{{ url('/login') }}">Login</a></li>

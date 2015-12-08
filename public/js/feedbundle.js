@@ -7112,3 +7112,5 @@ var FeedInput = React.createClass({
 React.render(React.createElement(FeedInput, null), document.getElementById('FeedInput'));
 
 },{"socket.io-client":1}]},{},[49]);
+
+//# sourceMappingURL=feedbundle.js.map
