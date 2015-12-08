@@ -79,6 +79,7 @@ elixir(function(mix) {
 
     mix.styles('laz.css', 'public/css/');
     mix.styles('avatar.css', 'public/css/');
+    mix.styles('color.css', 'public/css/');
 
     /**
      * JS Mix
