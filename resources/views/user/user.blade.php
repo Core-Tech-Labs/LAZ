@@ -30,11 +30,12 @@
                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                         </button>
                     @endif
-
-
                 </div>
                     <div class="panel-body">
-                        <p>Xtra Content</p>
+                        <div id="laz-usr-base">
+                            <p>Zip Code: <em id="right-base">{{ $UserData->userData->zip }}</em></p>
+
+                        </div>
                         <!-- You can add anything you want within -->
 
                     </div>
@@ -52,8 +53,8 @@
                     <div class="panel-body">
                         <!-- You can add anything you want within -->
                           {{--  @foreach ($UserData->usersImages->chunk(3) as $photo) --}}
-                          @if ($UserData->usersPhotos == false )
-                            <p>You haven't Uploaded any Images</p>
+                          @if (empty($UserData->usersPhotos) == true )
+                                <p>No Uploaded Images</p>
                           @else
                             @foreach ($UserData->usersPhotos as $photo)
                                 <div class="col-md-4">
@@ -68,7 +69,7 @@
             {{-- React Hook --}}
             <div id="FeedInput"></div>
             {!! Form::token() !!}
-            <!-- script src="{{ asset('js/feedbundle.js') }}"></script>
+            <script src="{{ asset('js/feedbundle.js') }}"></script>
             {{-- React Hook --}}
 
         <div class="col-md-2">
