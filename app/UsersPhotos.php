@@ -23,6 +23,10 @@ class UsersPhotos extends Model {
    */
   protected $fillable = ['image_path', 'image_name', 'image_thumbnail'];
 
+  /**
+   * [$dates description]
+   * @var array
+   */
   protected $dates = ['timestamps'];
 
   /**
@@ -32,6 +36,8 @@ class UsersPhotos extends Model {
   public function user(){
     return $this->belongsTo('App\User');
   }
+
+
 
   /**
    * Business logic for saving images
