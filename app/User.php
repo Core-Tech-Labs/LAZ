@@ -6,7 +6,7 @@ use Storage;
 use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
-// use App\Http\LAZ\Users\ActionableTrait;
+use LAZ\Users\ActionableTrait;
 use Symfony\Component\HttpFoundation\File;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;

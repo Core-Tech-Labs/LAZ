@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\LAZ\Users;
+namespace LAZ\Users;
 
 use App\User;
 
