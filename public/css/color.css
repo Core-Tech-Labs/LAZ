@@ -1,0 +1,85 @@
+/**
+ *
+  Color.css
+ */
+
+/**
+ * Color Scheme && Hex Values
+ *
+ * Base Color: #fff;
+ * Second Color:  #1C699C; Nutural
+ * Third Color:   #5389AC;  Light         (dropdown bg)
+ * Forth Color:   #4FABE8;  Lighter light (Text color)
+ * Fifth Color:   #2A9CE8;  Bright        (dropdown bg:hover)
+ * Sixth Color:   #134769;  Dark          (nav-bar bg)
+ * Panel BG:      #042438;  Super Dark    (Panel Header bg)
+ */
+
+body {
+  background: #eee !important;
+  color: #4FABE8 !important;
+}
+
+/**
+ * 1) Header
+ */
+
+.navbar-default {
+  background: #134769 !important;
+  border-color: #134769 !important;
+  border-bottom: 1px solid #4FABE8;
+  border-radius: 0px;
+}
+
+.navbar-default a {
+  color: #fff !important;
+}
+
+.navbar-nav .open .dropdown-toggle,
+.navbar-nav ul.dropdown-menu {
+  background: #5389AC !important;
+}
+
+.navbar-nav ul.dropdown-menu a:hover {
+  background: #2A9CE8;
+}
+
+/**
+ * 2) Body
+ */
+
+.panel-heading {
+  background: #042438 !important;
+  color: #fff !important;
+}
+
+.panel-default {
+  background: #D4D4D4;
+}
+
+/**
+               * Profile Page
+               */
+
+.laz {
+  background: #000;
+}
+
+/**
+               * Users Settings Page
+               */
+
+.nav-tabs li.active a,
+.nav-tabs li.active a:hover {
+  background: #042438 !important;
+  color: #fff !important;
+  border: 1px solid #042438 !important;
+}
+
+/**
+ * 3) Footer
+ */
+
+.footer {
+  background: #134769;
+}

@@ -5,143 +5,140 @@ Seeing this project is having a time wasting issue with gulp
 Docuemnt starts by editing the welcome page
 
 */
+
 /*
 * Global Hacks;
 */
 
-h1 div{
-    font-size:14px;
+h1 div {
+  font-size: 14px;
 }
 
 #FeedInput button {
-    margin:10px 0;
-    float:right;
+  margin: 10px 0;
+  float: right;
 }
 
-a{text-decoration:none !important;}
-
-.dropzone{
-    border:2px dashed #0087F7 !important;
-    border-radius: 5px;
+a {
+  text-decoration: none !important;
 }
 
-.panel-heading{
-    border-bottom:none !important;
+.dropzone {
+  border: 2px dashed #0087F7 !important;
+  border-radius: 5px;
 }
 
-button.panel-button{
-    float:right;
-    position: relative;
-    top:-20px;
+.panel-heading {
+  border-bottom: none !important;
 }
+
+button.panel-button {
+  float: right;
+  position: relative;
+  top: -20px;
+}
+
 /*
 * Welcome page
 */
 
-
-
 body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    color: #B0BEC5;
-    display: table;
-    font-weight: 100;
-    font-family: 'Lato';
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  color: #B0BEC5;
+  display: table;
+  font-weight: 300;
+  font-family: 'Raleway';
 }
 
 .container {
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .content {
-    text-align: center;
-    display: inline-block;
+  text-align: center;
+  display: inline-block;
 }
 
 .title {
-    font-size: 96px;
-    margin-bottom: 40px;
+  font-size: 96px;
+  margin-bottom: 40px;
 }
 
 .quote {
-    font-size: 24px;
+  font-size: 24px;
 }
-
 
 /*
 * Auth Pages(s)
 */
 
-.extra-title{
-    font-size:45px;
-    text-align:center;
-    margin:20px 0;
-    padding:30px 0;
+.extra-title {
+  font-size: 45px;
+  text-align: center;
+  margin: 20px 0;
+  padding: 30px 0;
 }
 
-.auth-background{
-    background:#eee;
-    height:300px;
-
+.auth-background {
+  background: #eee;
+  height: 300px;
 }
 
-#pullup{
-    position:relative;
-    top:-150px;
+#pullup {
+  position: relative;
+  top: -150px;
 }
 
-.special-cara{
-    background:#efefef;
-    padding:30px 0;
-    margin:45px 10px;
+.special-cara {
+  background: #efefef;
+  padding: 30px 0;
+  margin: 45px 10px;
 }
 
-#auth-info{
-    position:relative;
-    float:right;
-    font-size:20px;
-    top:-20px;
-    font-weight:bold;
+#auth-info {
+  position: relative;
+  float: right;
+  font-size: 20px;
+  top: -20px;
+  font-weight: bold;
 }
 
 /* On main menu*/
 
-#user-dp{
-    width:40px;
-    height:40px;
+#user-dp {
+  width: 40px;
+  height: 40px;
 }
 
-#move-tip{
-    position: absolute;
-    top:80px;
+#move-tip {
+  position: absolute;
+  top: 80px;
 }
 
 /**
  *  Dashboard/Homepage
  */
 
-
-
-.dh{
-    padding-bottom:20px;
+.dh {
+  padding-bottom: 20px;
 }
-
-
 
 /*
     Messaging Pages
 */
 
-#message-comestics{
-    background:#eee;
-    padding:10px 15px;
+#message-comestics {
+  background: #eee;
+  padding: 10px 15px;
 }
-#msg-padding{
-    padding:10px 15px;
+
+#msg-padding {
+  padding: 10px 15px;
 }
 
 /*
@@ -149,172 +146,183 @@ body {
 */
 
 /*Hack*/
-.padding{
-    padding:0 15%;
+
+.padding {
+  padding: 0 15%;
 }
 
-.padding-top{
-    padding-top:20px;
-}
-#padding{
-    padding:5px 25px;
-}
-.update-form{
-    width:100%;
-    height:50px !important;
-    max-width:555px;
+.padding-top {
+  padding-top: 20px;
 }
 
-#timeline{
-    float:right;
+#padding {
+  padding: 5px 25px;
 }
+
+.update-form {
+  width: 100%;
+  height: 50px !important;
+  max-width: 555px;
+}
+
+#timeline {
+  float: right;
+}
+
 /*Hack*/
 
-.laz{
-    background:#000;
-    position:relative;
+.laz {
+  position: relative;
 }
 
-.laz-profile{
-    padding:1.5em 0;
-    overflow:visible;
-    min-height:200px;
-}
-.laz-profile
-.laz-profile-user{
-    float: left;
-    min-width: 500px;
+.laz-profile {
+  padding: 1.5em 0;
+  overflow: visible;
+  min-height: 200px;
 }
 
 .laz-profile
-.laz-profile-name{
-    color:#fff;
-    float: left;
-    margin-top:40px;
-    font-weight: bold;
+.laz-profile-user {
+  float: left;
+  min-width: 500px;
 }
 
 .laz-profile
-.laz-profile-location{
-    color:#fff;
+.laz-profile-name {
+  color: #fff;
+  float: left;
+  margin-top: 40px;
+  font-weight: bold;
 }
 
 .laz-profile
-.laz-profile-userOnline{
-    background:#74FF64;
-    width: 50px;
-    float: right;
-    border-radius: 15px;
-    color: #fff;
-    position:relative;
-    top:10px;
-    margin:0 25px;
-    padding:5px;
+.laz-profile-location {
+  color: #fff;
 }
 
 .laz-profile
-.laz-profile-userOffline{
-    background:#A2A3A0;
-    width: 50px;
-    float: right;
-    border-radius: 15px;
-    color: #fff;
-    position:relative;
-    top:10px;
-    margin:0 25px;
-    padding:5px;
+.laz-profile-userOnline {
+  background: #74FF64;
+  width: 50px;
+  float: right;
+  border-radius: 15px;
+  color: #fff;
+  position: relative;
+  top: 10px;
+  margin: 0 25px;
+  padding: 5px;
+}
+
+.laz-profile
+.laz-profile-userOffline {
+  background: #A2A3A0;
+  width: 50px;
+  float: right;
+  border-radius: 15px;
+  color: #fff;
+  position: relative;
+  top: 10px;
+  margin: 0 25px;
+  padding: 5px;
+}
+
+.user-action-buttons {
+  float: right;
+  width: 380px;
+  margin: 0 auto;
+}
+
+.user-action-buttons button {
+  margin: 0 5px;
+  font-size: 18px;
+}
+
+#content img {
+  width: 120px;
+  float: left;
 }
 
 
-.user-action-buttons{
-    float:right;
-    width:380px;
-    margin:0 auto;
-}
-
-.user-action-buttons button{
-    margin:0 5px;
-    font-size:18px;
-}
-
-#content img{
-    width:120px;
-    float: left;
-}
-
-.timeline{
-
-}
 
 /*
     User Profiles
 
 */
+
 /*News Feed*/
 
-.newsFeedContent{
-    padding:15px 5px;
-    border-top:1px solid #efefef;
-    margin:20px 0;
+.newsFeedContent {
+  padding: 15px 5px;
+  border-top: 1px solid #efefef;
+  margin: 20px 0;
+}
+
+#laz-usr-base {
+  width: 280px;
+  margin: 0 auto;
+}
+
+em#right-base {
+  position: relative;
+  float: right;
 }
 
 /*Images*/
 
-img#preview-image{
-    width:100%;
+img#preview-image {
+  width: 100%;
 }
-
 
 /*
 User details*/
 
 /*Info*/
 
-
-
 /**
 Settings Page
 **/
 
-#page-header{
-    text-align:center;
-    width:600px;
-    float:right;
+#page-header {
+  text-align: center;
+  width: 600px;
+  float: right;
 }
 
-#position-section{
-    padding:20px 0;
-    margin:10px 0;
+#position-section {
+  padding: 20px 0;
+  margin: 10px 0;
 }
 
-#position-section-child form{
-    padding:20px 0;
+#position-section-child form {
+  padding: 20px 0;
 }
 
-#settings-page-header{
-    border-bottom:1px solid #ddd;
+#settings-page-header {
+  border-bottom: 1px solid #ddd;
 }
 
-#settings-page-header-child{
-    border-bottom:1px solid #ddd;
-/*    position:relative;
+#settings-page-header-child {
+  border-bottom: 1px solid #ddd;
+  /*    position:relative;
     top:-10px;*/
 }
 
-#div-space-me{
-    padding:15px 0;
-    margin:10px 0;
+#div-space-me {
+  padding: 15px 0;
+  margin: 10px 0;
 }
 
 /**
 * Special Character
 *
 */
-#input-negetive{
-    position:relative;
-    left:200px;
-    top:-34px;
+
+#input-negetive {
+  position: relative;
+  left: 200px;
+  top: -34px;
 }
+
 /**
 * Special Character
 *
@@ -324,53 +332,54 @@ Settings Page
  *  Favs Page
  */
 
-#laz-paginate{
-    width:100%;
-    padding:0 40%;
+#laz-paginate {
+  width: 100%;
+  padding: 0 40%;
 }
 
 /* User Modeal Views
 */
 
-.modal-content{
-    color:#000;
+.modal-content {
+  color: #000;
 }
 
-.modal-body-child{
-    padding:0 50px;
+.modal-body-child {
+  padding: 0 50px;
 }
-
-
-
-
-
-
 
 /**
     Footer
 */
-.footer{
-    background:#eee;
-    padding:50px 5px 8px;
-}
-.structure{
 
+.footer {
+  padding: 50px 5px 8px;
 }
-.structure ul{
-    padding-bottom:30px;
-    width:250px;
-    float:left;
+
+
+
+.structure ul {
+  padding-bottom: 30px;
+  width: 250px;
+  float: left;
 }
-.structure ul li{
-    list-style: none;
+
+.structure ul li {
+  list-style: none;
 }
-.ctllogo{
-    background:url(../imgs/corelabslogo.png) no-repeat center center;
-    width:150px;
-    height:150px;
+
+.ctllogo {
+  background: url(../imgs/corelabslogo.png) no-repeat center center;
+  width: 150px;
+  height: 150px;
 }
-.copyright p{
-    float:left;
-    clear:both;
+
+.copyright {
+  padding: 10px 20px;
+  margin: 0px 200px;
 }
-/*# sourceMappingURL=laz.css.map */
+
+.copyright p {
+  float: left;
+  clear: both;
+}
