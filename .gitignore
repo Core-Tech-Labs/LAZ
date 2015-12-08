@@ -11,11 +11,7 @@
 /vendor
 composer.lock
 composer.phar
-<<<<<<< HEAD
 Vagrantfile
 .vagrant
-=======
-.vagrant
-Vagrantfile
->>>>>>> master
+/scripts
 
