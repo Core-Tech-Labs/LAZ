@@ -8,8 +8,8 @@ use App\Online;
 use App\userData;
 use App\UsersPhotos;
 use App\Http\LAZ\Users\UsersOrigin;
-use Illuminate\Contracts\Validation;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Validation;
 use Illuminate\Contracts\Filesystem\Factory as Filesystem;
 
 class UserController extends Controller {
@@ -32,14 +32,14 @@ class UserController extends Controller {
     	 *
     	 * @return Response
     	 */
-        public function home(User $user, Online $online){
+        public function home(userData $UserData, Online $online){
 
             $online->UpdateIdleUser();
             $activeuser = $online->OnlineUsers();
 
             $users = $this->usersOrigin->getDashboardPaginated();
 
-            return view('user.home', compact('users', 'activeuser') );
+            return view('user.home', compact('users', 'activeuser', 'UserData') );
         }
 
         /**
