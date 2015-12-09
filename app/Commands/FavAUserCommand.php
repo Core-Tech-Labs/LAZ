@@ -13,8 +13,6 @@ class FavAUserCommand extends Command implements SelfHandling
 
     public $userIDToFav;
 
-    // protected $userRepo;
-
 
     /**
      * Create a new command instance.
@@ -23,11 +21,10 @@ class FavAUserCommand extends Command implements SelfHandling
      */
     public function __construct($userID, $userIDToFav)
     {
-        // $this->userRepo = $userRepo;
 
         $this->userID = $userID;
 
-        $this->userIDToFollow = $userIDToFav;
+        $this->userIDToFav = $userIDToFav;
     }
 
     /**
@@ -37,6 +34,8 @@ class FavAUserCommand extends Command implements SelfHandling
      */
     public function handle()
     {
-        // event(new FavAUserCommandHandler);
+        //
     }
+
+
 }
