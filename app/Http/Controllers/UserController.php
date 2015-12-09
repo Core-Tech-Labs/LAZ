@@ -7,7 +7,7 @@ use App\Feeds;
 use App\Online;
 use App\userData;
 use App\UsersPhotos;
-use App\Http\LAZ\Users\UsersOrigin;
+use LAZ\Users\UsersOrigin;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Validation;
 use Illuminate\Contracts\Filesystem\Factory as Filesystem;

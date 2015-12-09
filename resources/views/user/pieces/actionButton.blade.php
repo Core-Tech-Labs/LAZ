@@ -4,7 +4,9 @@
   {!! Form::open(['action'=>'FavController@store']) !!}
     {!! Form::hidden('userIDToFav', $UserData->id) !!}
   <div class="btn-group">
-    <button type="submit" class="btn btn-default">Add Fav</button>
+    <button type="submit" class="btn btn-default">
+          Add Fav
+    </button>
     {!! Form::close() !!}
     {{-- @else --}}
     <!-- User Favorited form
