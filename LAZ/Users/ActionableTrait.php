@@ -1,7 +1,6 @@
 <?php
 namespace LAZ\Users;
 
-use App\User;
 
 trait ActionableTrait{
 

@@ -3,8 +3,9 @@
 namespace App\Commands;
 
 use App\Commands\Command;
+use LAZ\Users\UsersOrigin;
 use Illuminate\Contracts\Bus\SelfHandling;
-use App\Handlers\Commands\FavAUserCommandHandler;
+
 
 class FavAUserCommand extends Command implements SelfHandling
 {
@@ -12,7 +13,6 @@ class FavAUserCommand extends Command implements SelfHandling
     public $userID;
 
     public $userIDToFav;
-
 
     /**
      * Create a new command instance.
@@ -32,9 +32,13 @@ class FavAUserCommand extends Command implements SelfHandling
      *
      * @return void
      */
-    public function handle()
+    public function handle(UsersOrigin $UsersOrigin)
     {
-        //
+        $fav = $UsersOrigin->findById($this->userID);
+
+        $UsersOrigin->favoriteUser($this->userIDToFav, $fav);
+        return $fav;
+
     }
 
 

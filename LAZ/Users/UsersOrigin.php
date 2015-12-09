@@ -1,5 +1,4 @@
 <?php
-
 namespace LAZ\Users;
 
 use App\User;
@@ -42,8 +41,8 @@ class UsersOrigin{
 
     /**
      * Favorite a user
-     * @param  [type] $userIDToFav [description]
-     * @param  User   $user        [description]
+     * @param  [type] $userIDToFav Other Users ID
+     * @param  User   $user        Auth::id() User (User who's doing the Favoriting)
      * @return [type]              [description]
      */
     public function favoriteUser($userIDToFav, User $user){

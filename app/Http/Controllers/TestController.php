@@ -6,7 +6,7 @@ use App\User;
 use App\Online;
 use App\userData;
 use App\UsersPhotos;
-use App\Http\LAZ\Users\UsersOrigin;
+use LAZ\Users\UsersOrigin;
 use App\Http\Controllers\Controller;
 
 
