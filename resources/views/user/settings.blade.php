@@ -14,7 +14,7 @@
 
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#sectionA">General Settings</a></li>
-        <li><a data-toggle="tab" href="#sectionC">General</a></li>
+        <li><a data-toggle="tab" href="#sectionC">Upload Image</a></li>
     </ul>
 
     <div class="tab-content">
