@@ -231,10 +231,6 @@ body {
     margin:0 auto;
 }
 
-.user-action-buttons form{
-    float:left;
-}
-
 .user-action-buttons button{
     margin:0 5px;
     font-size:18px;
