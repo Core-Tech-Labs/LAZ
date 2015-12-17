@@ -7,7 +7,6 @@ use App\Http\Requests;
 use LAZ\Users\UsersOrigin;
 use Illuminate\Http\Request;
 use App\Commands\FavAUserCommand;
-use App\Commands\UnFavAUserCommand;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 
@@ -58,13 +57,9 @@ class FavController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id, Request $request)
+	public function destroy($id)
 	{
-		$input = array_add($request, 'userID', Auth::id() );
-		$clear = $this->dispatchFrom(UnFavAUserCommand::class, $input);
-
-		session()->flash('success_message', 'You have unfollowed' .$request->get('userIDToUnFav') );
-		return \Redirect::back();
+		//
 	}
 
 }
