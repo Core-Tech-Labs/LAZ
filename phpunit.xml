@@ -12,11 +12,7 @@
          syntaxCheck="false">
     <testsuites>
         <testsuite name="LAZ Social Network Test Suite">
-<<<<<<< HEAD
             <directory >./tests/</directory>
-=======
-            <directory>./tests/</directory>
->>>>>>> origin/master
         </testsuite>
     </testsuites>
     <php>
@@ -24,7 +20,5 @@
         <env name="CACHE_DRIVER" value="array"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
-        <env name="DB_HOST" value=":memory:"/>
-        <env name="DB_CONNECTION" value="sqlite"/>
     </php>
 </phpunit>

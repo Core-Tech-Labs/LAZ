@@ -5,7 +5,7 @@ namespace LAZ\Users;
 trait ActionableTrait{
 
   /**
-   * List of users that the current user follows.
+   * List of users that the current user faved.
    *
    * @return [type] [description]
    */
@@ -27,14 +27,17 @@ trait ActionableTrait{
   /**
    * See if current user follows another user.
    *
-   * @param  User    $otherUser [description]
+   * @param  User    $webweeven [description]
    * @return boolean            [description]
    */
-  public function isFavedBy(User $otherUser){
+  public function CheckFavorited(){
 
-    $idsWhoOtherUserFaved = $otherUser->favUsers()->lists('favorited_id');
+    $webweeven = \Auth::user();
 
-    return in_array($this->id, $idsWhoOtherUserFaved);
+    $ctlMade = $webweeven->favUsers()->lists('favorited_id')->toArray();
+
+    // dd($this->id);
+    return in_array($this->id, $ctlMade);
   }
 
 }
