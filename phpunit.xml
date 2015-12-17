@@ -8,10 +8,11 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
+         beStrictAboutTestsThatDoNotTestAnything="true"
          syntaxCheck="false">
     <testsuites>
-        <testsuite name="Application Test Suite">
-            <directory>./tests/</directory>
+        <testsuite name="LAZ Social Network Test Suite">
+            <directory >./tests/</directory>
         </testsuite>
     </testsuites>
     <php>

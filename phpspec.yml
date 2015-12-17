@@ -1,6 +1,0 @@
-suites:
-    laz_suite:
-        namespace: app
-        psr4_prefix: App
-        src_path: app
-        spec_prefix: spec
