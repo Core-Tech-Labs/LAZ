@@ -8,10 +8,15 @@ php:
   - hhvm
 
 before_script:
-  - composer install -n
+  - phpenv config-rm ci-scripts/xdebug.sh
+  - composer self-update
+  - gulp --production
 
 script:
+  - composer install
+  - npm install
   - phpunit --configuration phpunit.xml --coverage-text
+
 
 notifications:
   email: false
