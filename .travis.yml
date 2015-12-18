@@ -8,7 +8,6 @@ php:
   - hhvm
 
 before_script:
-  - phpenv config-rm ci-scripts/xdebug.sh
   - composer self-update
   - gulp --production
 
