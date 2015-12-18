@@ -21,6 +21,9 @@ script:
   - gulp --production
   - phpunit --configuration phpunit.xml --coverage-text
 
+after_success:
+  - php vender/bin/coveralls -v
+
 
 notifications:
   email: false

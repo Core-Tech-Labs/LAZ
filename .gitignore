@@ -8,6 +8,7 @@
 .env
 /node_modules
 /vendor
+/build
 composer.lock
 composer.phar
 Vagrantfile

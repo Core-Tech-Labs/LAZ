@@ -16,5 +16,5 @@ redis.on('feed', function(channel, feed){
 });
 
 server.listen(3000, function(){
-  console.log('We are Connected Huston!!');
+  console.log('Connection Successful');
 });
