@@ -1,5 +1,5 @@
 ## LAZ - Open Source Social Network Made Simple. :)
-
+[![Build Status](https://travis-ci.org/Core-Tech-Labs/LAZ.svg?branch=master)](https://travis-ci.org/Core-Tech-Labs/LAZ)
 
 ## Development work is still in progress
 
