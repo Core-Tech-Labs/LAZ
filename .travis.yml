@@ -9,11 +9,11 @@ php:
 
 before_script:
   - composer self-update
-  - gulp --production
+  - npm install
 
 script:
   - composer install
-  - npm install
+  - gulp --production
   - phpunit --configuration phpunit.xml --coverage-text
 
 
