@@ -15,7 +15,6 @@ script:
   - gulp --production
   - composer install
   - phpunit --configuration phpunit.xml --coverage-text
-  - phpunit --coverage-clover build/logs/clover.xml
 
 after_success:
   - php vender/bin/coveralls -v
