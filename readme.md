@@ -13,7 +13,22 @@ To come in due time
 
 ## Contributing
 
-More info in due time
+Read [Contribution Wiki](https://github.com/Core-Tech-Labs/LAZ/wiki/Contributing) for an extensive run down.
+
+### Quick Start
+`git clone https://github.com/Core-Tech-Labs/LAZ`
+
+`cd LAZ`
+
+`vagrant up`
+
+`vagrant ssh`
+
+`cd /var/www`
+
+`php artisan migrate`
+
+`php artisan db:seed`
 
 
 ### License
