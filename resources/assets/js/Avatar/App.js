@@ -1,9 +1,6 @@
 import React from "react";
+import ReactDom from "react-dom";
 import AvatarCropper from "./AvatarCropper";
-import {
-  Modal,
-  Button
-} from "react-bootstrap";
 
 var App = React.createClass({
   getInitialState: function() {
@@ -11,7 +8,7 @@ var App = React.createClass({
     return {
       cropperOpen: false,
       img: null,
-      croppedImg: defaultProfile,
+      croppedImg: defaultProfile
     };
   },
   handleFileChange: function(dataURI) {
@@ -28,6 +25,22 @@ var App = React.createClass({
       croppedImg: dataURI
     });
   },
+  saveImageToServer: function(e){
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "images/dpUpload",
+        data: this.state.croppedImg,
+        dataType: "json",
+        error: function(){
+          alert('Error in Uploading');
+        },
+        success: function(){
+          console.log('Success');
+          alert('Image File'.this.state.croppedImg);
+        }
+    });
+  },
   handleRequestHide: function() {
     this.setState({
       cropperOpen: false
@@ -39,28 +52,28 @@ var App = React.createClass({
         <div className="avatar-photo">
           <FileUpload handleFileChange={this.handleFileChange} />
           <div className="avatar-edit">
-            <span>Click to Pick Avatar
+            <span>Click to Pick Avatar</span>
             <i className="fa fa-camera"></i>
-            </span>
           </div>
           <img src={this.state.croppedImg} />
         </div>
         {this.state.cropperOpen &&
           <AvatarCropper
-            onHide={this.handleRequestHide}
+            onRequestHide={this.handleRequestHide}
+            cropperOpen={this.state.cropperOpen}
             onCrop={this.handleCrop}
             image={this.state.img}
             width={450}
             height={450}
+            onSave={this.saveImageToServer}
           />
         }
       </div>
-    );
   }
 });
-//
-//
+
 var FileUpload = React.createClass({
+
   handleFile: function(e) {
     var reader = new FileReader();
     var file = e.target.files[0];
@@ -68,7 +81,7 @@ var FileUpload = React.createClass({
     if (!file) return;
 
     reader.onload = function(img) {
-      React.findDOMNode(this.refs.in).value = '';
+      ReactDom.findDOMNode(this.refs.in).value = '';
       this.props.handleFileChange(img.target.result);
     }.bind(this);
     reader.readAsDataURL(file);
@@ -76,11 +89,9 @@ var FileUpload = React.createClass({
 
   render: function() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input ref="in" type="file" accept="image/*" onChange={this.handleFile} />
-      </form>
+      <input ref="in" type="file" accept="image/*" onChange={this.handleFile} />
     );
   }
 });
 
-React.render(<App />, document.getElementById("content"));
+ReactDom.render(<App />, document.getElementById("content"));

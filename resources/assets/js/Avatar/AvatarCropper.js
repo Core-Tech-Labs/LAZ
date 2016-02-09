@@ -1,11 +1,12 @@
 import "../../css/avatar.css";
 import React from "react";
+import ReactDom from "react-dom";
 import {
   Modal,
   Button
 } from "react-bootstrap";
 import {isDataURL} from "./utils";
-import warning from "react/lib/warning";
+import warning from "warning";
 
 var numberableType = (props, propName, componentName) => {
   warning(
@@ -155,7 +156,7 @@ class Cropper extends React.Component {
   }
 
   componentDidMount () {
-    var canvas = React.findDOMNode(this.refs.canvas);
+    var canvas = ReactDom.findDOMNode(this.refs.canvas);
     var context = canvas.getContext("2d");
     this.prepareImage(this.props.image);
 
@@ -173,14 +174,14 @@ class Cropper extends React.Component {
 
   // make sure we clean up listeners when unmounted.
   componentWillUnmount () {
-    var canvas = React.findDOMNode(this.refs.canvas);
+    var canvas = ReactDom.findDOMNode(this.refs.canvas);
     window.removeEventListener("mousemove", this.listeners.mousemove);
     window.removeEventListener("mouseup", this.listeners.mouseup);
     canvas.removeEventListener("mousedown", this.listeners.mousedown);
   }
 
   componentDidUpdate () {
-    var context = React.findDOMNode(this.refs.canvas).getContext("2d");
+    var context = ReactDom.findDOMNode(this.refs.canvas).getContext("2d");
     context.clearRect(0, 0, this.props.width, this.props.height);
     this.addImageToCanvas(context, this.state.image);
   }
@@ -226,17 +227,11 @@ class Cropper extends React.Component {
   handleCrop () {
     var data = this.toDataURL();
     this.props.onCrop(data);
-    //  My addition for uploading
-    $.ajax({
-      type: "POST",
-      url: "images/dpUpload",
-      data: data,
-    });
   }
 
   handleZoomUpdate () {
     var newstate = this.state;
-    newstate.zoom = React.findDOMNode(this.refs.zoom).value;
+    newstate.zoom = ReactDom.findDOMNode(this.refs.zoom).value;
     this.setState({newstate});
   }
 
@@ -266,7 +261,7 @@ class Cropper extends React.Component {
         </div>
 
         <div className='modal-footer'>
-          <Button onClick={this.props.onHide}>Close</Button>
+          <Button onClick={this.props.onRequestHide}>Close</Button>
           <Button bsStyle='primary' onClick={this.handleCrop.bind(this)}>
             Crop and Save
           </Button>
@@ -282,7 +277,7 @@ Cropper.propTypes = {
     height: numberableType,
     zoom: numberableType
 };
-Cropper.defaultProps = { width: 450, height: 450, zoom: 1 };
+Cropper.defaultProps = { width: 400, height: 400, zoom: 1 };
 
 class AvatarCropper extends React.Component {
   constructor () {
@@ -290,16 +285,17 @@ class AvatarCropper extends React.Component {
   }
 
   handleZoomUpdate () {
-    var zoom = React.findDOMNode(this.refs.zoom).value;
+    var zoom = ReactDom.findDOMNode(this.refs.zoom).value;
     this.setState({ zoom: zoom });
   }
 
   render () {
     return (
       <Modal
-        title="Crop your Profile Image"
-        onHide={this.props.onHide}
-        backdrop={true}>
+        title="Crop You Profile Picture"
+        onHide={this.props.onRequestHide}
+        show={this.props.cropperOpen}
+        backdrop={false}>
         <div className="modal-body">
 
           <div className="AvatarCropper-base">
@@ -308,7 +304,7 @@ class AvatarCropper extends React.Component {
               width={this.props.width}
               height={this.props.height}
               onCrop={this.props.onCrop}
-              onHide={this.props.onHide}
+              onRequestHide={this.props.onRequestHide}
             />
           </div>
 
@@ -324,7 +320,8 @@ AvatarCropper.propTypes = {
   onCrop: React.PropTypes.func.isRequired,
   width: numberableType,
   height: numberableType,
-  onHide: React.PropTypes.func.isRequired
+  onRequestHide: React.PropTypes.func.isRequired,
+  onSave:React.PropTypes.func.isRequired
 };
 AvatarCropper.defaultProps = { width: 450, height: 450 };
 
