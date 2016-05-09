@@ -25,4 +25,3 @@ notifications:
   slack:
     rooms:
       - ctlengineering:2jkLUalwb7dr9HJoLgsNlogf#builds
-

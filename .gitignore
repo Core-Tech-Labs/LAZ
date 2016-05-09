@@ -6,6 +6,7 @@
 /nbproject
 .DS_Store
 .env
+.bash_profile
 /node_modules
 /vendor
 /build
