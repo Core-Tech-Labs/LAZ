@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>LAZ | @yield('title')</title>
 
-        <link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
 	      <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/laz.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/dropzone.css') }}" rel="stylesheet">
@@ -37,7 +37,7 @@
         <script text="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/custom.js') }}"></script>
         <script src="{{ asset('js/react.js') }}"></script>
-        <script src="{{ asset('js/JSXTransformer-react.js') }}"></script>
+        <!--script src="{{ asset('js/JSXTransformer-react.js') }}"></script-->
 
 </head>
 <body>
@@ -67,7 +67,7 @@
               <li><a href="{{ url('/extras') }}">Extras</a></li>
 						<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="{{ $UserData->userData->profile_picture }}" class="img-circle" id="user-dp" profileimage="{{ $UserData->userData->profile_picture }}" /> <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
+							 <ul class="dropdown-menu" role="menu">
                 <li><a href="{{ action('UserController@index', $UserData->username ) }}">{{ Auth::user()->username }}</a></li>
                 <li><a href="{{ action('SettingsController@edit', $UserData->username ) }}">Settings</a></li>
                 <li role="separator" class="divider"></li>
