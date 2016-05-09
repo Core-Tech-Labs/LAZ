@@ -8,7 +8,7 @@ use App\Http\Requests\UpdateUserDataRequest;
 
 class SettingsController extends Controller {
 
-        /**
+    /**
 	 * Create a new controller instance.
 	 *
 	 * @return void
@@ -18,46 +18,47 @@ class SettingsController extends Controller {
 		$this->middleware('auth');
 	}
 
-//	  public function show(User $username, userData $UserData){
-//            return redirect()->action('SettingsController@edit');
-//        }
 
-        /**
-         * Shows Settings page
-         * updates userData on User Profile(s) Settings Page
-         * Need to pass $UserData object as $aboutMeData For Route && Form Model Binding
-         *
-         * @param $UserData
-         * @return view && $username
-         */
-         public function edit(userData $UserData){
 
-             return view('user.settings', compact('UserData'));
-        }
+    /**
+     * Shows Settings page
+     * updates userData on User Profile(s) Settings Page
+     * Need to pass $UserData object as $aboutMeData For Route && Form Model Binding
+     *
+     * @param $UserData
+     * @return view && $username
+     */
+     public function edit(userData $UserData){
 
-        /**
-         * Function to update Users Email, Username, Password
-         * (Some work still needs to be done on the Authentication)
-         *
-         * @param UpdateUserDataRequest $request
-         * @return view
-         */
-        public function update(UpdateUserDataRequest $request, User $UserData){
+         return view('user.settings', compact('UserData'));
+    }
 
-            if(\Hash::check($request->input('password_old'), $UserData->password))
-                {
-                $UserData->update([
-                    'password' => bcrypt( $request->input('password') ),
-                    'email' => $request->input('email'),
-                    'username' => $request->input('username'),
-                ]);
+    /**
+     * Function to update Users Email, Username, Password
+     * (Some work still needs to be done on the Authentication)
+     *
+     * @param UpdateUserDataRequest $request
+     * @return view
+     */
+    public function update(UpdateUserDataRequest $request, User $UserData){
 
-                session()->flash('success_message', 'You have updated your profile Successfully!');
+        if(\Hash::check($request->input('password_old'), $UserData->password))
+            {
+            $UserData->update([
+                'password' => bcrypt( $request->input('password') ),
+                'email' => $request->input('email'),
+                'username' => $request->input('username'),
+            ]);
 
-                return redirect('user.settings');
+            session()->flash('success_message', 'You have updated your profile Successfully!');
+            return back();
             }
-            return redirect('user.settings')->with('message', 'Please Check your info')->withErrors($request);
+
+        session()->flash('failure_message', 'The Password you entered is not what we have on record');
+        return back()->withInput();
 
 
-        }
+    }
+
+
 }

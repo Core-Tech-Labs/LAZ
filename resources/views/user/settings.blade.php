@@ -34,13 +34,12 @@
                 {!! Form::open(['method' => 'PATCH', 'action' => ['SettingsController@update', $UserData->username], 'class'=> 'form-horizontal']) !!}
                 <div id="div-space-me">
                     <h4 id="settings-page-header-child">Email Address</h4>
-                        {!! Form::email('email', null, ['class' => 'form-control', 'placeholder'=> 'Email address'])!!}
-                        {!! Form::hidden('old_email', Auth::user()->email, ['id'=>'old_email']) !!}
+                        {!! Form::email('email', Auth::user()->email, ['class' => 'form-control', 'placeholder'=> 'Email address'])!!}
                 </div>
 
                 <div id="div-space-me">
                     <h4 id="settings-page-header-child">Username</h4>
-                         {!! Form::text('username', null, ['class' => 'form-control', 'placeholder'=> 'Username'])!!}
+                         {!! Form::text('username', Auth::user()->username, ['class' => 'form-control', 'placeholder'=> 'Username'])!!}
                 </div>
                 <div id="div-space-me">
                      <h4 id="settings-page-header-child">Change Password</h4>
