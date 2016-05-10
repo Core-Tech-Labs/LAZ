@@ -1,7 +1,7 @@
 <?php
 namespace App\Providers;
 
-
+use App\Online;
 use Illuminate\Support\ServiceProvider;
 
 
@@ -18,6 +18,8 @@ class ViewDataServiceProvider extends ServiceProvider {
 
 		  $this->compserSettingsLink();
       $this->composeUsernameSettings();
+      $this->composeOnlineSession();
+      $this->composeDashboardOnlineSession();
 	}
 
   /**
@@ -50,6 +52,26 @@ class ViewDataServiceProvider extends ServiceProvider {
       view()->composer('user.settings', function($view){
               $view->with('UserData', \Auth::User() );
       });
+  }
+
+  /**
+   * View Partils for showing online users icon on Users Profile
+   * @return [array] [Returning all active Users within an array]
+   */
+  public function composeOnlineSession(){
+    view()->composer('user.user', function($view){
+              $view->with('online', Online::registered()->lists('user_id')->toArray());
+    });
+  }
+
+  /**
+   * View Partils for showing Online Users on Home page
+   * @return [colection] [Returning all active Users exculding auth user]
+   */
+  public function composeDashboardOnlineSession(){
+    view()->composer('user.home', function($view){
+              $view->with('online', Online::registered()->where('user_id', '!=', \Auth::id())->get() );
+    });
   }
 
 }

@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Session;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -23,6 +23,12 @@ class Online extends Model
     protected $hidden = ['payload'];
 
     /**
+     * [$fillable description]
+     * @var array
+     */
+    protected $fillable = ['user_id'];
+
+    /**
      * [$timestamps description]
      * @var boolean
      */
@@ -37,48 +43,32 @@ class Online extends Model
     }
 
     /**
-     * Show if logged in user is online
-     * @param  [type] $query [description]
-     * @return [type]        [description]
-     */
-    public function scopeloggedInUser($query){
-        return $query->select('user_id')->get();
-    }
-
-    /**
      * Show Users with latest activity
      * @param  Builder $query [description]
      * @return [type]         [description]
      */
     public function scopeOnlineUsers($query, $timeLimit = 10){
-        $latest = strtotime(Carbon::now() );
+        $latest = strtotime(Carbon::now()->subMinutes($timeLimit) );
         return $query->whereNotNull('user_id')->where('last_activity', '>=', $latest)->with('user');
-    }
-
-    /**
-     * Show a count of all online users on application
-     * @param  [type] $query [description]
-     * @return [type]        [description]
-     */
-    public function countOnlineUsers($query){
-        return $query->whereNotNull('user_id')->with('user')->count();
     }
 
     /**
      * [scopeRegisteredUsers description]
      * @return [type] [description]
      */
-    public function scopeRegistered(Builder $query){
-      return $query->whereNotNull('user_id')->with('user');
+    public function scopeRegistered($query, $timeLimit = 10){
+      return $query->whereNotNull('user_id')
+      ->where('last_activity', '>=', strtotime(Carbon::now()->subMinutes($timeLimit) ))
+      ->with('user');
     }
 
     /**
      * [scopeUserIdle description]
      * @return [type] [description]
      */
-    public function scopeUpdateIdleUser(Builder $query){
+    public function scopeUpdateIdleUser($query){
       return $query->where('id', Session::getId())->update([
-          'user_id' => \Auth::id()
+          'user_id' => ! empty(\Auth::id()) ? \Auth::user()->id : null
         ]);
     }
 
