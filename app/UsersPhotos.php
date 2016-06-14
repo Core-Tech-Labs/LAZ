@@ -24,7 +24,7 @@ class UsersPhotos extends Model {
   protected $fillable = ['image_path', 'image_name', 'image_thumbnail'];
 
   /**
-   * [$dates description]
+   * Declaring Dates
    * @var array
    */
   protected $dates = ['timestamps'];
@@ -37,27 +37,22 @@ class UsersPhotos extends Model {
     return $this->belongsTo('App\User');
   }
 
+  public function scopeImages($query){
+    return $query->whereNotNull('user_id');
+  }
 
+//
 
   /**
-   * Business logic for saving images
-   * To Stay
-   * @param Request    $request    [description]
-   * @param User       $user       [description]
-   * @param Filesystem $filesystem [description]
+   * Saving and Renaming Users Images
+   * @param UploadedFile $file Library for Uploading Files Locally or Cloud
+   * @param User         $user Users Model
    */
-  public function UsersUploadedImages(UploadedFile $file, User $user){ /*To Stay*/
-      // $disk = \Storage::disk('userPhotos');
-
+  public function UsersUploadedImages(UploadedFile $file, User $user){
       $Image = $file->getClientOriginalName();
-
       $Imagename = time().$Image;
-
       $file->move(\Auth::User()->username.'/', $Imagename);
-      // $disk->put( \Auth::User()->username.'/'.$Imagename, $Imagename );
-      //Create New Image Upload Instance to database
-
-     $user->usersPhotos()->updateOrCreate([
+      $user->usersPhotos()->updateOrCreate([
               'image_path' => '/'.\Auth::User()->username.'/'.$Imagename,
               'image_name' => $Imagename,
       ]);
@@ -65,18 +60,14 @@ class UsersPhotos extends Model {
 
 
   /**
-   * Business logic for saving users Profile Picture
-   * To Stay
-   * @param  Request $request [description]
-   * @return [type]           [description]
+   * Saving and Database Recording Users Default Picture
+   * @param UploadedFile $file Library for Uploading Files Locally or Cloud
+   * @param User         $user Users Model
    */
-  public function UserProfilePicture(UploadedFile $file, User $user){ /*To Stay*/
-
-      $Imagename = 'DP'.time().$file->$user->username;
+  public function UserProfilePicture(UploadedFile $file, User $user){
+      $Image = $file->getClientOriginalName();
+      $Imagename = 'DP_'.$Image;
       $file->move(\Auth::User()->username.'/profile_images/', $Imagename);
-      // $ProfilePicturePath = Storage::disk('s3')->put($user->username.'/'.$Imagename, '');
-
-      //Create New Image Upload Instance to database
       $user->userData()->update([
               'profile_picture' => '/'.\Auth::User()->username.'/profile_images/'.$Imagename,
               'picture_name' => $Imagename

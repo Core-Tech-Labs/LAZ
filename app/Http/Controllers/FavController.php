@@ -27,7 +27,7 @@ class FavController extends Controller {
 	}
 
 	/**
-	 * Display a listing of the resource.
+	 * Display a listing of Users favorited.
 	 *
 	 * @return Response
 	 */
@@ -48,8 +48,8 @@ class FavController extends Controller {
 		$input = array_add($request, 'userID', Auth::id() );
 		$clear = $this->dispatchFrom(FavAUserCommand::class, $input);
 
-		session()->flash('success_message','You are now following' . $request->get('userIDToFav'));
-		return \Redirect::back();
+		session()->flash('success_message','You are now following');
+		return back();
 	}
 
 	/**
@@ -58,13 +58,13 @@ class FavController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id, Request $request)
+	public function destroy(Request $request)
 	{
 		$input = array_add($request, 'userID', Auth::id() );
 		$clear = $this->dispatchFrom(UnFavAUserCommand::class, $input);
 
-		session()->flash('success_message', 'You have unfollowed' .$request->get('userIDToUnFav') );
-		return \Redirect::back();
+		session()->flash('success_message', 'You have unfollowed ' . $request->get('userNmToFav') );
+		return back();
 	}
 
 }

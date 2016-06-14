@@ -10,16 +10,16 @@ class FeedPosted extends Event implements ShouldBroadcast
 {
     use SerializesModels;
 
-    public $feed;
+    public $newsFeed;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($feed)
+    public function __construct($newsFeed)
     {
-        $this->feed = $feed;
+        $this->newsFeed = $newsFeed;
     }
 
     /**

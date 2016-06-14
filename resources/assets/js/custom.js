@@ -18,6 +18,16 @@ Dropzone.options.massUpload = {
 
 };
 
+Dropzone.options.profileUpload = {
+    paramName:'dp',
+    maxFilesize: 3,
+    acceptedFiles: '.jpg, .jpeg, .png',
+    clickable: true,
+    dictResponseError: 'Upload Failed',
+    maxFiles:1
+};
+
+
 /**
  * Bootstrap tooltip
  */

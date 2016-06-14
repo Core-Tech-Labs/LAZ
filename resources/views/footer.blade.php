@@ -1,4 +1,5 @@
 @section('footer')
+
   <div class="container-fluid footer">
     <div class="structure padding">
       <ul class="list-footer">

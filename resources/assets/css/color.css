@@ -52,7 +52,7 @@ body{
   color:#fff !important;
 }
 
-.panel-default{
+#newsFeedSettings button, .panel-default{
   background: #D4D4D4;
 }
 

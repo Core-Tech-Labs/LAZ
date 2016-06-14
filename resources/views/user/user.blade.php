@@ -3,18 +3,28 @@
     <div class="laz laz-profile">
         <div class="container padding">
             <div class="laz-profile-user">
-                <div id="content" data-placement="bottom" data-toggle="tooltip" title="Change Your Picture"></div>
-                <h1 class="laz-profile-name" id="user-name" username="{{ $UserData->username }}">{{ $UserData->username }}
-                    @if ( $activeuser === $UserData->id  )
-                        <div class="laz-profile-userOnline">Online</div>
 
+            @if( Auth::user()->id === $UserData->id )
+                <a href="#" data-placement="bottom" data-toggle="tooltip" title="Click to upload your Picture" id="profile-photo">
+                    <div class="profile-photo">
+                        <img src="{!! Auth::user()->userData->profile_picture!!}"/>
+                    </div>
+                </a>
+            @else
+                <div class="profile-photo">
+                    <img src="{!! $UserData->userData->profile_picture!!}"/>
+                </div>
+            @endif
+
+                <h1 class="laz-profile-name" id="user-name" username="{{ $UserData->username }}">{{ $UserData->username }}
+                    @if ( in_array($UserData->id, $online) )
+                        <div class="laz-profile-userOnline">Online</div>
                     @else
                         <div class="laz-profile-userOffline">Offline</div>
                     @endif
                 </h1>
             </div>
         </div>
-        <script src="{{ asset('js/bundle.js') }}"></script>
             <div class="user-action-buttons">
                 @include('user.pieces.actionButton')
             </div>
@@ -51,13 +61,11 @@
                     @endif
                 </div>
                     <div class="panel-body">
-                        <!-- You can add anything you want within -->
-                          {{--  @foreach ($UserData->usersImages->chunk(3) as $photo) --}}
-                          @if (empty($UserData->usersPhotos) == true )
+                    @if (empty($UserData->usersPhotos->toArray() ))
                                 <p>No Uploaded Images</p>
                           @else
-                            @foreach ($UserData->usersPhotos as $photo)
-                                <div class="col-md-4">
+                            @foreach ( $photos as $photo )
+                                <div class="col-md-4 massImages">
                                     <img id="preview-image" src="{{ url() }}{{ $photo->image_path }}" alt="{{ $photo->image_name }}">
                                 </div>
                             @endforeach
@@ -66,11 +74,12 @@
             </div>
         </div>
 
-            {{-- React Hook --}}
-            <div id="FeedInput"></div>
-            {!! Form::token() !!}
-            <script src="{{ asset('js/feedbundle.js') }}"></script>
-            {{-- React Hook --}}
+
+        <div class="col-md-6">
+            @include('user.pieces.newsFeed.post')
+            @include('user.pieces.newsFeed.feeds')
+        </div>
+
 
         <div class="col-md-2">
             <div class="panel panel-default">
@@ -80,16 +89,24 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 
 @include('user.pieces.modal.userModal')
+@include('user.pieces.modal.profilePicModal')
 
 <script type="text/javascript">
             //Editing about me button
 $(document).ready(function(){
     $("#userImage").click(function(){
         $("#myModalone").modal('show');
+    });
+});
+
+$(document).ready(function(){
+    $("#profile-photo").click(function(){
+        $("#profile-photo-modal").modal('show');
     });
 });
 

@@ -1,3 +1,4 @@
+/resources/assets/js/error
 /storage/database.sqlite
 /storage/framework/cache/*
 /storage/framework/sessions/*

@@ -12,8 +12,10 @@
     <!-- Focus and unfavorite user-->
     {!! Form::open(['method' => 'DELETE', 'action' => ['FavController@destroy', $UserData->id] ]) !!}
       {!! Form::hidden('userIDToUnFav', $UserData->id) !!}
+      {!! Form::hidden('userNmToFav', $UserData->username) !!}
       <div class="btn-group">
-        <button type="submit" class="btn btn-primary">Favorited</button>
+        <button type="submit" class="btn btn-primary FavLabel" data-placement="top" data-toggle="tooltip" title="UnFav {{$UserData->username}}"><span>Favorited</span></button>
+
         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="caret"></span>
         <span class="sr-only">Toggle Dropdown</span>

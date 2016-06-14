@@ -2,22 +2,32 @@
 
 namespace App\Http\Controllers;
 
-
 use Redis;
 use App\User;
 use App\Feeds;
+use App\Events\FeedPosted;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class FeedsController extends Controller
 {
+
+    /**
+     * Creating controller instance
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
 
     }
@@ -38,11 +48,15 @@ class FeedsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(User $user, Request $request)
+    public function store(User $user, Request $request, Redis $redis)
     {
-        $newsFeed = $request->all();
-        Redis::sadd($user->getUsername(), json_encode($newsFeed));
-        Redis::publish('update-feed', json_encode($newsFeed));
+        $newsFeed = $request->except('_token');
+
+
+        event(new FeedPosted($newsFeed));
+        Redis::sadd(\Auth::user()->username, json_encode($newsFeed));
+        session()->flash('success_message','Posted Successfully');
+        return back();
     }
 
     /**
@@ -85,8 +99,8 @@ class FeedsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        Redis::hdel(\Auth::user()->username)
     }
 }

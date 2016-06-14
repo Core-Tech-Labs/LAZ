@@ -2,15 +2,14 @@
 
 @section('title', 'Home Page')
 
-
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-8"> <!-- Left Side -->
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <h1>News Feeed To come here</h1>
-      </div>
-      </div>
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-6"> <!-- Left Side -->
+      @include('user.pieces.newsFeed.post')
+      @include('user.pieces.newsFeed.feeds')
     </div>
     <div class="col-md-4"> <!-- Right Side -->
       <div class="panel panel-default">
@@ -18,16 +17,18 @@
           <h3 class="panel-title">Online Favs Users</h3>
         </div>
         <div class="panel-body">
-          @forelse ($activeuser as $active)
+        @if($online->toArray())
+          @foreach ($online as $active)
             <div class="col-md-4 dh">
             <a href="{{ action('UserController@index', $active->user->username ) }}" class="thumbnail" style="margin-bottom:0px !important">
-              <img src="{{ $UserData->userData->profile_picture }}" alt="{{$active->user->username}} Profile Image" title="{{$active->user->username}}" />
+              <img src="{{ $active->user->userData->profile_picture }}" alt="{{$active->user->username}} Profile Image" title="{{$active->user->username}}" />
             </a>
               <a href="{{ action('UserController@index', $active->user->username) }}">{{ $active->user->username }}</a>
             </div>
-          @empty
+          @endforeach
+        @else
             No Users are online.
-          @endforelse
+        @endif
         </div>
       </div>
       <!-- End -->
@@ -39,7 +40,7 @@
           @foreach ($users as $user)
             <div class="col-md-4 dh">
             <a href="{{ action('UserController@index', $user->username ) }}" class="thumbnail" style="margin-bottom:0px !important">
-              <img src="{{ $UserData->profile_picture }}" alt="{{$user->username}} Profile Image" title="{{$user->username}}" />
+              <img src="{{ $user->profile_picture }}" alt="{{$user->username}} Profile Image" title="{{$user->username}}" />
             </a>
               <a href="{{ action('UserController@index', $user->username) }}">{{ $user->username }}</a>
             </div>

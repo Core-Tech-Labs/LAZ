@@ -43422,7 +43422,7 @@ var App = _react2["default"].createClass({
   handleFileChange: function handleFileChange(dataURI) {
     this.setState({
       img: dataURI,
-      croppedImg: this.state.croppedImg,
+      croppedImg: this.handleCrop,
       cropperOpen: true
     });
   },
@@ -43434,9 +43434,15 @@ var App = _react2["default"].createClass({
     });
     this.saveImageToServer();
   },
-  saveImageToServer: function saveImageToServer() {
+  saveImageToServer: function saveImageToServer(e) {
+    // e.preventDefault();
     var token = document.querySelector('[name="_token"]').getAttribute('value');
     var username = document.getElementById('user-name').getAttribute('username');
+    var ImageData = {
+      "_token": token,
+      "dp": this.state.croppedImg
+    };
+    //
     _jquery2["default"].ajax({
       type: "POST",
       url: "images/dpUpload/" + username,
@@ -43444,8 +43450,7 @@ var App = _react2["default"].createClass({
         'X-CSRF-Token': token
       },
       data: {
-        '_token': token,
-        'dp': this.state.croppedImg
+        'dp': ImageData
       },
       dataType: "json",
       error: (function (jqXhr, json, errorThrown) {
@@ -43460,7 +43465,7 @@ var App = _react2["default"].createClass({
         alert('Error in Uploading');
       }).bind(this),
       success: (function () {
-        var success = this.state.croppedimg;
+        var success = this.state.croppedImg;
 
         console.log('Success Uploading' + success);
         alert('Image File Uploaded');
@@ -43471,7 +43476,6 @@ var App = _react2["default"].createClass({
     this.setState({
       cropperOpen: false
     });
-    this.saveImageToServer();
   },
   render: function render() {
     return _react2["default"].createElement(
@@ -43499,8 +43503,8 @@ var App = _react2["default"].createClass({
         onCrop: this.handleCrop,
         image: this.state.img,
         width: 450,
-        height: 450,
-        onSave: this.saveImageToServer
+        height: 450
+        // onSave={this.saveImageToServer}
       })
     );
   }
@@ -43931,8 +43935,7 @@ AvatarCropper.propTypes = {
   onCrop: _react2["default"].PropTypes.func.isRequired,
   width: numberableType,
   height: numberableType,
-  onRequestHide: _react2["default"].PropTypes.func.isRequired,
-  onSave: _react2["default"].PropTypes.func.isRequired
+  onRequestHide: _react2["default"].PropTypes.func.isRequired
 };
 AvatarCropper.defaultProps = { width: 450, height: 450 };
 

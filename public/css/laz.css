@@ -1,6 +1,5 @@
 /*
-Cruz Web app 2nd Main CSS file.
-Seeing this project is having a time wasting issue with gulp
+LAZ Open Souerce app 2nd Main CSS file.
 
 Docuemnt starts by editing the welcome page
 
@@ -169,6 +168,70 @@ body {
   float: right;
 }
 
+/* Profile Pic*/
+
+.profile-photo img {
+  width: 100%;
+}
+
+.profile-photo {
+  float: left;
+  margin-right: 25px;
+  font-size: 16px;
+  width: 150px;
+  height: 150px;
+  border-radius: 200px;
+  border: 3px solid #dedede;
+  position: relative;
+  overflow: hidden;
+  background-color: #eee;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+  /* this fixes the overflow:hidden in Chrome/Opera */
+}
+
+.profile-photo span {
+  display: block;
+  padding: 0;
+  line-height: 200px;
+  text-align: center;
+}
+
+.profile-photo input {
+  position: absolute;
+  font-size: 2000px;
+  z-index: 200;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  -ms-filter: "alpha(opacity=0)";
+  cursor: pointer;
+}
+
+.profile-photo .up_again {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  opacity: 0;
+  color: #fff;
+  transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -webkit-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  line-height: 1.6;
+}
+
+.profile-photo:hover .up_again {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+
+
 /*Hack*/
 
 .laz {
@@ -178,7 +241,7 @@ body {
 .laz-profile {
   padding: 1.5em 0;
   overflow: visible;
-  min-height: 200px;
+  min-height: 240px;
 }
 
 .laz-profile
@@ -241,6 +304,20 @@ body {
   font-size: 18px;
 }
 
+/**
+         * user-action-buttons
+         * Thanks to http://jsfiddle.net/fLMSd/14/
+         */
+
+/*.btn-group button>FavLabel span{
+            position: relative;
+            content:'Add Fav';
+        }*/
+
+/*.btn-group button.FavLabel:hover{
+            display:none;
+         }*/
+
 #content img {
   width: 120px;
   float: left;
@@ -261,20 +338,20 @@ body {
   margin: 20px 0;
 }
 
-#laz-usr-base {
-  width: 280px;
-  margin: 0 auto;
-}
-
-em#right-base {
-  position: relative;
+#newsFeedSettings {
   float: right;
+  position: relative;
 }
 
 /*Images*/
 
 img#preview-image {
   width: 100%;
+}
+
+.massImages {
+  padding: 15px !important;
+  margin: 10px 0 !important;
 }
 
 /*

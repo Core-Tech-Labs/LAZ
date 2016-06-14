@@ -80,7 +80,7 @@ return [
 
 	'key' => env('APP_KEY'),
 
-	'cipher' => MCRYPT_RIJNDAEL_128,
+	'cipher' => 'AES-256-CBC', //MCRYPT_RIJNDAEL_128
 
 	/*
 	|--------------------------------------------------------------------------
@@ -138,6 +138,7 @@ return [
      Illuminate\Html\HtmlServiceProvider::class,
      Illuminate\Broadcasting\BroadcastServiceProvider::class,
      Intervention\Image\ImageServiceProvider::class,
+     Jenssegers\Rollbar\RollbarServiceProvider::class,
 
 		/*
 		 * Application Service Providers...

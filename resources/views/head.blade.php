@@ -34,10 +34,11 @@
         <script text="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
 
         <!-- JS librarys-->
+        <script text="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+
+        <!-- <script text="text/javascript" src="{{ asset('/js/moment.js') }}"></script> -->
         <script text="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/custom.js') }}"></script>
-        <script src="{{ asset('js/react.js') }}"></script>
-        <!--script src="{{ asset('js/JSXTransformer-react.js') }}"></script-->
 
 </head>
 <body>

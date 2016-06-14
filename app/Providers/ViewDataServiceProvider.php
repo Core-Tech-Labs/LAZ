@@ -2,7 +2,9 @@
 namespace App\Providers;
 
 use App\Online;
+use App\UsersPhotos;
 use Illuminate\Support\ServiceProvider;
+use Redis;
 
 
 
@@ -20,6 +22,7 @@ class ViewDataServiceProvider extends ServiceProvider {
       $this->composeUsernameSettings();
       $this->composeOnlineSession();
       $this->composeDashboardOnlineSession();
+      $this->composeUserPhotos();
 	}
 
   /**
@@ -71,6 +74,16 @@ class ViewDataServiceProvider extends ServiceProvider {
   public function composeDashboardOnlineSession(){
     view()->composer('user.home', function($view){
               $view->with('online', Online::registered()->where('user_id', '!=', \Auth::id())->get() );
+    });
+  }
+
+  /**
+   * [composeUserPhotos description]
+   * @return [type] [description]
+   */
+  public function composeUserPhotos(){
+    view()->composer('user.user', function($view){
+              $view->with('photos', UsersPhotos::images()->get() );
     });
   }
 

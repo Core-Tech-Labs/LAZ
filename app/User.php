@@ -19,7 +19,7 @@ class User extends Model implements AuthenticatableContract,
                                             CanResetPasswordContract {
 
 
-	use Authenticatable, CanResetPassword, ActionableTrait; /*Authorizable,*/
+	use Authenticatable, CanResetPassword, ActionableTrait; /*AuthorizableContract,*/
 
 	/**
 	 * The database table used by the model.
@@ -49,57 +49,58 @@ class User extends Model implements AuthenticatableContract,
     protected $dates = ['timestamps', '_dob'];
 
 
-        /**
-         * Declaring userData one-to-one relationship
-         *
-         */
-        public function userData(){
-            return $this->hasOne('App\userData');
-        }
+    /**
+     * Declaring userData one-to-one relationship
+     *
+     */
+    public function userData(){
+        return $this->hasOne('App\userData');
+    }
 
-        /**
-         * Declaring userImages hasMany relationship
-         * @return [type]
-         */
-        public function usersPhotos(){
-            return $this->hasMany('App\UsersPhotos');
-        }
-        /**
-         * Declaring Feeds hasMany relationship
-         * @return [type] [description]
-         */
-        public function Feeds(){
-            return $this->hasMany('App\Feeds');
-        }
+    /**
+     * Declaring userImages hasMany relationship
+     * @return [type]
+     */
+    public function usersPhotos(){
+        return $this->hasMany('App\UsersPhotos');
+    }
 
-        /**
-         * [Online description]
-         */
-        public function Online(){
-            return $this->hasOne('App\Online');
-        }
+    /**
+     * Declaring Feeds hasMany relationship
+     * @return [type] [description]
+     */
+    public function Feeds(){
+        return $this->hasMany('App\Feeds');
+    }
 
-        /**
-         * Responsible for Converting Users Date of Birth from MM/DD/YYYY to
-         * the unix format which is YYYY-mm-dd H:i:s
-         *
-         * @param type $dob
-         */
-        protected function setDobAttribute($dob){
-            $this->attributes['_dob'] = Carbon::parse($dob);
-        }
+    /**
+     * [Online description]
+     */
+    public function Online(){
+        return $this->hasOne('App\Online');
+    }
 
-        /**
-         * This function is responsible for calculating users birthdate with
-         * Carbon::now(); and producing an age.
-         *
-         * @return integer
-         */
-        protected function getAge(){
-            $users = DB::table('users')->max('_dob');
-            $dob = Carbon::parse($users);
-            $now = Carbon::now();
-            return $dob->diffInYears($now);
-        }
+    /**
+     * Responsible for Converting Users Date of Birth from MM/DD/YYYY to
+     * the unix format which is YYYY-mm-dd H:i:s
+     *
+     * @param type $dob
+     */
+    protected function setDobAttribute($dob){
+        $this->attributes['_dob'] = Carbon::parse($dob);
+    }
+
+    /**
+     * This function is responsible for calculating users birthdate with
+     * Carbon::now(); and producing an age.
+     *
+     * @return integer
+     */
+    protected function getAge(){
+        $users = DB::table('users')->max('_dob');
+        $dob = Carbon::parse($users);
+        $now = Carbon::now();
+        return $dob->diffInYears($now);
+    }
 
 }
