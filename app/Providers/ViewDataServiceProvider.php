@@ -1,10 +1,11 @@
 <?php
 namespace App\Providers;
 
+use User;
+use Redis;
 use App\Online;
 use App\UsersPhotos;
 use Illuminate\Support\ServiceProvider;
-use Redis;
 
 
 
