@@ -429,6 +429,31 @@ Settings Page
   padding: 0 50px;
 }
 
+/*
+    Favs && Faved tab pills
+ */
+
+.favBase {
+  width: 100%;
+  padding: 25px 0;
+}
+
+.favBase ul {
+  width: 25%;
+  margin: 0 auto;
+}
+
+/*
+    Favorites Empty Collections
+ */
+
+.favDis {
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+  padding: 90px;
+}
+
 /**
     Footer
 */
