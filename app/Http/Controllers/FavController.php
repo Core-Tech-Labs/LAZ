@@ -33,9 +33,12 @@ class FavController extends Controller {
 	 */
 	public function index(User $user)
 	{
-		$users = $this->usersOrigin->getFavPaginated();
+		$fav = $this->usersOrigin->getFavoritingUsers();
+		$faved = $this->usersOrigin->getFavoritedUsers();
+		$favList = $user->favoritedList();
+		$favedList = $user->favoriteeList();
 
-		return view('user.fav', compact('users'));
+		return view('user.fav', compact('fav', 'faved', 'favList', 'favedList'));
 	}
 
 	/**

@@ -16,14 +16,34 @@ class UsersOrigin{
      * @param  integer $manyUsers [description]
      * @return [type]             [description]
      */
-    public function getDashboardPaginated($manyUsers = 15){
-      return User::orderBy('username', 'asc')->paginate($manyUsers);
+    public function getDashboardPaginated(){
+      return User::orderBy('id', 'asc')->with('userData')->paginate(3);
     }
 
-    public function getFavPaginated($manyUsers = 24){
-      return User::orderBy('id', 'asc')->paginate($manyUsers);
+    /**
+     * List of User who current user favorited
+     * @return [type] [description]
+     */
+    public function getFavoritingUsers(){
+        $user = \Auth::user();
+        return $user->with('userData')->find($user->favoritedList());
+
     }
 
+    /**
+     * List of Users who favorited the current user
+     * @return [type] [description]
+     */
+    public function getFavoritedUsers(){
+        $user = \Auth::user();
+        return $user->with('userData')->find($user->favoriteeList());
+    }
+
+    /**
+     * [findUsernameBy description]
+     * @param  [type] $username [description]
+     * @return [type]           [description]
+     */
     public function findUsernameBy($username){
       return User::whereUsername($username)->first();
     }

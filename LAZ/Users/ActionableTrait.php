@@ -27,17 +27,34 @@ trait ActionableTrait{
   /**
    * See if current user follows another user.
    *
-   * @param  User    $webweeven [description]
+   * @param  User    $auth [description]
    * @return boolean            [description]
    */
   public function CheckFavorited(){
 
-    $webweeven = \Auth::user();
+    $auth = \Auth::user();
 
-    $ctlMade = $webweeven->favUsers()->lists('favorited_id')->toArray();
+    $list = $auth->favUsers()->lists('favorited_id')->toArray();
 
-    // dd($this->id);
-    return in_array($this->id, $ctlMade);
+    return in_array($this->id, $list);
   }
+
+  /**
+     * id's of users who current user favorited
+     * @return array
+     */
+    public function favoritedList(){
+        $user = \Auth::user();
+        return $user->favUsers()->lists('favorited_id')->toArray();
+    }
+
+    /**
+     * id's of users who favorited current user
+     * @return array
+     */
+    public function favoriteeList(){
+        $user = \Auth::user();
+        return $user->favs()->lists('favoritee_id')->toArray();
+    }
 
 }
