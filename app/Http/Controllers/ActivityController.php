@@ -1,12 +1,22 @@
 <?php
 namespace App\Http\Controllers;
 
+use Redis;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller {
+
+
+	/**
+	 * [__construct description]
+	 */
+	public function __construct(){
+
+		$this->middleware('auth');
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -15,7 +25,8 @@ class ActivityController extends Controller {
 	 */
 	public function index()
 	{
-		return view('user.activity');
+		$UserNewsFeed = Redis::lrange('timeline:'.\Auth::user()->id, 0 ,-1);
+		return view('user.activity', compact('UserNewsFeed'));
 	}
 
 	/**
