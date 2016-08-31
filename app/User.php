@@ -4,7 +4,7 @@ namespace App;
 use DB;
 use Storage;
 use Carbon\Carbon;
-use LAZ\Users\ActionableTrait;
+use Core\Users\ActionableTrait;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpFoundation\File;
@@ -101,6 +101,10 @@ class User extends Model implements AuthenticatableContract,
         $dob = Carbon::parse($users);
         $now = Carbon::now();
         return $dob->diffInYears($now);
+    }
+
+    public function scopeUsername($query){
+        return $query->where('username');
     }
 
 }

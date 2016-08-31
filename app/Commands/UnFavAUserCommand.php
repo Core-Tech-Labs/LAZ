@@ -3,7 +3,7 @@
 namespace App\Commands;
 
 use App\Commands\Command;
-use LAZ\Users\UsersOrigin;
+use Core\Users\UsersOrigin;
 use Illuminate\Contracts\Bus\SelfHandling;
 
 class UnFavAUserCommand extends Command implements SelfHandling
