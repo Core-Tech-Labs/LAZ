@@ -1,5 +1,5 @@
 <?php
-namespace LAZ\Users;
+namespace Core\Users;
 
 
 trait ActionableTrait{
