@@ -14,10 +14,6 @@
 //Base
 Route::get('home',['as'=>'home.dashboard','uses'=>'UserController@home']);
 
-// For testing anything new for the app
-Route::get('test', 'TestController@rudy');
-
-
 
 //$auth Users = users who are logged in
 Route::resource('user', 'UserController',
@@ -47,13 +43,13 @@ Route::resource('message','MessageController');
 
 
 // To be Developed
-Route::resource('extras', 'ExtraController');
+Route::resource('activity', 'ActivityController');
 
 // For Guest Users
 Route::get('/', 'WelcomeController@index');
 Route::controllers([
         'password' => 'Auth\PasswordController',
-	'/' => 'Auth\AuthController'
+	       '/' => 'Auth\AuthController'
 ]);
 
 

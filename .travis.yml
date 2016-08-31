@@ -9,16 +9,16 @@ php:
 
 before_script:
   - npm install
-  - composer self-update
+  - travis_retry composer self-update
+  - travis_retry composer install --no-interaction --prefer-source --dev
 
 script:
   - gulp --production
   - composer install
-  - phpunit --configuration phpunit.xml --coverage-text
+  - vendor/bin/codeconcept run functional
 
 after_success:
   - php vender/bin/coveralls -v
-
 
 notifications:
   email: false

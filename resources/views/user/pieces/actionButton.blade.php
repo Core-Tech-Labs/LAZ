@@ -23,7 +23,7 @@
         <span class="sr-only">Toggle Dropdown</span>
         </button>
       <ul class="dropdown-menu">
-        <li><a href="#">View {{ $UserData->username }}'s Activity</a></li>
+        <li><a href="{{ link_to_route('activity.index') }}">View {{ $UserData->username }}'s Activity</a></li>
       </ul>
     </div>
     {!! Form::close() !!}

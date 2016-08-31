@@ -21,6 +21,7 @@ class ViewDataServiceProvider extends ServiceProvider {
 
 		  $this->compserSettingsLink();
       $this->composeUsernameSettings();
+      $this->composeUsernameActivity();
       $this->composeOnlineSession();
       $this->composeDashboardOnlineSession();
       $this->composeUserPhotos();
@@ -42,7 +43,7 @@ class ViewDataServiceProvider extends ServiceProvider {
    */
   public function compserSettingsLink(){
 
-      view()->composer('head', function($view){
+      view()->composer('master', function($view){
               $view->with('UserData', \Auth::User() );
       });
   }
@@ -54,6 +55,17 @@ class ViewDataServiceProvider extends ServiceProvider {
   public function composeUsernameSettings(){
 
       view()->composer('user.settings', function($view){
+              $view->with('UserData', \Auth::User() );
+      });
+  }
+
+  /**
+   *  Setting View Partails for settings.blade.php
+   *
+   */
+  public function composeUsernameActivity(){
+
+      view()->composer('user.activity', function($view){
               $view->with('UserData', \Auth::User() );
       });
   }
@@ -74,7 +86,7 @@ class ViewDataServiceProvider extends ServiceProvider {
    */
   public function composeDashboardOnlineSession(){
     view()->composer('user.home', function($view){
-              $view->with('online', Online::registered()->where('user_id', '!=', \Auth::id())->get() );
+              $view->with('online', Online::registered()->where('user_id', '!=', \Auth::id())->get());
     });
   }
 
