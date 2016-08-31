@@ -14,6 +14,7 @@ class EventServiceProvider extends ServiceProvider {
 	protected $listen = [
 			'event.name' => [
 			'EventListener',
+			'App\Events\FeedPost'
 		],
 	];
 

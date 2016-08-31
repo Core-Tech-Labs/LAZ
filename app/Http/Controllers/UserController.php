@@ -7,7 +7,7 @@ use App\Feeds;
 use App\Online;
 use App\userData;
 use App\UsersPhotos;
-use LAZ\Users\UsersOrigin;
+use Core\Users\UsersOrigin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Validation;
@@ -33,12 +33,14 @@ class UserController extends Controller {
 	 *
 	 * @return Response
 	 */
-    public function home(userData $UserData, Online $online){
+    public function home(User $UserData, Online $online){
 
         $online->UpdateIdleUser();
         $users = $this->usersOrigin->getDashboardPaginated();
+        $UserNewsFeed = Redis::lrange('timeline:'.\Auth::user()->id, 0 ,-1);
+        // dd($UserNewsFeed);
 
-        return view('user.home', compact('users', 'UserData') );
+        return view('user.home', compact('users', 'UserNewsFeed') );
     }
 
     /**
@@ -47,7 +49,8 @@ class UserController extends Controller {
      */
 	public function index(User $UserData)
 	{
-		return view('user.user', compact('UserData') );
+        $UserNewsFeed =  Redis::lrange('newsFeed:'.$UserData->username, 0, -1);
+		return view('user.user', compact('UserData','UserNewsFeed') );
 	}
 
     /**

@@ -18,8 +18,6 @@ class SettingsController extends Controller {
 		$this->middleware('auth');
 	}
 
-
-
     /**
      * Shows Settings page
      * updates userData on User Profile(s) Settings Page
