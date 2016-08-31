@@ -87,22 +87,22 @@ return [
 
 	'custom' => [
 		'_dob' => [
-			'before' => 'You Must be 18 years or older to use LAZ.',
+												'before' => 'You Must be 18 years or older to use LAZ.',
                         'required' => 'We need to know how old you are.',
                         'date' => 'Date of Birth Must be formatted MM/DD/YYYY',
 		],
-                'email' => [
-			'unique' => 'Email is already in use....sorry.',
+    'email' => [
+												'unique' => 'Email is already in use....sorry.',
                         'required' => 'We need your Email Address.',
                         'email' => 'Use a valid email address.....please',
 		],
-                'password' => [
-			'min' => 'Your Password must be at least 8 characters',
+    'password' => [
+												'min' => 'Your Password must be at least 8 characters',
                         'required' => 'Secure Your account......please',
-                        'confirmed' => 'Im not asking you but telling you, Confirm your password NOW.!!!',
+                        'confirmed' => 'Please Confirm your password',
 		],
-                'username' => [
-			'max' => 'Username must not exceed 15 Characters',
+    'username' => [
+												'max' => 'Username must not exceed 15 Characters',
                         'min' => 'Username must be at least 4 Characters',
                         'required' => 'Please Create a Username',
                         'unique' => 'Username has already been taken.....sorry!',
