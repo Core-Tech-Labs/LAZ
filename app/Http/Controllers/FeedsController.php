@@ -6,18 +6,25 @@ use Redis;
 use App\User;
 use App\Feeds;
 use App\Events\FeedPosted;
-use App\Http\Requests;
 use Illuminate\Http\Request;
+use Core\NewsFeed\BaseNewsFeed;
+use App\Http\Requests\NewsFeed;
 use App\Http\Controllers\Controller;
+use Core\NewsFeed\Mail\FeedsMailer as Mail;
 
 class FeedsController extends Controller
 {
 
+
+    protected $mail;
+
+
     /**
      * Creating controller instance
      */
-    public function __construct()
+    public function __construct(Mail $mail)
     {
+        $this->mail = $mail;
         $this->middleware('auth');
     }
 
@@ -48,14 +55,18 @@ class FeedsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(User $user, Request $request, Redis $redis)
+    public function store(NewsFeed $request, User $user, BaseNewsFeed $feed)
     {
-        $newsFeed = $request->except('_token');
+        event(new FeedPosted($request->except('_token')));
+        $feed->UsersNewsFeed($request, $user);
 
+        // For sending email notification to Users
+        $faveID = $user->favoriteeList();
+        foreach ($faveID as $id) {
+            $this->mail->sendNewNotificationToUsers($user->find($id), $request->input('UserPosting'));
+        }
 
-        event(new FeedPosted($newsFeed));
-        Redis::sadd(\Auth::user()->username, json_encode($newsFeed));
-        session()->flash('success_message','Posted Successfully');
+        session()->flash('success_message', 'Posted Successfully');
         return back();
     }
 
@@ -101,6 +112,12 @@ class FeedsController extends Controller
      */
     public function destroy(Request $request)
     {
-        Redis::hdel(\Auth::user()->username)
+        $newsFeed = $request->except('_token');
+
+        dd($newsFeed);
+        Redis::lrem('newsFeed'.':'.\Auth::user()->username, -2, json_encode($newsFeed) );
+
+        session()->flash('success_message', 'Deleted Post Successfully');
+        return back();
     }
 }

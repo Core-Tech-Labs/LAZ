@@ -1,5 +1,5 @@
-@if(Redis::smembers($UserData->username))
-    @foreach(Redis::smembers($UserData->username) as $newsFeed )
+ @if(Redis::lrange('newsFeed:'.$UserData->username, 0, -1) == true )
+    @foreach($UserNewsFeed as $newsFeed )
     <div class="panel panel-default" id="BaseMessages">
         <div class="panel-body">
             @if($UserData->username === Auth::user()->username)
@@ -18,18 +18,25 @@
                     <img class="media-object img-circle" id="user-dp" src="{{$UserData->userData->profile_picture}}" />
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading"><a href="">{{ json_decode($newsFeed, true)['UserPosting'] }}</a></h4>
+                    <h4 class="media-heading">
+                    @if( isset( json_decode($newsFeed, true)['UserNameBeingUpdated'] ) )
+                        <a href=""> {{ json_decode($newsFeed, true)['UserPosting'] }}</a> &rarr; <a href="">{{ json_decode($newsFeed, true)['UserNameBeingUpdated'] }}</a>
+                    @else
+                        <a href="">
+                            {{ json_decode($newsFeed, true)['UserPosting'] }}
+                        </a>
+                    @endif
+                    </h4>
                     <span id="timestamp" timestamp="{{ json_decode($newsFeed, true)['created_at'] }}">
-                    {{ json_decode($newsFeed, true)['created_at'] }}
-                    <!-- <script  type="text/javascript">
+                    <script  type="text/javascript">
                       var timestamp = document.getElementById('timestamp').getAttribute('timestamp');
                       var m = moment(timestamp);
                        document.write(m);
-                        </script> -->
+                        </script>
                     </span>
                 </div>
             </div>
-            <div class="newsFeedContent">{{json_decode($newsFeed, true)['BaseComment']}}</div>
+            <div class="newsFeedContent">{{ json_decode($newsFeed, true)['BaseComment']}}</div>
         </div>
     </div>
     @endforeach
@@ -46,6 +53,8 @@
     var socket = io('http://192.168.20.20:3000');
 
     socket.on('update-feed:App\\Events\\FeedPosted', function(data){
+        // For development puporse only
         console.log(data);
+        // Anything else you want to add within this method
     });
 </script>
