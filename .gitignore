@@ -1,5 +1,6 @@
 /resources/assets/js/error
 /storage/database.sqlite
+/storage/testing.sqlite
 /storage/framework/cache/*
 /storage/framework/sessions/*
 /storage/framework/view/*
@@ -7,6 +8,7 @@
 /nbproject
 .DS_Store
 .env
+.env.testing
 .bash_profile
 /node_modules
 /vendor
@@ -16,4 +18,7 @@ composer.phar
 Vagrantfile
 .vagrant
 /scripts
+gulpfile.dev.js
 
+
+tests/_output/*

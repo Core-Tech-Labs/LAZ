@@ -1,4 +1,12 @@
-# v2.1-BETA-0 (Unreleased | Q2 2016)
+# v2.2-BETA-1 (Unreleased | Q3/Q4 2016)
+
+Additions:
+  * Allowing Users to message one another through eJabberd backend
+  * Adding extra functionality to Users News Feed
+  * Adding email templates and full functionality
+  * Centralized user notifications
+
+# v2.1-BETA-0 (Pre-release | Q2 2016)
 
 Additions:
   * Fav/UnFav a User Featured Added

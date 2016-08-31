@@ -17,52 +17,10 @@ var publicDir = 'public/';
  */
 
 elixir(function(mix) {
-    /*
-     |--------------------------------------------------------------------------
-     | Copy
-     |--------------------------------------------------------------------------
-     */
-
-//    Example
-//    mix.copy(dirSrc+ '', 'resources/assets/{css/less/js}');
-
-    /**
-     * For Js Copies
-     */
-
-    // mix.copy(dirSrc+ 'dropzone/dist/dropzone.js', publicDir+ 'js/dropzone.js');
-    // mix.copy(dirSrc+ 'jquery/dist/jquery.min.js', publicDir+ 'js/jquery.js');
-    // mix.copy(dirSrc+ 'bootstrap/dist/js/bootstrap.min.js', publicDir+ 'js/bootstrap.min.js');
-    // mix.copy(dirSrc+ 'jquery-ui/*.js', copyDir+ 'js/jquery-ui.js');
-    // mix.copy(dirSrc+ 'moment/src/moment.js', publicDir+ 'js/moment.js');
-    // mix.copy(dirSrc+ 'moment/src/moment-twitter.js', publicDir+ 'js/moment-twitter.js');
-
-    /**
-     *  Compiling React to Vanilla JS
-     *
-     */
-
-
-
-    /**
-     * For CSS Copies
-     */
-
-    // mix.copy(dirSrc+ 'dropzone/dist/dropzone.css', publicDir+ 'css/dropzone.css');
-
-
-
-    /*
-     |--------------------------------------------------------------------------
-     | Mix
-     |--------------------------------------------------------------------------
-     */
 
     /**
      * CSS Mix
      */
-
-    // mix.less('app.less');
 
     mix.styles('laz.css', 'public/css/');
     mix.styles('avatar.css', 'public/css/');
@@ -71,11 +29,6 @@ elixir(function(mix) {
     /**
      * JS Mix
      */
-
-    // mix.scripts(
-    //     'jquery-ui.js', publicDir+ 'js/'
-    // );
-
 
     mix.scripts(
         [
@@ -87,14 +40,3 @@ elixir(function(mix) {
 
 
 });
-
-
-
-/**
- * For Production
- *
- *
- *
- */
-
-
