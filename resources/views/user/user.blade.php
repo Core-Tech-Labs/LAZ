@@ -1,5 +1,7 @@
-@include('head')
+@extends('master')
+
 @section('title', $UserData->username . ' Profile')
+@section('content')
     <div class="laz laz-profile">
         <div class="container padding">
             <div class="laz-profile-user">
@@ -45,8 +47,9 @@
                         <div id="laz-usr-base">
                             <p>Zip Code: <em id="right-base">{{ $UserData->userData->zip }}</em></p>
 
+                            <p>Email: <em id="right-base">{{ $UserData->email}}</em></p>
+
                         </div>
-                        <!-- You can add anything you want within -->
 
                     </div>
             </div>
@@ -62,7 +65,7 @@
                 </div>
                     <div class="panel-body">
                     @if (empty($UserData->usersPhotos->toArray() ))
-                                <p>No Uploaded Images</p>
+                            <p>No Uploaded Images</p>
                           @else
                             @foreach ( $photos as $photo )
                                 <div class="col-md-4 massImages">
@@ -77,7 +80,11 @@
 
         <div class="col-md-6">
             @include('user.pieces.newsFeed.post')
-            @include('user.pieces.newsFeed.feeds')
+            @if(Auth::user()->username === $UserData->username)
+                @include('user.pieces.newsFeed.AuthUserFeeds')
+            @else
+                @include('user.pieces.newsFeed.OtherUsersFeed')
+            @endif
         </div>
 
 
@@ -95,9 +102,10 @@
 
 @include('user.pieces.modal.userModal')
 @include('user.pieces.modal.profilePicModal')
+@include('user.pieces.modal.FeedPostModal')
 
 <script type="text/javascript">
-            //Editing about me button
+//Editing about me button
 $(document).ready(function(){
     $("#userImage").click(function(){
         $("#myModalone").modal('show');
@@ -110,8 +118,17 @@ $(document).ready(function(){
     });
 });
 
+$(document).ready(function(){
+    $("#deletepost").click(function(){
+        $("#delPost").modal('show');
+    });
+});
+
+$(document).ready(function(){
+    $("#editpost").click(function(){
+        $("#editPost").modal('show');
+    });
+});
+
 </script>
-
-
-@include('footer')
-
+@endsection

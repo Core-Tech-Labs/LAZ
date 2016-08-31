@@ -1,6 +1,9 @@
-@include('head')
-  <div class="container-fluid padding-top padding">
+@extends('master')
 
+@section('title', 'Favorites')
+@section('content')
+
+<div class="container-fluid padding-top padding">
 
     <div class="favBase"><ul class="nav nav-pills">
         <li class="active"><a data-toggle="tab" href="#sectionFavs"><span class="badge">{{ count($favList) }}</span> Favs</a></li>
@@ -45,5 +48,4 @@
 
   </div>
   {{-- <div id="laz-paginate">{!! $users->render() !!}</div> --}}
-
-@include('footer')
+@endsection

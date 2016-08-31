@@ -1,7 +1,8 @@
-@include('head')
+@extends('master')
+@section('content')
 <div class="auth-background">
     <div class="extra-title">{{ Inspiring::quote() }}</div>
 </div>
 	@yield('auth-content')
 
-@include('footer')
+@endsection

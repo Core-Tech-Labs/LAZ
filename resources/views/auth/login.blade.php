@@ -1,5 +1,5 @@
 @extends('auth/auth')
-
+@section('title', 'Sign in')
 @section('auth-content')
 <div class="container-fluid" id="pullup">
 	<div class="row">

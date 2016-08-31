@@ -1,6 +1,7 @@
-@include('head')
+@extends('master')
 
-@section('title', 'Home Page')
+@section('title', Auth::user()->username .' Dashboard')
+@section('content')
 
 <div class="container-fluid">
   <div class="row">
@@ -8,8 +9,8 @@
 
     </div>
     <div class="col-md-6"> <!-- Left Side -->
-      @include('user.pieces.newsFeed.post')
-      @include('user.pieces.newsFeed.feeds')
+      @include('user.pieces.newsFeed.homePost')
+      @include('user.pieces.newsFeed.homeFeed')
     </div>
     <div class="col-md-4"> <!-- Right Side -->
       <div class="panel panel-default">
@@ -40,7 +41,7 @@
           @foreach ($users as $user)
             <div class="col-md-4 dh">
             <a href="{{ action('UserController@index', $user->username ) }}" class="thumbnail" style="margin-bottom:0px !important">
-              <img src="{{ $user->profile_picture }}" alt="{{$user->username}} Profile Image" title="{{$user->username}}" />
+              <img src="{{ $user->userData->profile_picture }}" alt="{{$user->username}} Profile Image" title="{{$user->username}}" />
             </a>
               <a href="{{ action('UserController@index', $user->username) }}">{{ $user->username }}</a>
             </div>
@@ -52,6 +53,4 @@
 
 </div>
 
-
-
-@include("footer")
+@endsection

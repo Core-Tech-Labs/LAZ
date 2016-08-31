@@ -1,5 +1,7 @@
-@include('head')
+@extends('master')
+
 @section('title', $UserData->username . ' Settings')
+@section('content')
 
 <!-- Flash Messages -->
 
@@ -84,5 +86,4 @@
             </div>
 
 </div>
-
-@include('footer')
+@endsection

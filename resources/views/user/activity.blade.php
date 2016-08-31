@@ -1,4 +1,7 @@
-@include('head')
+@extends('master')
+
+@section('title', $UserData->username . ' Activity')
+@section('content')
   <div class="container-fluid padding-top padding">
     <div class="panel panel-default">
       <div class="row">
@@ -8,4 +11,4 @@
       </div>
     </div>
   </div>
-@include('footer')
+@endsection
