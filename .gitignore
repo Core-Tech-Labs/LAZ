@@ -1,4 +1,6 @@
 /resources/assets/js/error
+/public/js/rollbar.js
+/public/js/rollbar.js.map
 /storage/database.sqlite
 /storage/testing.sqlite
 /storage/framework/cache/*

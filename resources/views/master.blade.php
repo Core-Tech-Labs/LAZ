@@ -31,6 +31,7 @@
         <script text="text/javascript" src="{{ asset('/js/moment.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/custom.js') }}"></script>
+        <script text="text/javascript" src="{{ asset('/js/rollbar.js') }}"></script>
 
 </head>
 <body>
@@ -55,7 +56,7 @@
 					@else
               <li><a href="{{ url('/message') }}"> Messages</a></li>
               <li><a href="{{ url('/favs') }}">My Favorites</a></li>
-              <li><a href="{{ url('/activity') }}">My Activity</a></li>
+              <li><a href="{{ action('ActivityController@show', $UserData->username) }}">My Activity</a></li>
 						<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="{{ $UserData->userData->profile_picture }}" class="img-circle" id="user-dp" profileimage="{{ $UserData->userData->profile_picture }}" /> <span class="caret"></span></a>
 							 <ul class="dropdown-menu" role="menu">

@@ -9,6 +9,7 @@ php:
 
 before_script:
   - npm install
+  - npm install -g gulp
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source --dev
 
