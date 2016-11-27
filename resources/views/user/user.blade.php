@@ -96,7 +96,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -109,6 +108,12 @@
 $(document).ready(function(){
     $("#userImage").click(function(){
         $("#myModalone").modal('show');
+    });
+});
+
+$(document).ready(function(){
+    $("#msg").click(function(){
+        $("#userMessaging").modal('show');
     });
 });
 

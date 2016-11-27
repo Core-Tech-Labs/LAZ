@@ -38,7 +38,6 @@ class UserController extends Controller {
         $online->UpdateIdleUser();
         $users = $this->usersOrigin->getDashboardPaginated();
         $UserNewsFeed = Redis::lrange('timeline:'.\Auth::user()->id, 0 ,-1);
-        // dd($UserNewsFeed);
 
         return view('user.home', compact('users', 'UserNewsFeed') );
     }

@@ -33,6 +33,14 @@ class RouteServiceProvider extends ServiceProvider {
     $router->bind('settings', function($value, $route){
         return \App\User::where('username', $value)->first();
     });
+
+    $router->bind('activity', function($value, $route){
+        return \App\User::where('username', $value)->first();
+    });
+
+    $router->bind('message', function($value, $route){
+        return \App\User::where('username', $value)->first();
+    });
 	}
 
 	/**

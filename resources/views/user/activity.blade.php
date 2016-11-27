@@ -4,6 +4,7 @@
 @section('content')
   <div class="container-fluid padding-top padding">
       <div class="row">
+      @if($UserNewsFeed)
         @foreach($UserNewsFeed as $newsFeed )
         <div class="col-md-4 dh" id="padding">
           <div class="panel panel-default" id="BaseMessages">
@@ -53,6 +54,12 @@
           </div>
         </div>
       @endforeach
+
+      @else
+          <div class="favDis">
+            <h4>{{$UserData->username}} doesn't have any activity to present</h4>
+          </div>
+      @endif
       </div>
   </div>
 @endsection

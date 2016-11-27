@@ -1,5 +1,5 @@
 @extends('auth/auth')
-
+@section('title', 'Register')
 @section('auth-content')
 <div class="container-fluid" id="pullup">
   <div class="row">
@@ -18,31 +18,29 @@
             </div>
           @endif
 
-                                        {!! Form::open(['class' => 'form-horizontal']) !!}
-                                        {!! Form::token() !!}
-
-                                              <p id="auth-info">Tell us more about you.</p>
-                                <div class="special-cara">
+              {!! Form::open(['class' => 'form-horizontal']) !!}
+              {!! Form::token() !!}
+              <p id="auth-info">Tell us more about you.</p>
+                <div class="special-cara">
 
                   <div class="form-group">
-              <label class="col-md-4 control-label">Date of Birth</label>
+                    <label class="col-md-4 control-label">Date of Birth</label>
                         <div class="col-md-6">
                             {!! Form::input('date', '_dob', null , ['class'=> 'form-control', 'placeholder' => 'MM/DD/YYYY'])  !!}
                         </div>
                   </div>
 
                   <div class="form-group">
-              <label class="col-md-4 control-label">Zip Code</label>
+                    <label class="col-md-4 control-label">Zip Code</label>
                         <div class="col-md-6">
                             {!! Form::text('zip', null, ['class'=> 'form-control', 'placeholder' => '00000'])  !!}
                         </div>
-
                    </div>
-                                </div>
+                  </div>
                                                 <!-- Special Grouping -->
 
-                                                    <p id="auth-info">Select A Username you will remember</p>
-                                 <div class="special-cara">
+        <p id="auth-info">Select A Username you will remember</p>
+          <div class="special-cara">
             <div class="form-group">
 
               <label class="col-md-4 control-label">Username</label>
@@ -50,11 +48,11 @@
                  {!! Form::text('username', null, ['class'=> 'form-control', 'placeholder'=> 'user_name']) !!}
               </div>
             </div>
-                                </div>
+          </div>
                                                 <!-- Special Grouping -->
 
-                                                <p id="auth-info">Help Us Secure your Account</p>
-                                <div class="special-cara">
+        <p id="auth-info">Help Us Secure your Account</p>
+          <div class="special-cara">
             <div class="form-group">
               <label class="col-md-4 control-label">E-Mail Address</label>
               <div class="col-md-6">
@@ -81,11 +79,9 @@
                   {!! Form::submit('Register', ['class'=> 'btn btn-primary']) !!}
               </div>
             </div>
-                                </div>
+          </div>
                                                 <!-- Special Grouping -->
 
-
-<!--          </form>-->
           {!! Form::close() !!}
         </div>
       </div>

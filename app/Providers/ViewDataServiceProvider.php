@@ -1,8 +1,7 @@
 <?php
 namespace App\Providers;
 
-use User;
-use Redis;
+use App\User;
 use App\Online;
 use App\UsersPhotos;
 use Illuminate\Support\ServiceProvider;
@@ -25,6 +24,7 @@ class ViewDataServiceProvider extends ServiceProvider {
       $this->composeOnlineSession();
       $this->composeDashboardOnlineSession();
       $this->composeUserPhotos();
+      // $this->composeUsernameList();
 	}
 
   /**
@@ -97,6 +97,12 @@ class ViewDataServiceProvider extends ServiceProvider {
   public function composeUserPhotos(){
     view()->composer('user.user', function($view){
               $view->with('photos', UsersPhotos::images()->get() );
+    });
+  }
+
+  public function composeUsernameList(){
+    view()->composer('user.message', function($view){
+              $view->with('users', User::lists('username')->toArray());
     });
   }
 

@@ -149,6 +149,7 @@ return [
 		App\Providers\EventServiceProvider::class,
 		App\Providers\RouteServiceProvider::class,
     App\Providers\ViewDataServiceProvider::class,
+    App\Providers\IMServiceProvider::class,
 
 	],
 
@@ -222,6 +223,7 @@ return [
     'Html'      =>  Illuminate\Html\HtmlFacade::class,
     'Image' 		=>  Intervention\Image\Facades\Image::class,
     'Gate' 			=>  Illuminate\Support\Facades\Gate::class,
+    'IM' 				=>  Core\Message\Facades\IM::class,
 
 	],
 

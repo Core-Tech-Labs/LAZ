@@ -173,9 +173,8 @@
                                             <td align="center" style="padding-top: 25px;" class="padding">
                                                 <table border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
                                                     <tr>
-                                                        <td align="center" style="border-radius: 3px;" bgcolor="#256F9C"><a href="{{ url('password/reset/'.$token) }}" target="_blank" style="font-size: 16px; font-family: 'Raleway' Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 15px 25px; border: 1px solid #256F9C; display: inline-block;" class="mobile-button">Reset Your Password &rarr;</a></td>
+                                                        <td align="center" style="border-radius: 3px;" bgcolor="#256F9C"><a href="{{action('UserController@index', $username)}}" target="_blank" style="font-size: 16px; font-family: 'Raleway' Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 15px 25px; border: 1px solid #256F9C; display: inline-block;" class="mobile-button">View your Profile &rarr;</a></td>
                                                     </tr>
-                                                    <p style="text-align: center;">Button doesn't work? Paste url into browser. {{ url('password/reset/'.$token) }}</p>
                                                 </table>
                                             </td>
                                         </tr>

@@ -141,7 +141,28 @@ body {
 }
 #msg-padding{
     padding:10px 15px;
+    background:#fff !important;
+    overflow-x:hidden;
+    min-height: 300px;
 }
+
+.update-msg{
+    width:89%;
+    height:50px !important;
+    max-width:555px;
+    float: left;
+}
+#update-msg-button{
+    float:right;
+    height:50px;
+}
+
+ul.msg-list{
+    list-style: none;
+    padding: 0;
+}
+
+
 
 
 /*

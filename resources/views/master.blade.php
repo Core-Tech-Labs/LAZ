@@ -23,15 +23,22 @@
 
         <!-- Scripts -->
         <script text="text/javascript" src="{{ asset('/js/jquery.js') }}"></script>
-        <script text="text/javascript" src="{{ asset('/js/jquery-ui.js') }}"></script>
+        {{-- <script text="text/javascript" src="{{ asset('/js/jquery-ui.js') }}"></script> --}}
         <script text="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
 
 
         <!-- JS librarys-->
-        <script text="text/javascript" src="{{ asset('/js/moment.js') }}"></script>
+        {{-- <script text="text/javascript" src="{{ asset('/js/moment.js') }}"></script> --}}
         <script text="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/custom.js') }}"></script>
-        <script text="text/javascript" src="{{ asset('/js/rollbar.js') }}"></script>
+        {{-- <script text="text/javascript" src="{{ asset('/js/rollbar.js') }}"></script> --}}
+
+        <!-- For Strophe.js and XMPP -->
+        <script text="text/javascript" src="{{ asset('/js/strophe.js') }}"></script>
+        <script text="text/javascript" src="{{ asset('/js/xmpp/im.js') }}"></script>
+        <script text="text/javascript" src="{{ asset('/js/xmpp/flXHR.js') }}"></script>
+        <script text="text/javascript" src="{{ asset('/js/xmpp/strophe.flxhr.js') }}"></script>
+        {{-- <script text="text/javascript" src="{{ asset('/js/strophe.register.js') }}"></script> --}}
 
 </head>
 <body>
@@ -54,13 +61,13 @@
 						<li><a href="{{ url('/login') }}">Login</a></li>
 						<li><a href="{{ url('/register') }}">Register</a></li>
 					@else
-              <li><a href="{{ url('/message') }}"> Messages</a></li>
+              <li><a href="{{ action('MessageController@index', $UserData->username) }}"> Messages</a></li>
               <li><a href="{{ url('/favs') }}">My Favorites</a></li>
               <li><a href="{{ action('ActivityController@show', $UserData->username) }}">My Activity</a></li>
 						<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="{{ $UserData->userData->profile_picture }}" class="img-circle" id="user-dp" profileimage="{{ $UserData->userData->profile_picture }}" /> <span class="caret"></span></a>
 							 <ul class="dropdown-menu" role="menu">
-                <li><a href="{{ action('UserController@index', $UserData->username ) }}">{{ Auth::user()->username }}</a></li>
+                <li><a href="{{ action('UserController@index', $UserData->username ) }}" id="username" username="{{Auth::user()->username}}">{{ Auth::user()->username }}</a></li>
                 <li><a href="{{ action('SettingsController@edit', $UserData->username ) }}">Settings</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="{{ url('/logout') }}">Logout</a></li>
@@ -74,6 +81,7 @@
 @include('flash-msg.flash')
 
 @yield('content')
+
 
  <div class="container-fluid footer">
     <div class="structure padding">

@@ -2,7 +2,7 @@
 
 return [
 
-        
+
 	/*
 	|--------------------------------------------------------------------------
 	| Default Authentication Driver
@@ -61,7 +61,7 @@ return [
 
 	'password' => [
 		'email' => 'emails.password',
-		'table' => 'password_resets',
+		'table' => 'passwordReset',
 		'expire' => 60,
 	],
 

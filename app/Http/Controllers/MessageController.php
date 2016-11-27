@@ -1,9 +1,11 @@
-<?php namespace App\Http\Controllers;
+<?php
+namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\User;
+use Illuminate\Http\Request;
+use Core\Message\MessageBase;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
 
 class MessageController extends Controller {
 
@@ -22,10 +24,23 @@ class MessageController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(User $user, MessageBase $msg)
 	{
-		return view('user.message');
+		return view('user.message', compact('user') );
 	}
+
+
+	/**
+	 * [send description]
+	 * @return [type] [description]
+	 */
+	public function send(Request $request, MessageBase $msg){
+		$msg->publish($request);
+
+		session()->flash('success_message', 'Message Sent');
+		return back();
+	}
+
 
 	/**
 	 * Show the form for creating a new resource.
@@ -44,7 +59,7 @@ class MessageController extends Controller {
 	 */
 	public function store()
 	{
-		//
+
 	}
 
 	/**
@@ -53,9 +68,9 @@ class MessageController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(MessageBase $msg)
 	{
-		//
+
 	}
 
 	/**

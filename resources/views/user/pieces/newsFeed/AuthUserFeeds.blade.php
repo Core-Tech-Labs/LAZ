@@ -56,7 +56,7 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.6/socket.io.min.js"></script>
 <script type="text/javascript">
-    var socket = io('http://192.168.20.20:3000');
+    var socket = io('http://192.168.10.20:3000');
 
     socket.on('update-feed:App\\Events\\FeedPosted', function(data){
         // For development puporse only

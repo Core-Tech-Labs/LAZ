@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
+use Illuminate\Http\Request;
+use BirknerAlex\XMPPHP\XMPP;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
+use App\Mail\UserMail as Mailer;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -26,6 +29,8 @@ class AuthController extends Controller {
 
 	use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
+  protected $mail;
+
 	/**
 	 * Create a new authentication controller instance.
 	 *
@@ -33,9 +38,10 @@ class AuthController extends Controller {
 	 * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
 	 * @return void
 	 */
-	public function __construct()
+	public function __construct(Mailer $mail)
 	{
 		$this->middleware('guest', ['except'  => 'getLogout']);
+    $this->Mailer = $mail;
 	}
 
 	/**
@@ -47,6 +53,50 @@ class AuthController extends Controller {
     {
         return property_exists($this, 'loginPath') ? $this->loginPath : '/login';
     }
+
+    /**
+     * LAZ COPY from trait RegistersUsers (Apart of trait AuthenticatesAndRegistersUsers)
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postRegister(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        \Auth::login($this->create($request->all()));
+        // $this->Mailer->sendNewUserWelcomeEmail(\Auth::user());
+        // \IM::registerNewUser(\Auth::user()->username, $request->input('password'), $request->input('email') );
+
+
+        return redirect($this->redirectPath());
+    }
+
+  // Look into bring authenticatesUsers methods into this controller.
+
+
+  /**
+     * Get the post register / login redirect path.
+     *
+     * @return string
+     */
+    public function redirectPath()
+    {
+        if (property_exists($this, 'redirectPath')) {
+            return $this->redirectPath;
+        }
+
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
+    }
+
+
 
 	/**
 	 * Get a validator for an incoming registration request.
@@ -61,7 +111,7 @@ class AuthController extends Controller {
 			'email' => 'required|email|max:255|unique:users,email',
 			'password' => 'required|confirmed|min:8',
       '_dob' => 'required|date',
-      'zip'=> 'required|numeric'
+      'zip'=> 'required|numeric|min:6'
 			]);
 		}
 
@@ -92,7 +142,5 @@ class AuthController extends Controller {
 
 		return $user;
 	}
-
-	// Look into bring authenticatesUsers methods into this controller.
 
 }

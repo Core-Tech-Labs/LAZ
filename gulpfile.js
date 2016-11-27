@@ -19,6 +19,11 @@ var publicDir = 'public/';
 elixir(function(mix) {
 
     /**
+     * Browserfiy
+     */
+     mix.browserify('message.js', 'public/js/message.js');
+
+    /**
      * CSS Mix
      */
 
@@ -31,12 +36,18 @@ elixir(function(mix) {
      */
 
     mix.scripts(
-        [
-            'custom.js',
-            'error/rollbar.js'
-        ],
-        publicDir+ 'js/custom.js'
+        'custom.js', publicDir+ 'js/custom.js'
     );
 
+    // For XMPP usage
+    // mix.browserify('im.js', publicDir+ 'js/im.js');
+
+    mix.scripts('error/rollbar.js', publicDir+ 'js/rollbar.js');
+    // mix.scripts('message.js', publicDir+ 'js/message.js');
+
+    /**
+     * Copy
+     */
+    // mix.copy(dirSrc + 'strophejs-plugins/register/strophe.register.js', publicDir + 'js/strophe.register.js');
 
 });
