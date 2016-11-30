@@ -13,10 +13,6 @@
         <link href="{{ asset('/css/avatar.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/color.css') }}" rel="stylesheet">
 
-        <!-- {{-- CSS version example
-		/*
-		* <link href="{{ elixir('/css/laz.css') }}" rel="stylesheet">
-        --}} -->
 
       	<!-- Fonts -->
       	<link href='//fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
@@ -32,13 +28,6 @@
         <script text="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/custom.js') }}"></script>
         {{-- <script text="text/javascript" src="{{ asset('/js/rollbar.js') }}"></script> --}}
-
-        <!-- For Strophe.js and XMPP -->
-        <script text="text/javascript" src="{{ asset('/js/strophe.js') }}"></script>
-        <script text="text/javascript" src="{{ asset('/js/xmpp/im.js') }}"></script>
-        <script text="text/javascript" src="{{ asset('/js/xmpp/flXHR.js') }}"></script>
-        <script text="text/javascript" src="{{ asset('/js/xmpp/strophe.flxhr.js') }}"></script>
-        {{-- <script text="text/javascript" src="{{ asset('/js/strophe.register.js') }}"></script> --}}
 
 </head>
 <body>
@@ -61,7 +50,7 @@
 						<li><a href="{{ url('/login') }}">Login</a></li>
 						<li><a href="{{ url('/register') }}">Register</a></li>
 					@else
-              <li><a href="{{ action('MessageController@index', $UserData->username) }}"> Messages</a></li>
+              {{-- Message link goes here --}}
               <li><a href="{{ url('/favs') }}">My Favorites</a></li>
               <li><a href="{{ action('ActivityController@show', $UserData->username) }}">My Activity</a></li>
 						<li class="dropdown">
