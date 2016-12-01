@@ -17,7 +17,7 @@ class UsersOrigin{
      * @return [type]             [description]
      */
     public function getDashboardPaginated(){
-      return User::orderBy('id', 'asc')->with('userData')->paginate(3);
+      return User::orderBy('id', 'asc')->with('userData')->where('id', '!=', \Auth::id())->paginate(3);
     }
 
     /**
