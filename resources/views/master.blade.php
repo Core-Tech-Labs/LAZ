@@ -19,7 +19,6 @@
 
         <!-- Scripts -->
         <script text="text/javascript" src="{{ asset('/js/jquery.js') }}"></script>
-        {{-- <script text="text/javascript" src="{{ asset('/js/jquery-ui.js') }}"></script> --}}
         <script text="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
 
 
@@ -27,7 +26,7 @@
         {{-- <script text="text/javascript" src="{{ asset('/js/moment.js') }}"></script> --}}
         <script text="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/custom.js') }}"></script>
-        {{-- <script text="text/javascript" src="{{ asset('/js/rollbar.js') }}"></script> --}}
+        <script text="text/javascript" src="{{ asset('/js/rollbar.js') }}"></script>
 
 </head>
 <body>
