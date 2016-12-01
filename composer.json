@@ -25,8 +25,6 @@
 		"fzaninotto/faker": "^1.5",
 		"aws/aws-sdk-php": "^3.9",
 		"league/flysystem-aws-s3-v3": "^1.0",
-		"jenssegers/rollbar": "^1.4",
-		"rollbar/rollbar": "^0.15.0",
 		"guzzlehttp/guzzle": "^6.2",
 		"php-amqplib/php-amqplib": "^2.6",
 		"tyrola/xmpphp": "^2.0"
