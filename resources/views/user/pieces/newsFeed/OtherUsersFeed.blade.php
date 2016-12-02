@@ -15,14 +15,14 @@
             @endif
             <div class="media">
                 <div class="media-left">
-                    <img class="media-object img-circle" id="user-dp" src="{{$UserData->userData->profile_picture}}" />
+                    <img class="media-object img-circle" id="user-dp" src="{{ json_decode($newsFeed, true)['UserPostingImg'] }}" />
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading">
                     @if( isset( json_decode($newsFeed, true)['UserNameBeingUpdated'] ) )
-                        <a href=""> {{ json_decode($newsFeed, true)['UserPosting'] }}</a> &rarr; <a href="">{{ json_decode($newsFeed, true)['UserNameBeingUpdated'] }}</a>
+                        <a href="{{url('/')}}/_{{ json_decode($newsFeed, true)['UserPosting'] }}"> {{ json_decode($newsFeed, true)['UserPosting'] }}</a> &rarr; <a href="{{url('/')}}/_{{ json_decode($newsFeed, true)['UserNameBeingUpdated'] }}">{{ json_decode($newsFeed, true)['UserNameBeingUpdated'] }}</a>
                     @else
-                        <a href="">
+                        <a href="{{url('/')}}/_{{ json_decode($newsFeed, true)['UserPosting'] }}">
                             {{ json_decode($newsFeed, true)['UserPosting'] }}
                         </a>
                     @endif
@@ -30,7 +30,7 @@
                     <span id="timestamp" timestamp="{{ json_decode($newsFeed, true)['created_at'] }}">
                     <script  type="text/javascript">
                       var timestamp = document.getElementById('timestamp').getAttribute('timestamp');
-                      var m = moment(timestamp);
+                      var m = $.timeago(timestamp);
                        document.write(m);
                         </script>
                     </span>

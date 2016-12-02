@@ -4,6 +4,7 @@
         {!! Form::hidden('created_at', Carbon\Carbon::now() ) !!}
             {!! Form::hidden('UserPosting', Auth::user()->username) !!}
             {!! Form::hidden('UserPostingID', Auth::user()->id) !!}
+            {!! Form::hidden('UserPostingImg', Auth::user()->userData->profile_picture) !!}
 
             {!! Form::textarea('BaseComment', null, ['class'=>'form-control update-form', 'placeholder'=>'Tell us what you been up to...', 'size'=>'50x10'])!!}
 

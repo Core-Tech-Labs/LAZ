@@ -21,9 +21,10 @@
         <script text="text/javascript" src="{{ asset('/js/jquery.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
 
+        {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.5.3/jquery.timeago.js"></script> --}}
 
         <!-- JS librarys-->
-        {{-- <script text="text/javascript" src="{{ asset('/js/moment.js') }}"></script> --}}
+        <script text="text/javascript" src="{{ asset('/js/time.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/custom.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/rollbar.js') }}"></script>

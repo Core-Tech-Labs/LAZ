@@ -129,6 +129,11 @@ body {
     padding-bottom:20px;
 }
 
+.dh .thumbnail img{
+    max-height: 95px;
+    max-width: 75px;
+}
+
 
 
 /*
