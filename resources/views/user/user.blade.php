@@ -101,7 +101,6 @@
 
 @include('user.pieces.modal.userModal')
 @include('user.pieces.modal.profilePicModal')
-@include('user.pieces.modal.FeedPostModal')
 
 <script type="text/javascript">
 //Editing about me button
@@ -127,18 +126,6 @@ $(document).ready(function(){
 $(document).ready(function(){
     $("#profile-photo").click(function(){
         $("#profile-photo-modal").modal('show');
-    });
-});
-
-$(document).ready(function(){
-    $("#deletepost").click(function(){
-        $("#delPost").modal('show');
-    });
-});
-
-$(document).ready(function(){
-    $("#editpost").click(function(){
-        $("#editPost").modal('show');
     });
 });
 

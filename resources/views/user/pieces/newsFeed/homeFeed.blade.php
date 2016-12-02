@@ -7,12 +7,19 @@
                 <span class="caret"></span>
             </button>
                 <ul class="dropdown-menu">
-                  <li>
-                    <a href="">Delete Post</a>
-                  </li>
-                  <li>
-                    <a href="{{action('FeedsController@update', Auth::user()->username )}}">Edit Post</a>
-                  </li>
+                  <li class="newsFeed-action-buttons">
+                        <div class="btn-group">
+                            {!! Form::open(['method' => 'DELETE', 'action' => ['FeedsController@destroy', Auth::user()->username] ]) !!}
+
+                                {!! Form::hidden('DataToDelete',  $newsFeed )!!}
+                                {!! Form::hidden('UserPostingID', json_decode($newsFeed, true)['UserPostingID'])!!}
+
+
+                                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                            {!! Form::close() !!}
+
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div class="media">

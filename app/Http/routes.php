@@ -23,7 +23,7 @@ Route::get('_{user}', ['as'=> 'user.profile', 'uses' => 'UserController@index'])
 
 
 // News Feed resource
-Route::resource('feed', 'FeedsController');
+Route::resource('feed', 'FeedsController',['only'=>['store','destroy']]);
 
 // Images
 Route::post('images/{user}/upload', ['as'=>'user.images', 'uses'=>'UserController@upload']);

@@ -368,6 +368,13 @@ ul.msg-list {
   position: relative;
 }
 
+li.newsFeed-action-buttons {
+  float: left;
+  margin: 0 auto;
+  display: block;
+  padding: 0 7px;
+}
+
 /*Images*/
 
 img#preview-image {

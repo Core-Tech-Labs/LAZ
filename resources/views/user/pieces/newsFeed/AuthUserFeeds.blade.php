@@ -3,19 +3,26 @@
     <div class="panel panel-default" id="BaseMessages">
         <div class="panel-body">
             @if($UserData->username === Auth::user()->username)
-            @include('user.pieces.modal.FeedPostModal')
+
             <div class="btn-group" role="group" id="newsFeedSettings">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="caret"></span>
 
             </button>
                 <ul class="dropdown-menu">
-                <li>
-                    <a href="#" id="deletepost">Delete Post</a>
-                </li>
-                <li>
-                    <a href="#" id="editpost">Edit Post</a>
-                </li>
+                    <li class="newsFeed-action-buttons">
+                        <div class="btn-group">
+                            {!! Form::open(['method' => 'DELETE', 'action' => ['FeedsController@destroy', $UserData->username] ]) !!}
+
+                                {!! Form::hidden('DataToDelete',  $newsFeed )!!}
+                                {!! Form::hidden('UserPostingID', json_decode($newsFeed, true)['UserPostingID'])!!}
+
+
+                                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                            {!! Form::close() !!}
+
+                        </div>
+                    </li>
                 </ul>
             </div>
             @endif
@@ -53,7 +60,6 @@
         </div>
     </div>
 @endif
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.6/socket.io.min.js"></script>
 <script type="text/javascript">
     var socket = io('http://192.168.10.20:3000');

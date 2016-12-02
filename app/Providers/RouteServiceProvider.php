@@ -41,6 +41,10 @@ class RouteServiceProvider extends ServiceProvider {
     $router->bind('message', function($value, $route){
         return \App\User::where('username', $value)->first();
     });
+
+    $router->bind('feed', function($value, $route){
+        return \App\User::where('username', $value)->first();
+    });
 	}
 
 	/**
