@@ -15,3 +15,12 @@ $I->submitForm('#prevent', [
 ], 'Post');
 
 $I->see('Posted Successfully');
+
+// Testing Deleting NewFeedPost
+$I->wantTo('Delete a post on my home page');
+
+$I->amOnPage('/home');
+$I->click('.dropdown-toggle');
+$I->click('ul.dropdown-menu');
+$I->click('.btn-danger');
+$I->see('Deleted Post Successfully');

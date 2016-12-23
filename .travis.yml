@@ -10,6 +10,8 @@ php:
 before_script:
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source --dev
+  # For App
+  - mysql -e 'create database laz'
   - php artisan migrate
   - php artisan db:seed --class=CodeceptSeed
   - php artisan db:seed --class=CodeceptSeedTwo
