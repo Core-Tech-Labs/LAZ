@@ -10,7 +10,6 @@
           <div class="panel panel-default" id="BaseMessages">
             <div class="panel-body">
         @if($UserData->username === Auth::user()->username)
-        @include('user.pieces.modal.FeedPostModal')
         <div class="btn-group" role="group" id="newsFeedSettings">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>

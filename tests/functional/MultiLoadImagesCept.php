@@ -7,11 +7,11 @@ $I->amLoggedAs(['email'=>'email@email.com', 'password'=>'password']);
 $I->seeAuthentication();
 
 $I->amOnPage('/home');
-$I->click(['link'=>'RudyJ']);
+$I->click(['link'=>'user']);
 
 $I->click('#userImage');
 $I->submitForm('#massUpload', [
     'dp'=>'test.jpg'
 ]);
 
-$I->click('Save Changes');
+$I->click('.btn-success');

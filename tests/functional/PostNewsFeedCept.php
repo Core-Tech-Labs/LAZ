@@ -9,8 +9,8 @@ $I->seeAuthentication();
 
 $I->amOnPage('/home');
 $I->submitForm('#prevent', [
-      'UserPosting' => 'JonDoe',
-      'UserPostingID' => '100',
+      'UserPosting' => 'user',
+      'UserPostingID' => '1',
       'BaseComment' => 'We love big baconator from wendys',
 ], 'Post');
 

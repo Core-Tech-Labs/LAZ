@@ -7,12 +7,12 @@ $I->amLoggedAs(['email'=>'email@email.com', 'password'=>'password']);
 $I->seeAuthentication();
 
 $I->amOnPage('/home');
-$I->click(['link'=>'RudyJ']);
+$I->click('master');
 
-$I->amOnPage('/_RudyJ');
+$I->amOnPage('/_master');
 $I->submitForm('#prevent', [
-      'UserPosting' => 'JonDoe',
-      'UserPostingID' => '100',
+      'UserPosting' => 'user',
+      'UserPostingID' => '1',
       'BaseComment' => 'We love big baconator from wendys',
 ], 'Post');
 

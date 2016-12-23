@@ -15,10 +15,10 @@ extensions:
 modules:
     config:
         Db:
-            dsn: 'sqlite:storage/testing.sqlite' # mysql:host=localhost;dbname=ctl
-            user: ''
+            dsn: 'mysql:host=localhost;dbname=laz'
+            user: 'root'
             password: ''
-            dump: tests/_data/dump.sql
+            dump: storage/dump.sql
             populate: true
             cleanup: true
             reconnect: true

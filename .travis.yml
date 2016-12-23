@@ -10,13 +10,16 @@ php:
 before_script:
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source --dev
+  - php artisan migrate
+  - php artisan db:seed --class=CodeceptSeed
+  - php artisan db:seed --class=CodeceptSeedTwo
 
 script:
   - composer install
-  - vendor/bin/codeconcept run functional
+  - php codecept run functional
 
 after_success:
-  - php vender/bin/coveralls -v
+  - php coveralls
 
 notifications:
   email: false
