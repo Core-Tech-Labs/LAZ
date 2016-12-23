@@ -53,5 +53,13 @@ class BaseNewsFeed{
         }
   }
 
+  public function deletingNewsItem(Request $request){
+        $newsFeed = $request->except('_token');
+        $userID = $request->input('UserPostingID');
+
+        Redis::lrem('newsFeed'.':'.\Auth::user()->username, 0,  $request->input('DataToDelete'));
+        Redis::lrem('timeline'.':'.$userID, 0, $request->input('DataToDelete'));
+  }
+
 
 }

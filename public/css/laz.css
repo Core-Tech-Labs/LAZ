@@ -127,6 +127,11 @@ body {
   padding-bottom: 20px;
 }
 
+.dh .thumbnail img {
+  max-height: 95px;
+  max-width: 75px;
+}
+
 /*
     Messaging Pages
 */
@@ -361,6 +366,13 @@ ul.msg-list {
 #newsFeedSettings {
   float: right;
   position: relative;
+}
+
+li.newsFeed-action-buttons {
+  float: left;
+  margin: 0 auto;
+  display: block;
+  padding: 0 7px;
 }
 
 /*Images*/

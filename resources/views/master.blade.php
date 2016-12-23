@@ -14,32 +14,21 @@
         <link href="{{ asset('/css/avatar.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/color.css') }}" rel="stylesheet">
 
-        <!-- {{-- CSS version example
-		/*
-		* <link href="{{ elixir('/css/laz.css') }}" rel="stylesheet">
-        --}} -->
 
       	<!-- Fonts -->
       	<link href='//fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
 
         <!-- Scripts -->
         <script text="text/javascript" src="{{ asset('/js/jquery.js') }}"></script>
-        {{-- <script text="text/javascript" src="{{ asset('/js/jquery-ui.js') }}"></script> --}}
         <script text="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
 
+        {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.5.3/jquery.timeago.js"></script> --}}
 
         <!-- JS librarys-->
-        {{-- <script text="text/javascript" src="{{ asset('/js/moment.js') }}"></script> --}}
+        <script text="text/javascript" src="{{ asset('/js/time.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/custom.js') }}"></script>
-        {{-- <script text="text/javascript" src="{{ asset('/js/rollbar.js') }}"></script> --}}
-
-        <!-- For Strophe.js and XMPP -->
-        <script text="text/javascript" src="{{ asset('/js/strophe.js') }}"></script>
-        <script text="text/javascript" src="{{ asset('/js/xmpp/im.js') }}"></script>
-        <script text="text/javascript" src="{{ asset('/js/xmpp/flXHR.js') }}"></script>
-        <script text="text/javascript" src="{{ asset('/js/xmpp/strophe.flxhr.js') }}"></script>
-        {{-- <script text="text/javascript" src="{{ asset('/js/strophe.register.js') }}"></script> --}}
+        <script text="text/javascript" src="{{ asset('/js/rollbar.js') }}"></script>
 
 </head>
 <body>
@@ -62,7 +51,14 @@
 						<li><a href="{{ url('/login') }}">Login</a></li>
 						<li><a href="{{ url('/register') }}">Register</a></li>
 					@else
-              <li><a href="{{ action('MessageController@index', $UserData->username) }}"> Messages</a></li>
+              {{-- Message link goes here --}}
+              <li class="dropdown">
+              {{-- Count value goes here --}}
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#" id="username">Class</a></li>
+                </ul>
+              </li>
               <li><a href="{{ url('/favs') }}">My Favorites</a></li>
               <li><a href="{{ action('ActivityController@show', $UserData->username) }}">My Activity</a></li>
 						<li class="dropdown">

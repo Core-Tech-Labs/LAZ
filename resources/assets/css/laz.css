@@ -129,6 +129,11 @@ body {
     padding-bottom:20px;
 }
 
+.dh .thumbnail img{
+    max-height: 95px;
+    max-width: 75px;
+}
+
 
 
 /*
@@ -280,6 +285,8 @@ ul.msg-list{
     font-size:18px;
 }
 
+
+
         /**
          * user-action-buttons
          * Thanks to http://jsfiddle.net/fLMSd/14/
@@ -319,6 +326,14 @@ ul.msg-list{
     float:right;
     position: relative;
 }
+
+li.newsFeed-action-buttons{
+    float: left;
+    margin: 0 auto;
+    display: block;
+    padding:0 7px;
+}
+
 
 
 /*Images*/
