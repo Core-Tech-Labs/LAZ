@@ -51,6 +51,13 @@
 						<li><a href="{{ url('/register') }}">Register</a></li>
 					@else
               {{-- Message link goes here --}}
+              <li class="dropdown">
+              {{-- Count value goes here --}}
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#" id="username">Class</a></li>
+                </ul>
+              </li>
               <li><a href="{{ url('/favs') }}">My Favorites</a></li>
               <li><a href="{{ action('ActivityController@show', $UserData->username) }}">My Activity</a></li>
 						<li class="dropdown">
