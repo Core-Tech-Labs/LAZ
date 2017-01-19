@@ -4,6 +4,9 @@ php:
   - 7.0
   - hhvm
 
+services:
+  - mysql
+
 before_script:
   - mv .env.example .env.testing
   - travis_retry composer self-update
