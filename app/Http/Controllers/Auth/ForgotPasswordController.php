@@ -1,4 +1,5 @@
-<?php namespace App\Http\Controllers\Auth;
+<?php
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
@@ -6,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
-class PasswordController extends Controller {
+class ForgotPasswordController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------

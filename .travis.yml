@@ -1,24 +1,26 @@
 language: php
 
 php:
-  - 5.5.9
-  - 5.5
-  - 5.6
   - 7.0
   - hhvm
 
 before_script:
+  - mv .env.example .env.testing
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source --dev
   # For App
   - mysql -e 'create database laz'
-  - php artisan migrate
-  - php artisan db:seed --class=CodeceptSeed
-  - php artisan db:seed --class=CodeceptSeedTwo
+  - chmod -R 777 storage/*
+  - travis_retry php artisan migrate:install --env=testing --no-interaction -vvv
+
 
 script:
   - composer install
+  - php artisan migrate --env=testing --no-interaction -vvv
+  - php artisan db:seed --env=testing --no-interaction --vvv --class=CodeceptSeed
+  - php artisan db:seed --env=testing --no-interaction --vvv --class=CodeceptSeedTwo
   - php codecept run functional
+
 
 after_success:
   - php coveralls

@@ -1,4 +1,5 @@
 @extends('master')
+{{-- {{ dd($UserData) }} --}}
 
 @section('title', $UserData->username . ' Profile')
 @section('content')
@@ -64,12 +65,12 @@
                     @endif
                 </div>
                     <div class="panel-body">
-                    @if (empty($UserData->usersPhotos->toArray() ))
+                        @if (empty($UserData->usersPhotos->toArray() ))
                             <p>No Uploaded Images</p>
                           @else
                             @foreach ( $photos as $photo )
                                 <div class="col-md-4 massImages">
-                                    <img id="preview-image" src="{{ url() }}{{ $photo->image_path }}" alt="{{ $photo->image_name }}">
+                                    <img id="preview-image" src="{{ $photo->image_path }}" alt="{{ $photo->image_name }}">
                                 </div>
                             @endforeach
                         @endif

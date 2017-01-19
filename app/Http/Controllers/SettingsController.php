@@ -28,7 +28,7 @@ class SettingsController extends Controller {
      */
      public function edit(userData $UserData){
 
-         return view('user.settings', compact('UserData'));
+         return view('user.settings');
     }
 
     /**
@@ -38,9 +38,11 @@ class SettingsController extends Controller {
      * @param UpdateUserDataRequest $request
      * @return view
      */
-    public function update(UpdateUserDataRequest $request, User $UserData){
+    public function update($username, UpdateUserDataRequest $request, User $UserData){
 
-        if(\Hash::check($request->input('password_old'), $UserData->password))
+        $oldPass = $UserData->where('username', $username)->first();
+
+        if(\Hash::check($request->input('password_old'), $oldPass->password) )
             {
             $UserData->update([
                 'password' => bcrypt( $request->input('password') ),

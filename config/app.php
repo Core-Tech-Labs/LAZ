@@ -82,7 +82,7 @@ return [
 
 	'key' => env('APP_KEY'),
 
-	'cipher' => 'AES-256-CBC', //MCRYPT_RIJNDAEL_128
+	'cipher' => 'AES-256-CBC',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -138,15 +138,17 @@ return [
      Illuminate\Broadcasting\BroadcastServiceProvider::class,
      Intervention\Image\ImageServiceProvider::class,
      Collective\Html\HtmlServiceProvider::class,
+     Illuminate\Notifications\NotificationServiceProvider::class,
 
 		/*
 		 * Application Service Providers...
 		 */
+    App\Providers\IMServiceProvider::class,
 		App\Providers\AppServiceProvider::class,
 		App\Providers\EventServiceProvider::class,
 		App\Providers\RouteServiceProvider::class,
     App\Providers\ViewDataServiceProvider::class,
-    App\Providers\IMServiceProvider::class,
+    App\Providers\BroadcastServiceProvider::class,
 
 	],
 
@@ -220,7 +222,8 @@ return [
     'Gate' 			=>  Illuminate\Support\Facades\Gate::class,
     'IM' 				=>  Core\Message\Facades\IM::class,
     'Html' 			=>  Collective\Html\HtmlFacade::class,
-    'Form' 			=>  Collective\Html\FormFacade::class
+    'Form' 			=>  Collective\Html\FormFacade::class,
+    'Notify'		=> 	Illuminate\Support\Facades\Notification::class,
 
 	],
 

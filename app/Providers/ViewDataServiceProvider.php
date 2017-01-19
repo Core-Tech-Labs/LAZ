@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 
 
 
-class ViewDataServiceProvider extends ServiceProvider {
+class ViewDataServiceProvider extends ServiceProvider{
 
 	/**
 	 * Bootstrap the application services.
@@ -44,7 +44,7 @@ class ViewDataServiceProvider extends ServiceProvider {
   public function compserSettingsLink(){
 
       view()->composer('master', function($view){
-              $view->with('UserData', \Auth::User() );
+        $view->with('UserData', \Auth::User() );
       });
   }
 
@@ -53,9 +53,8 @@ class ViewDataServiceProvider extends ServiceProvider {
    *
    */
   public function composeUsernameSettings(){
-
       view()->composer('user.settings', function($view){
-              $view->with('UserData', \Auth::User() );
+        $view->with('UserData', \Auth::User() );
       });
   }
 
@@ -64,9 +63,8 @@ class ViewDataServiceProvider extends ServiceProvider {
    *
    */
   public function composeUsernameActivity(){
-
       view()->composer('user.activity', function($view){
-              $view->with('UserData', \Auth::User() );
+        $view->with('UserData', \Auth::User() );
       });
   }
 
@@ -76,7 +74,7 @@ class ViewDataServiceProvider extends ServiceProvider {
    */
   public function composeOnlineSession(){
     view()->composer('user.user', function($view){
-              $view->with('online', Online::registered()->lists('user_id')->toArray());
+      $view->with('online', Online::registered()->pluck('user_id')->toArray());
     });
   }
 
@@ -86,7 +84,7 @@ class ViewDataServiceProvider extends ServiceProvider {
    */
   public function composeDashboardOnlineSession(){
     view()->composer('user.home', function($view){
-              $view->with('online', Online::registered()->where('user_id', '!=', \Auth::id())->get());
+      $view->with('online', Online::registered()->where('user_id', '!=', \Auth::id())->get());
     });
   }
 
@@ -96,13 +94,13 @@ class ViewDataServiceProvider extends ServiceProvider {
    */
   public function composeUserPhotos(){
     view()->composer('user.user', function($view){
-              $view->with('photos', UsersPhotos::images()->get() );
+      $view->with('photos', UsersPhotos::images()->get()->all() );
     });
   }
 
   public function composeUsernameList(){
     view()->composer('user.message', function($view){
-              $view->with('users', User::lists('username')->toArray());
+      $view->with('users', User::lists('username')->toArray());
     });
   }
 

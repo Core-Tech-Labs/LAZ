@@ -50,11 +50,11 @@ Route::get('messageSearch', ['as'=>'message.search', 'uses'=>'MessageController@
 Route::resource('activity', 'ActivityController');
 
 // For Guest Users
+Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/', 'WelcomeController@index');
-Route::controllers([
-        'password' => 'Auth\PasswordController',
-	       '/' => 'Auth\AuthController'
-]);
+
+Route::auth();
+
 
 
 

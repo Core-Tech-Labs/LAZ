@@ -57,7 +57,7 @@ class ActivityController extends Controller {
 	 */
 	public function show(User $user)
 	{
-		$UserNewsFeed = Redis::lrange('timeline:'.$user->id, 0 ,-1);
+		$UserNewsFeed = Redis::lrange('timeline:'.\Auth::id(), 0 ,-1);
 		return view('user.activity', compact('UserNewsFeed'));
 	}
 
