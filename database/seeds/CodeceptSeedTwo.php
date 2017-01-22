@@ -15,7 +15,7 @@ class CodeceptSeedTwo extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        $usersID =  User::lists('id')->toArray();
+        $usersID =  User::pluck('id')->toArray();
 
         foreach(range(1, 1) as $index){
           User::create([
