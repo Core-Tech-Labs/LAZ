@@ -1,5 +1,4 @@
 @extends('master')
-{{-- {{ dd($UserData) }} --}}
 
 @section('title', $UserData->username . ' Profile')
 @section('content')

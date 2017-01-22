@@ -10,6 +10,7 @@ use Core\Users\UsersOrigin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Core\Users\Mail\FavAUserMail as Mail;
+use App\Notifications\FavAUserNotification;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 
 
@@ -53,13 +54,18 @@ class FavController extends Controller {
 	 */
 	public function store(User $user, Request $request)
 	{
-		// $input = array_add($request, 'userID', Auth::id() );
+		// Favoriting
 		$input = $request->input('userIDToFav');
 		$clear = $this->dispatch(new FavAUser(\Auth::id(), $input));
 
-		// For emailing User Fav
+
+		// Emailing
 		$findingUser = $user->find($request->input('userIDToFav'));
 		$this->mail->sendFavAUserNotificationEmail($findingUser, $request->input('userFaved'), Auth::user()->username);
+
+		//Notifications
+		$favedUser = $user->where('username', $request->input('userFaved'))->first();
+		$favedUser->notify(new FavAUserNotification(\Auth::user()->username, $request->input('userFaved') ) );
 
 
 		session()->flash('success_message','You are now following');
@@ -74,7 +80,6 @@ class FavController extends Controller {
 	 */
 	public function destroy(Request $request)
 	{
-		// $input = array_add($request, 'userID', Auth::id() );
 		$input = $request->input('userIDToUnFav');
 		$clear = $this->dispatch(new UnFavAUser(\Auth::id(), $input ));
 

@@ -44,6 +44,14 @@ body {
   background: #2A9CE8;
 }
 
+.notify {
+  color: #fff !important;
+}
+
+.badge-notify {
+  background: #ff0000 !important;
+}
+
 /**
  * 2) Body
  */

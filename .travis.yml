@@ -26,7 +26,7 @@ script:
   - php artisan migrate --env=testing --no-interaction
   - php artisan db:seed --env=testing --no-interaction --class=CodeceptSeed
   - php artisan db:seed --env=testing --no-interaction --class=CodeceptSeedTwo
-  - php codecept run functional
+  - vendor/bin/codecept run functional
 
 
 after_success:

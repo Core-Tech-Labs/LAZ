@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>LAZ | @yield('title')</title>
 
 
@@ -51,13 +52,24 @@
 						<li><a href="{{ url('/register') }}">Register</a></li>
 					@else
               {{-- Message link goes here --}}
-              <li class="dropdown">
-              {{-- Count value goes here --}}
+
+              <li class="dropdown" id="notifyClick">
+              @if(!empty(Auth::user()->unreadNotifications->count() ))
+                <span class="badge badge-notify">{{ count(Auth::user()->unreadNotifications->toArray() )}}</span>
+              @endif
+
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> </a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#" id="username">Class</a></li>
+                <ul class="dropdown-menu notificationHolder" role="menu">
+                @if(!empty(Auth::user()->unreadNotifications->count() ))
+                  @foreach(Auth::user()->unreadNotifications as $notify)
+                    <li class="loadnotify"><a href="#" id="username"><p>{{ $notify->data['msg'] }}</p></a></li>
+                  @endforeach
+                @else
+                  <div class="notify">You have no new notifications</div>
+                @endif
                 </ul>
               </li>
+
               <li><a href="{{ url('/favs') }}">My Favorites</a></li>
               <li><a href="{{ action('ActivityController@show', $UserData->username) }}">My Activity</a></li>
 						<li class="dropdown">

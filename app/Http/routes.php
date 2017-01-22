@@ -48,6 +48,7 @@ Route::get('messageSearch', ['as'=>'message.search', 'uses'=>'MessageController@
 
 // Activity
 Route::resource('activity', 'ActivityController');
+Route::post('/marknotify', 'ActivityController@markBellAsRead');
 
 // For Guest Users
 Route::get('/logout', 'Auth\LoginController@logout');

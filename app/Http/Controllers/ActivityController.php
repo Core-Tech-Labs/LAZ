@@ -62,6 +62,14 @@ class ActivityController extends Controller {
 	}
 
 	/**
+	 * Marking Notifications as read
+	 * @return [type] [description]
+	 */
+	public function markBellAsRead(){
+		\Auth::user()->unreadNotifications->markAsRead();
+	}
+
+	/**
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param  int  $id
