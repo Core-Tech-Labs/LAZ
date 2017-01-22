@@ -64,12 +64,9 @@
         <div id="sectionC" class="tab-pane fade">
             <div id="position-section">
                 <div id="div-space-me">
-                    <h4 id="settings-page-header-child">Upload Profile Photo</h4>
-                    {!! Form::open(['method'=> 'POST', 'action' => ['UserController@dp', $UserData->username], 'class'=>'form-horizontal' ]) !!}
-                        {!! Form::file('dp') !!}
+                    <h4 id="settings-page-header-child">Add additional settings here</h4>
                 </div>
-                {!! Form::submit('Upload Image', ['class' => 'btn btn-success'])!!}
-                {!! Form::close() !!}
+
 
                 <div id="div-space-me">
                     {{-- NEW CONTENT FOR USERS TO UPLOAD OR UPDATE THEIR PROFILE --}}

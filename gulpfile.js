@@ -21,9 +21,7 @@ elixir(function(mix) {
     /**
      * Browserfiy
      */
-     mix.browserify('message.js', 'public/js/message.js');
-    // For XMPP usage
-    // mix.browserify('im.js', publicDir+ 'js/im.js');
+     // mix.browserify('workfile.js', 'public/js/workfile.js');
 
     /**
      * CSS Mix
