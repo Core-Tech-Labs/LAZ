@@ -15,6 +15,7 @@ before_script:
   - mv .env.example .env.testing
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source --dev
+  - php artisan key:generate
   # For App
   - mysql -e 'create database laz'
   - chmod -R 777 storage/*
