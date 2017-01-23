@@ -1,13 +1,17 @@
 <?php
 
-namespace App\Commands;
+namespace App\Jobs;
 
-use App\Commands\Command;
+use App\Jobs\Job;
 use Core\Users\UsersOrigin;
-use Illuminate\Contracts\Bus\SelfHandling;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class UnFavAUserCommand extends Command implements SelfHandling
+class UnFavAUser extends Job implements ShouldQueue
 {
+
+    use InteractsWithQueue, SerializesModels;
 
     public $userID;
 

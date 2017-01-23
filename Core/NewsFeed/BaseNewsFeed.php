@@ -5,6 +5,7 @@ use Redis;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\NewsFeed;
+use App\Notifications\NewsFeedNotification;
 
 
 class BaseNewsFeed{
@@ -32,6 +33,9 @@ class BaseNewsFeed{
 
         // Cross Users Posting
         if($usernameUpdate == true){
+            $authObj = $user->where('username', $usernameUpdate)->first();
+            $authObj->notify(new NewsFeedNotification($usernameUpdate) );
+
             Redis::lpush('newsFeed'.':'.$usernameUpdate, json_encode($newsFeed));
         }
 
@@ -51,6 +55,19 @@ class BaseNewsFeed{
                 Redis::lpush('timeline:'.$id, json_encode($newsFeed));
             }
         }
+  }
+
+  /**
+   * Deleting Postings
+   * @param  Request $request [description]
+   * @return [type]           [description]
+   */
+  public function deletingNewsItem(Request $request){
+        $newsFeed = $request->except('_token');
+        $userID = $request->input('UserPostingID');
+
+        Redis::lrem('newsFeed'.':'.\Auth::user()->username, 0,  $request->input('DataToDelete'));
+        Redis::lrem('timeline'.':'.$userID, 0, $request->input('DataToDelete'));
   }
 
 

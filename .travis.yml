@@ -1,25 +1,37 @@
 language: php
 
 php:
-  - 5.5.9
-  - 5.5
-  - 5.6
   - 7.0
   - hhvm
 
+matrix:
+  allow_failures:
+    - php: hhvm
+
+services:
+  - mysql
+  - redis-server
+
 before_script:
-  - npm install
-  - npm install -g gulp
+  - mv .env.example .env.testing
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source --dev
+  # For App
+  - mysql -e 'create database laz'
+  - chmod -R 777 storage/*
+  - travis_retry php artisan migrate:install --env=testing --no-interaction -vvv
+
 
 script:
-  - gulp --production
   - composer install
-  - vendor/bin/codeconcept run functional
+  - php artisan migrate --env=testing --no-interaction
+  - php artisan db:seed --env=testing --no-interaction --class=CodeceptSeed
+  - php artisan db:seed --env=testing --no-interaction --class=CodeceptSeedTwo
+  - vendor/bin/codecept run functional
+
 
 after_success:
-  - php vender/bin/coveralls -v
+  - php coveralls
 
 notifications:
   email: false

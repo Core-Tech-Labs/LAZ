@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use Redis;
+use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -25,8 +26,7 @@ class ActivityController extends Controller {
 	 */
 	public function index()
 	{
-		$UserNewsFeed = Redis::lrange('timeline:'.\Auth::user()->id, 0 ,-1);
-		return view('user.activity', compact('UserNewsFeed'));
+
 	}
 
 	/**
@@ -36,7 +36,7 @@ class ActivityController extends Controller {
 	 */
 	public function create()
 	{
-		//
+
 	}
 
 	/**
@@ -55,9 +55,18 @@ class ActivityController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(User $user)
 	{
-		//
+		$UserNewsFeed = Redis::lrange('timeline:'.\Auth::id(), 0 ,-1);
+		return view('user.activity', compact('UserNewsFeed'));
+	}
+
+	/**
+	 * Marking Notifications as read
+	 * @return [type] [description]
+	 */
+	public function markBellAsRead(){
+		\Auth::user()->unreadNotifications->markAsRead();
 	}
 
 	/**

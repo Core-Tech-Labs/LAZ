@@ -2,6 +2,8 @@
 
 return [
 
+	'env' => env('APP_ENV', 'local'),
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Debug Mode
@@ -80,7 +82,7 @@ return [
 
 	'key' => env('APP_KEY'),
 
-	'cipher' => 'AES-256-CBC', //MCRYPT_RIJNDAEL_128
+	'cipher' => 'AES-256-CBC',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -113,12 +115,10 @@ return [
 		/*
 		 * Laravel Framework Service Providers...
 		 */
-		 Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
 		 Illuminate\Auth\AuthServiceProvider::class,
 		 Illuminate\Bus\BusServiceProvider::class,
 		 Illuminate\Cache\CacheServiceProvider::class,
 		 Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
-		 Illuminate\Routing\ControllerServiceProvider::class,
 		 Illuminate\Cookie\CookieServiceProvider::class,
 		 Illuminate\Database\DatabaseServiceProvider::class,
 	   Illuminate\Encryption\EncryptionServiceProvider::class,
@@ -135,20 +135,20 @@ return [
 		 Illuminate\Translation\TranslationServiceProvider::class,
 		 Illuminate\Validation\ValidationServiceProvider::class,
 		 Illuminate\View\ViewServiceProvider::class,
-     Illuminate\Html\HtmlServiceProvider::class,
      Illuminate\Broadcasting\BroadcastServiceProvider::class,
      Intervention\Image\ImageServiceProvider::class,
-     Jenssegers\Rollbar\RollbarServiceProvider::class,
+     Collective\Html\HtmlServiceProvider::class,
+     Illuminate\Notifications\NotificationServiceProvider::class,
 
 		/*
 		 * Application Service Providers...
 		 */
+    App\Providers\IMServiceProvider::class,
 		App\Providers\AppServiceProvider::class,
-		App\Providers\BusServiceProvider::class,
-		App\Providers\ConfigServiceProvider::class,
 		App\Providers\EventServiceProvider::class,
 		App\Providers\RouteServiceProvider::class,
     App\Providers\ViewDataServiceProvider::class,
+    App\Providers\BroadcastServiceProvider::class,
 
 	],
 
@@ -218,10 +218,12 @@ return [
 		'URL'       =>  Illuminate\Support\Facades\URL::class,
 		'Validator' =>  Illuminate\Support\Facades\Validator::class,
 		'View'      =>  Illuminate\Support\Facades\View::class,
-    'Form'      =>  Illuminate\Html\FormFacade::class,
-    'Html'      =>  Illuminate\Html\HtmlFacade::class,
     'Image' 		=>  Intervention\Image\Facades\Image::class,
     'Gate' 			=>  Illuminate\Support\Facades\Gate::class,
+    'IM' 				=>  Core\Message\Facades\IM::class,
+    'Html' 			=>  Collective\Html\HtmlFacade::class,
+    'Form' 			=>  Collective\Html\FormFacade::class,
+    'Notify'		=> 	Illuminate\Support\Facades\Notification::class,
 
 	],
 

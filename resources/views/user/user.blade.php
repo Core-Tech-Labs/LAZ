@@ -38,7 +38,7 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">Users Information</h3>
                     @if ($UserData->username === Auth::user()->username  )
-                        <button id="edit" type="button" class="btn btn-default btn-xs panel-button">
+                        <button id="edit_info" type="button" class="btn btn-default btn-xs panel-button">
                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                         </button>
                     @endif
@@ -64,12 +64,12 @@
                     @endif
                 </div>
                     <div class="panel-body">
-                    @if (empty($UserData->usersPhotos->toArray() ))
+                        @if (empty($UserData->usersPhotos->toArray() ))
                             <p>No Uploaded Images</p>
                           @else
                             @foreach ( $photos as $photo )
                                 <div class="col-md-4 massImages">
-                                    <img id="preview-image" src="{{ url() }}{{ $photo->image_path }}" alt="{{ $photo->image_name }}">
+                                    <img id="preview-image" src="{{ $photo->image_path }}" alt="{{ $photo->image_name }}">
                                 </div>
                             @endforeach
                         @endif
@@ -96,13 +96,11 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
 @include('user.pieces.modal.userModal')
 @include('user.pieces.modal.profilePicModal')
-@include('user.pieces.modal.FeedPostModal')
 
 <script type="text/javascript">
 //Editing about me button
@@ -113,20 +111,21 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
+    $("#edit_info").click(function(){
+        $("#edit_info_modal").modal('show');
+    });
+});
+
+$(document).ready(function(){
+    $("#msg").click(function(){
+        $("#userMessaging").modal('show');
+    });
+});
+
+
+$(document).ready(function(){
     $("#profile-photo").click(function(){
         $("#profile-photo-modal").modal('show');
-    });
-});
-
-$(document).ready(function(){
-    $("#deletepost").click(function(){
-        $("#delPost").modal('show');
-    });
-});
-
-$(document).ready(function(){
-    $("#editpost").click(function(){
-        $("#editPost").modal('show');
     });
 });
 

@@ -34,7 +34,7 @@ trait ActionableTrait{
 
     $auth = \Auth::user();
 
-    $list = $auth->favUsers()->lists('favorited_id')->toArray();
+    $list = $auth->favUsers()->pluck('favorited_id')->toArray();
 
     return in_array($this->id, $list);
   }
@@ -45,7 +45,7 @@ trait ActionableTrait{
      */
     public function favoritedList(){
         $user = \Auth::user();
-        return $user->favUsers()->lists('favorited_id')->toArray();
+        return $user->favUsers()->pluck('favorited_id')->toArray();
     }
 
     /**
@@ -54,7 +54,7 @@ trait ActionableTrait{
      */
     public function favoriteeList(){
         $user = \Auth::user();
-        return $user->favs()->lists('favoritee_id')->toArray();
+        return $user->favs()->pluck('favoritee_id')->toArray();
     }
 
 }

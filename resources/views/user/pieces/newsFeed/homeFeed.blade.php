@@ -7,24 +7,31 @@
                 <span class="caret"></span>
             </button>
                 <ul class="dropdown-menu">
-                  <li>
-                    <a href="">Delete Post</a>
-                  </li>
-                  <li>
-                    <a href="{{action('FeedsController@update', Auth::user()->username )}}">Edit Post</a>
-                  </li>
+                  <li class="newsFeed-action-buttons">
+                        <div class="btn-group">
+                            {!! Form::open(['method' => 'DELETE', 'action' => ['FeedsController@destroy', Auth::user()->username] ]) !!}
+
+                                {!! Form::hidden('DataToDelete',  $newsFeed )!!}
+                                {!! Form::hidden('UserPostingID', json_decode($newsFeed, true)['UserPostingID'])!!}
+
+
+                                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                            {!! Form::close() !!}
+
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div class="media">
                 <div class="media-left">
-                    <img class="media-object img-circle" id="user-dp" src="{{Auth::user()->username}}" />
+                    <img class="media-object img-circle" id="user-dp" src="{{ json_decode($newsFeed, true)['UserPostingImg'] }}" />
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading">
                     @if( isset( json_decode($newsFeed, true)['UserNameBeingUpdated'] ) )
-                        <a href=""> {{ json_decode($newsFeed, true)['UserPosting'] }}</a> &rarr; <a href="">{{ json_decode($newsFeed, true)['UserNameBeingUpdated'] }}</a>
+                        <a href="{{url('/')}}/_{{ json_decode($newsFeed, true)['UserPosting'] }}"> {{ json_decode($newsFeed, true)['UserPosting'] }}</a> &rarr; <a href="{{url('/')}}/_{{ json_decode($newsFeed, true)['UserNameBeingUpdated'] }}">{{ json_decode($newsFeed, true)['UserNameBeingUpdated'] }}</a>
                     @else
-                        <a href="">
+                        <a href="{{url('/')}}/_{{ json_decode($newsFeed, true)['UserPosting'] }}">
                             {{ json_decode($newsFeed, true)['UserPosting'] }}
                         </a>
                     @endif
@@ -32,7 +39,7 @@
                     <span id="timestamp" timestamp="{{ json_decode($newsFeed, true)['created_at'] }}">
                       <script  type="text/javascript">
                         var timestamp = document.getElementById('timestamp').getAttribute('timestamp');
-                        var m = moment(timestamp);
+                        var m = $.timeago(timestamp);
                          document.write(m);
                       </script>
                     </span>

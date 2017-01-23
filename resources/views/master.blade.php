@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>LAZ | @yield('title')</title>
 
 
@@ -13,22 +14,18 @@
         <link href="{{ asset('/css/avatar.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/color.css') }}" rel="stylesheet">
 
-        <!-- {{-- CSS version example
-		/*
-		* <link href="{{ elixir('/css/laz.css') }}" rel="stylesheet">
-        --}} -->
 
       	<!-- Fonts -->
       	<link href='//fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
 
         <!-- Scripts -->
         <script text="text/javascript" src="{{ asset('/js/jquery.js') }}"></script>
-        <script text="text/javascript" src="{{ asset('/js/jquery-ui.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
 
+        {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.5.3/jquery.timeago.js"></script> --}}
 
         <!-- JS librarys-->
-        <script text="text/javascript" src="{{ asset('/js/moment.js') }}"></script>
+        <script text="text/javascript" src="{{ asset('/js/time.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/custom.js') }}"></script>
         <script text="text/javascript" src="{{ asset('/js/rollbar.js') }}"></script>
@@ -54,13 +51,31 @@
 						<li><a href="{{ url('/login') }}">Login</a></li>
 						<li><a href="{{ url('/register') }}">Register</a></li>
 					@else
-              <li><a href="{{ url('/message') }}"> Messages</a></li>
+              {{-- Message link goes here --}}
+
+              <li class="dropdown" id="notifyClick">
+              @if(!empty(Auth::user()->unreadNotifications->count() ))
+                <span class="badge badge-notify">{{ count(Auth::user()->unreadNotifications->toArray() )}}</span>
+              @endif
+
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> </a>
+                <ul class="dropdown-menu notificationHolder" role="menu">
+                @if(!empty(Auth::user()->unreadNotifications->count() ))
+                  @foreach(Auth::user()->unreadNotifications as $notify)
+                    <li class="loadnotify"><a href="#" id="username"><p>{{ $notify->data['msg'] }}</p></a></li>
+                  @endforeach
+                @else
+                  <div class="notify">You have no new notifications</div>
+                @endif
+                </ul>
+              </li>
+
               <li><a href="{{ url('/favs') }}">My Favorites</a></li>
               <li><a href="{{ action('ActivityController@show', $UserData->username) }}">My Activity</a></li>
 						<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="{{ $UserData->userData->profile_picture }}" class="img-circle" id="user-dp" profileimage="{{ $UserData->userData->profile_picture }}" /> <span class="caret"></span></a>
 							 <ul class="dropdown-menu" role="menu">
-                <li><a href="{{ action('UserController@index', $UserData->username ) }}">{{ Auth::user()->username }}</a></li>
+                <li><a href="{{ action('UserController@index', $UserData->username ) }}" id="username" username="{{Auth::user()->username}}">{{ Auth::user()->username }}</a></li>
                 <li><a href="{{ action('SettingsController@edit', $UserData->username ) }}">Settings</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="{{ url('/logout') }}">Logout</a></li>
@@ -74,6 +89,7 @@
 @include('flash-msg.flash')
 
 @yield('content')
+
 
  <div class="container-fluid footer">
     <div class="structure padding">

@@ -23,34 +23,39 @@ Route::get('_{user}', ['as'=> 'user.profile', 'uses' => 'UserController@index'])
 
 
 // News Feed resource
-Route::resource('feed', 'FeedsController');
+Route::resource('feed', 'FeedsController',['only'=>['store','destroy']]);
 
-// Images Routes
+// Images
 Route::post('images/{user}/upload', ['as'=>'user.images', 'uses'=>'UserController@upload']);
 Route::post('images/dpUpload/{user}', 'UserController@dp');
 
-
+// Settings
 Route::resource('settings', 'SettingsController',
                 ['only' => ['edit', 'update']]);
 
-// Favorite users controller
+// Favs
 Route::resource('favs', 'FavController',
                 ['except'=>['update','edit','show','create']]);
 
 
-// To be developed and researched
-Route::resource('message','MessageController');
+// Messages
+Route::get('message/{user}', ['as'=> 'message.index', 'uses' => 'MessageController@index']);
+Route::resource('message','MessageController',
+                ['except'=>['index','edit', 'create']]);
+Route::post('message/{user}', ['as'=>'message.send' ,'uses'=>'MessageController@send']);
+Route::get('messageSearch', ['as'=>'message.search', 'uses'=>'MessageController@search']);
 
 
-// To be Developed
+// Activity
 Route::resource('activity', 'ActivityController');
+Route::post('/marknotify', 'ActivityController@markBellAsRead');
 
 // For Guest Users
+Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/', 'WelcomeController@index');
-Route::controllers([
-        'password' => 'Auth\PasswordController',
-	       '/' => 'Auth\AuthController'
-]);
+
+Route::auth();
+
 
 
 

@@ -38,7 +38,6 @@ class UserController extends Controller {
         $online->UpdateIdleUser();
         $users = $this->usersOrigin->getDashboardPaginated();
         $UserNewsFeed = Redis::lrange('timeline:'.\Auth::user()->id, 0 ,-1);
-        // dd($UserNewsFeed);
 
         return view('user.home', compact('users', 'UserNewsFeed') );
     }
@@ -47,8 +46,10 @@ class UserController extends Controller {
      * function to show Current logged in user profile all data from source
      * @return type
      */
-	public function index(User $UserData)
+	public function index($username, User $userdata)
 	{
+        $UserData = $userdata->where('username', $username)->first();
+
         $UserNewsFeed =  Redis::lrange('newsFeed:'.$UserData->username, 0, -1);
 		return view('user.user', compact('UserData','UserNewsFeed') );
 	}
@@ -74,6 +75,7 @@ class UserController extends Controller {
      * @return [type]
      */
     public function upload(Request $request, UsersPhotos $photo){
+        dd($request->all());
         $this->Validate($request,[
             'file' => 'required|max:3000|mimes:jpg,jpeg,png',
         ]);

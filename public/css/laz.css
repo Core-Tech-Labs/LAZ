@@ -119,12 +119,49 @@ body {
   top: 80px;
 }
 
+.notificationHolder {
+  min-width: 250px;
+  padding: 0px;
+}
+
+.notify {
+  height: 60px;
+  margin: 0 auto;
+  padding: 10px 25px;
+  font-weight: bolder;
+}
+
+.loadnotify {
+  height: 40px;
+  margin: 0 auto;
+  padding: 0 5px;
+}
+
+.loadnotify a {
+  height: 40px;
+  border-bottom: 1px solid #000;
+}
+
+
+
+.badge-notify {
+  position: absolute;
+  top: 8px;
+  right: 3px;
+  z-index: 100;
+}
+
 /**
  *  Dashboard/Homepage
  */
 
 .dh {
   padding-bottom: 20px;
+}
+
+.dh .thumbnail img {
+  max-height: 95px;
+  max-width: 75px;
 }
 
 /*
@@ -138,6 +175,26 @@ body {
 
 #msg-padding {
   padding: 10px 15px;
+  background: #fff !important;
+  overflow-x: hidden;
+  min-height: 300px;
+}
+
+.update-msg {
+  width: 89%;
+  height: 50px !important;
+  max-width: 555px;
+  float: left;
+}
+
+#update-msg-button {
+  float: right;
+  height: 50px;
+}
+
+ul.msg-list {
+  list-style: none;
+  padding: 0;
 }
 
 /*
@@ -341,6 +398,13 @@ body {
 #newsFeedSettings {
   float: right;
   position: relative;
+}
+
+li.newsFeed-action-buttons {
+  float: left;
+  margin: 0 auto;
+  display: block;
+  padding: 0 7px;
 }
 
 /*Images*/

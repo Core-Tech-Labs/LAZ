@@ -19,6 +19,11 @@ var publicDir = 'public/';
 elixir(function(mix) {
 
     /**
+     * Browserfiy
+     */
+     // mix.browserify('workfile.js', 'public/js/workfile.js');
+
+    /**
      * CSS Mix
      */
 
@@ -30,13 +35,16 @@ elixir(function(mix) {
      * JS Mix
      */
 
-    mix.scripts(
-        [
-            'custom.js',
-            'error/rollbar.js'
-        ],
-        publicDir+ 'js/custom.js'
-    );
+    mix.scripts('custom.js', publicDir+ 'js/custom.js');
+
+    // dev
+    mix.scripts('error/rollbar.js', publicDir+ 'js/rollbar.js');
+
+
+    /**
+     * Copy
+     */
+
 
 
 });

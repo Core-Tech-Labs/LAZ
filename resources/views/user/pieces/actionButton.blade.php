@@ -23,15 +23,15 @@
         <span class="sr-only">Toggle Dropdown</span>
         </button>
       <ul class="dropdown-menu">
-        <li><a href="{{ link_to_route('activity.index') }}">View {{ $UserData->username }}'s Activity</a></li>
+        <li><a href="{{ action('ActivityController@show', $UserData->username) }}">View {{ $UserData->username }}'s Activity Feed</a></li>
       </ul>
     </div>
     {!! Form::close() !!}
     @endif
-        <button type="button" class="btn btn-default">Message</button>
+        <button id="msg" type="button" class="btn btn-default">Message</button>
   </div>
 
 
   @else
-    <a type="" class="btn btn-default">View My Activity</a>
+    <a href="{{ action('ActivityController@show', $UserData->username) }}" class="btn btn-default">View My Activity</a>
 @endif

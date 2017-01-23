@@ -1,5 +1,5 @@
 @extends('auth/auth')
-
+@section('title', 'Send Password Reset Link')
 @section('auth-content')
 <div class="container-fluid" id="pullup">
 	<div class="row">

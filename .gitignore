@@ -1,16 +1,15 @@
 /resources/assets/js/error
 /public/js/rollbar.js
 /public/js/rollbar.js.map
-/storage/database.sqlite
-/storage/testing.sqlite
 /storage/framework/cache/*
 /storage/framework/sessions/*
 /storage/framework/view/*
+/storage/dump.sql
 /storage/logs/*
+tests/_output/*
 /nbproject
 .DS_Store
 .env
-.env.testing
 .bash_profile
 /node_modules
 /vendor
@@ -21,6 +20,3 @@ Vagrantfile
 .vagrant
 /scripts
 gulpfile.dev.js
-
-
-tests/_output/*

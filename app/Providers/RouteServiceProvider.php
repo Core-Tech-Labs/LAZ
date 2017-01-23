@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Route;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -19,18 +20,29 @@ class RouteServiceProvider extends ServiceProvider {
 	/**
 	 * Define your route model bindings, pattern filters, etc.
 	 *
-	 * @param  \Illuminate\Routing\Router  $router
 	 * @return void
 	 */
-	public function boot(Router $router)
+	public function boot()
 	{
-		parent::boot($router);
+		parent::boot();
 
-    $router->bind('user', function($value, $route){
+    Route::bind('user', function($value){
         return \App\User::where('username', $value)->first();
     });
 
-    $router->bind('settings', function($value, $route){
+    Route::bind('settings', function($value){
+        return \App\User::where('username', $value)->first();
+    });
+
+    Route::bind('activity', function($value){
+        return \App\User::where('username', $value)->first();
+    });
+
+    Route::bind('message', function($value){
+        return \App\User::where('username', $value)->first();
+    });
+
+    Route::bind('feed', function($value){
         return \App\User::where('username', $value)->first();
     });
 	}
@@ -38,7 +50,6 @@ class RouteServiceProvider extends ServiceProvider {
 	/**
 	 * Define the routes for the application.
 	 *
-	 * @param  \Illuminate\Routing\Router  $router
 	 * @return void
 	 */
 	public function map(Router $router)
