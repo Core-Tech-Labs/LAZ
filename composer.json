@@ -8,12 +8,14 @@
 		{
 		"name": "Core Tech Labs",
 		"email":"info@ctlabs.net",
-		"homepage": "http://ctlabs.net"
+		"homepage": "http://ctlabs.net",
+		"role":"Owner"
 		},
 		{
 			"name": "Rudy Jessop",
 			"email": "rudyjessop@gmail.com",
-			"homepage": "http://rudyjessop.com"
+			"homepage": "http://ctlabs.com",
+			"role":"Developer"
 		}
 	],
 	"require": {
@@ -26,7 +28,6 @@
 		"aws/aws-sdk-php": "^3.9",
 		"league/flysystem-aws-s3-v3": "^1.0",
 		"guzzlehttp/guzzle": "^6.2",
-		"php-amqplib/php-amqplib": "^2.6",
 		"tyrola/xmpphp": "^2.0"
 	},
 	"require-dev": {

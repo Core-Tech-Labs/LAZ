@@ -1,8 +1,13 @@
 <p align="center"><img src=""/></p>
 <p align="center"> LAZ - Open Source Social Network Made Simple.</p>
 
+[![Latest Stable Version](https://poser.pugx.org/ctl/LAZ/v/stable?format=flat-square)](https://packagist.org/packages/ctl/LAZ)
 [![Build Status](https://travis-ci.org/Core-Tech-Labs/LAZ.svg?branch=master)](https://travis-ci.org/Core-Tech-Labs/LAZ)
 [![Coverage Status](https://coveralls.io/repos/Core-Tech-Labs/LAZ/badge.svg?branch=master&service=github)](https://coveralls.io/github/Core-Tech-Labs/LAZ?branch=master)
+[![Software License](https://img.shields.io/badge/License-EPL-green.svg?style=flat-square)](LICENSE.md)
+[![Total Downloads](https://poser.pugx.org/ctl/LAZ/downloads?format=flat-square)](https://packagist.org/packages/ctl/LAZ)
+[![Latest Unstable Version](https://poser.pugx.org/ctl/LAZ/v/unstable?format=flat-square)](https://packagist.org/packages/ctl/LAZ)
+
 
 
 ## About LAZ
@@ -18,7 +23,7 @@ It is ready for initial production use but was made in mind to be flexible for d
 
 ## Installation
 
-  ### Prerequisites
+  ### Prerequisites ###
 
 We recommend using [Corebox](https://github.com/RudyJessop/Corebox) which was used in the development and QA stages of this application. If you choose to use another Virtual Machine check for the following:
 
@@ -30,7 +35,7 @@ We recommend using [Corebox](https://github.com/RudyJessop/Corebox) which was us
 | Redis Server |  `redis-server`|
 | Node.js | `npm -v`  |
 
-  ### Quick Setup
+  ### Quick Setup ###
 
   - Download `git clone https://github.com/Core-Tech-Labs/LAZ` OR
   `composer require ctl\laz`
@@ -43,7 +48,7 @@ We recommend using [Corebox](https://github.com/RudyJessop/Corebox) which was us
 
   - `vagrant ssh`
 
-  ** Before migrating database you would need to configure your mysql server and the [database.php](https://github.com/Core-Tech-Labs/LAZ/blob/master/config/database.php) via the `.env` file **
+  **Before migrating database you would need to configure your mysql server and the [database.php](https://github.com/Core-Tech-Labs/LAZ/blob/master/config/database.php) via the `.env` file**
 
   - `php artisan migrate`
 

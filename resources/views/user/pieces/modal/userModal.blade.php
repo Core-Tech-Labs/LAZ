@@ -8,7 +8,7 @@
                     <h4 class="modal-title">Upload your images</h4>
                 </div>
                 <div class="modal-body">
-                {!! Form::open(['method'=>'POST', 'files'=>'true', 'action'=> ['UserController@upload', $UserData->username], 'class'=>'dropzone', 'id'=>'massUpload']) !!}
+                {!! Form::open(['method'=>'POST', 'files'=>'true', 'name'=>'photo', 'action'=> ['UserController@upload', $UserData->username], 'class'=>'dropzone', 'id'=>'massUpload']) !!}
                 </div>
                 <div class="modal-footer">
                     {!! Form::button('Close', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) !!}
