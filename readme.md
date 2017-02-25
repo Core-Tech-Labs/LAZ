@@ -1,4 +1,4 @@
-<p align="center"><img src=""/></p>
+<p align="center"><img src="public/imgs/laz.png"/></p>
 <p align="center"> LAZ - Open Source Social Network Made Simple.</p>
 
 [![Latest Stable Version](https://poser.pugx.org/ctl/LAZ/v/stable?format=flat-square)](https://packagist.org/packages/ctl/LAZ)
@@ -11,7 +11,7 @@
 
 
 ## About LAZ
-LAZ is a open source social network that uses the expressive and easy to use [Laravel Framework](https://github.com/laravel/laravel) to easily build "social network like" features such as:
+LAZ is an open source social network that uses the expressive and easy to use [Laravel Framework](https://github.com/laravel/laravel) to easily build "social network like" features such as:
 
   - [Favoriting Users](https://github.com/Core-Tech-Labs/SocialMapFavorites)
   - [Messaging Users](https://github.com/Core-Tech-Labs/LaravelXMPP)
