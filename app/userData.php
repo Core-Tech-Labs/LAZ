@@ -23,6 +23,4 @@ class userData extends Model {
     }
 
 
-    // Set and Define your Accessors and Mutators
-
 }

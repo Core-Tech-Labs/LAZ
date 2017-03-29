@@ -60,14 +60,6 @@ class User extends Authenticatable {
     }
 
     /**
-     * Declaring Feeds hasMany relationship
-     * @return [type] [description]
-     */
-    public function Feeds(){
-        return $this->hasMany('App\Feeds');
-    }
-
-    /**
      * [Online description]
      */
     public function Online(){
@@ -97,8 +89,14 @@ class User extends Authenticatable {
         return $dob->diffInYears($now);
     }
 
-    public function scopeUsername($query){
-        return $query->where('username');
+    /**
+     * Queries the searched user
+     * @param  [type] $query [description]
+     * @param  [type] $value [description]
+     * @return [type]        [description]
+     */
+    public function scopeUsername($query, $value){
+        return $query->where('username', $value)->first();
     }
 
 }

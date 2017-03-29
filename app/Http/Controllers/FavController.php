@@ -23,7 +23,8 @@ class FavController extends Controller {
 
 
 	/**
-	 * [__construct description]
+	 * Embedding UsersOrigin class
+	 * Embedding Mail class
 	 */
 	public function __construct(UsersOrigin $usersOrigin, Mail $mail){
 

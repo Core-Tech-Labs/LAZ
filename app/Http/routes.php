@@ -11,7 +11,7 @@
 |
 */
 
-//Base
+//Dashboard
 Route::get('home',['as'=>'home.dashboard','uses'=>'UserController@home']);
 
 
@@ -47,6 +47,7 @@ Route::get('messageSearch', ['as'=>'message.search', 'uses'=>'MessageController@
 
 
 // Activity
+// Ned to make into Route::get('activity/{user}','ActivityController@show' );
 Route::resource('activity', 'ActivityController');
 Route::post('/marknotify', 'ActivityController@markBellAsRead');
 

@@ -41,7 +41,6 @@ class ViewDataServiceProvider extends ServiceProvider{
    *
    */
   public function compserSettingsLink(){
-
       view()->composer('master', function($view){
         $view->with('UserData', \Auth::User() );
       });
@@ -96,5 +95,8 @@ class ViewDataServiceProvider extends ServiceProvider{
       $view->with('photos', UsersPhotos::images()->get()->all() );
     });
   }
+
+
+
 
 }

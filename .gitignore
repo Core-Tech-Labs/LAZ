@@ -6,7 +6,8 @@
 /storage/framework/view/*
 /storage/dump.sql
 /storage/logs/*
-tests/_output/*
+tests/_output
+test/_support/_generated
 /nbproject
 .DS_Store
 .env

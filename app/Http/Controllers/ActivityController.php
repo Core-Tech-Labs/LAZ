@@ -12,7 +12,7 @@ class ActivityController extends Controller {
 
 
 	/**
-	 * [__construct description]
+	 *
 	 */
 	public function __construct(){
 
@@ -20,40 +20,8 @@ class ActivityController extends Controller {
 	}
 
 	/**
-	 * Display a listing of the resource.
+	 * Show all activities of user
 	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
 	 */
 	public function show(User $user)
 	{
@@ -67,39 +35,6 @@ class ActivityController extends Controller {
 	 */
 	public function markBellAsRead(){
 		\Auth::user()->unreadNotifications->markAsRead();
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
 	}
 
 }

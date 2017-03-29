@@ -37,11 +37,15 @@ class UsersPhotos extends Model {
     return $this->belongsTo('App\User');
   }
 
+  /**
+   * Returns specific users images based on user_id
+   * @param  [type] $query [description]
+   * @return [type]        [description]
+   */
   public function scopeImages($query){
     return $query->whereNotNull('user_id');
   }
 
-//
 
   /**
    * Saving and Renaming Users Images
@@ -71,7 +75,6 @@ class UsersPhotos extends Model {
       $user->userData()->update([
               'profile_picture' => '/'.\Auth::User()->username.'/profile_images/'.$Imagename,
               'picture_name' => $Imagename
-
       ]);
 
   }

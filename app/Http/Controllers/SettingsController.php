@@ -33,7 +33,6 @@ class SettingsController extends Controller {
 
     /**
      * Function to update Users Email, Username, Password
-     * (Some work still needs to be done on the Authentication)
      *
      * @param UpdateUserDataRequest $request
      * @return view

@@ -25,7 +25,7 @@ It is ready for initial production use but was made in mind to be flexible for d
 
   ### Prerequisites
 
-We recommend using [Corebox](https://github.com/RudyJessop/Corebox) which was used in the development and QA stages of this application. If you choose to use another Virtual Machine check for the following:
+We recommend using [Corebox](https://github.com/RudyJessop/Corebox) which was used in the development and QA stages of this application. If you choose to use another Virtual Machine or containers (Kubernetes or Docker) check for the following:
 
 | Prerequisites | Command To check  |
 |---------------|:------------------|
