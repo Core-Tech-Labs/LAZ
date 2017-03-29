@@ -43,17 +43,7 @@ class Online extends Model
     }
 
     /**
-     * Show Users with latest activity
-     * @param  Builder $query [description]
-     * @return [type]         [description]
-     */
-    public function scopeOnlineUsers($query, $timeLimit = 10){
-        $latest = strtotime(Carbon::now()->subMinutes($timeLimit) );
-        return $query->whereNotNull('user_id')->where('last_activity', '>=', $latest)->with('user');
-    }
-
-    /**
-     * [scopeRegisteredUsers description]
+     * Returns users with latest activity
      * @return [type] [description]
      */
     public function scopeRegistered($query, $timeLimit = 10){
@@ -63,7 +53,7 @@ class Online extends Model
     }
 
     /**
-     * [scopeUserIdle description]
+     * Updates idle user
      * @return [type] [description]
      */
     public function scopeUpdateIdleUser($query){
